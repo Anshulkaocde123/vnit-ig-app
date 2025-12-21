@@ -53,7 +53,8 @@ app.get('/alive', (req, res) => {
 });
 
 // Security middleware
-app.use(helmet());
+// Temporarily disabled for debugging - helmet may be causing issues
+// app.use(helmet());
 
 // CORS middleware
 app.use(cors());
