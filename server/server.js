@@ -47,6 +47,11 @@ const io = new Server(server, {
 // Make io accessible to routes/controllers
 app.set('io', io);
 
+// ULTRA-SIMPLE TEST ROUTE (Before any middleware)
+app.get('/alive', (req, res) => {
+    res.json({ status: 'alive' });
+});
+
 // Security middleware
 app.use(helmet());
 
