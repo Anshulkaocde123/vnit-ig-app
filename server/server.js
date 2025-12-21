@@ -161,12 +161,21 @@ if (process.env.NODE_ENV === 'production') {
 
 // Port configuration
 const PORT = process.env.PORT || 5000;
-const HOST = process.env.HOST || '0.0.0.0';
+const HOST = '0.0.0.0'; // Always bind to 0.0.0.0 for Railway
+
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+console.log('🚀 VNIT IG App Server Starting');
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
+console.log(`🔌 Binding to: ${HOST}:${PORT}`);
+console.log(`🗄️  Database: ${process.env.MONGODB_URI ? 'Configured' : 'NOT SET'}`);
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
 // Start server (use 'server' not 'app' for Socket.io)
 const serverInstance = server.listen(PORT, HOST, () => {
-    console.log(`🚀 Server listening on ${HOST}:${PORT}`);
+    console.log(`✅ Server successfully listening on ${HOST}:${PORT}`);
     console.log(`🔌 Socket.io ready for connections`);
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 });
 
 // Handle server errors
