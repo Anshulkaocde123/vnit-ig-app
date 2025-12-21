@@ -19,8 +19,17 @@ const aboutRoutes = require('./routes/aboutRoutes');
 // Load environment variables
 dotenv.config();
 
+console.log('🔄 Starting VNIT IG App Server...');
+console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
+
 // Connect to MongoDB
-connectDB();
+console.log('🔄 Connecting to MongoDB...');
+connectDB().then(() => {
+    console.log('✅ MongoDB connection completed');
+}).catch((err) => {
+    console.error('❌ MongoDB connection error:', err.message);
+    // Continue anyway - app can work without DB for now
+});
 
 const app = express();
 
@@ -135,7 +144,25 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 // Start server (use 'server' not 'app' for Socket.io)
-server.listen(PORT, () => {
+const serverInstance = server.listen(PORT, () => {
     console.log(`🚀 Server listening on port ${PORT}`);
     console.log(`🔌 Socket.io ready for connections`);
+});
+
+// Handle server errors
+serverInstance.on('error', (err) => {
+    console.error('❌ Server Error:', err);
+    process.exit(1);
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException', (err) => {
+    console.error('❌ Uncaught Exception:', err);
+    process.exit(1);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+    console.error('❌ Unhandled Rejection:', err);
+    process.exit(1);
 });
