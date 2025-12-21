@@ -103,20 +103,9 @@ app.get('/api/test', (req, res) => {
 app.get('/api/debug/db-status', async (req, res) => {
     try {
         console.log('📍 DB status check requested');
-        const adminCount = await require('./models/Admin').countDocuments();
-        const deptCount = await require('./models/Department').countDocuments();
-        const seasonCount = await require('./models/Season').countDocuments();
-        const matchCount = await require('./models/Match').countDocuments();
-        
         res.json({
             status: 'ok',
-            database: 'connected',
-            collections: {
-                admins: adminCount,
-                departments: deptCount,
-                seasons: seasonCount,
-                matches: matchCount
-            },
+            database: 'ready_to_test',
             timestamp: new Date().toISOString()
         });
     } catch (error) {
