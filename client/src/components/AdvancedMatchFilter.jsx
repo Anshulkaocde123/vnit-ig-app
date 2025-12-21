@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Filter, X } from 'lucide-react';
+import api from '../api/axiosConfig';
 
 const AdvancedMatchFilter = ({ onFilter }) => {
     const [showAdvanced, setShowAdvanced] = useState(false);
@@ -27,21 +28,23 @@ const AdvancedMatchFilter = ({ onFilter }) => {
 
     const fetchSeasons = async () => {
         try {
-            const res = await fetch('/api/seasons');
-            const data = await res.json();
-            setSeasons(data.data || []);
+            console.log('🔄 Fetching seasons...');
+            const res = await api.get('/seasons');
+            console.log('✅ Seasons fetched:', res.data.data);
+            setSeasons(res.data.data || []);
         } catch (error) {
-            console.error('Error fetching seasons:', error);
+            console.error('❌ Error fetching seasons:', error);
         }
     };
 
     const fetchDepartments = async () => {
         try {
-            const res = await fetch('/api/departments');
-            const data = await res.json();
-            setDepartments(data.data || []);
+            console.log('🔄 Fetching departments...');
+            const res = await api.get('/departments');
+            console.log('✅ Departments fetched:', res.data.data);
+            setDepartments(res.data.data || []);
         } catch (error) {
-            console.error('Error fetching departments:', error);
+            console.error('❌ Error fetching departments:', error);
         }
     };
 

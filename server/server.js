@@ -85,6 +85,32 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', sockets: io.engine.clientsCount });
 });
 
+// Debug endpoint for testing database connection
+app.get('/api/debug/db-status', async (req, res) => {
+    try {
+        const adminCount = await require('./models/Admin').countDocuments();
+        const deptCount = await require('./models/Department').countDocuments();
+        const seasonCount = await require('./models/Season').countDocuments();
+        const matchCount = await require('./models/Match').countDocuments();
+        
+        res.json({
+            status: 'ok',
+            database: 'connected',
+            collections: {
+                admins: adminCount,
+                departments: deptCount,
+                seasons: seasonCount,
+                matches: matchCount
+            }
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 'error',
+            message: error.message
+        });
+    }
+});
+
 // Mount routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/matches', matchRoutes);

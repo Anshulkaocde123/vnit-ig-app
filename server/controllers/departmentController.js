@@ -5,13 +5,16 @@ const Department = require('../models/Department');
 // @access  Public (for now)
 const getDepartments = async (req, res) => {
     try {
+        console.log('📍 getDepartments: Starting request');
         const departments = await Department.find().sort({ name: 1 });
+        console.log(`📍 getDepartments: Found ${departments.length} departments`);
         res.status(200).json({
             success: true,
             count: departments.length,
             data: departments
         });
     } catch (error) {
+        console.error('❌ getDepartments Error:', error);
         res.status(500).json({
             success: false,
             message: 'Server Error',
