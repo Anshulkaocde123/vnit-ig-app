@@ -91,12 +91,20 @@ io.on('connection', (socket) => {
 
 // Health check route
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', sockets: io.engine.clientsCount });
+    console.log('📍 Health check requested');
+    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// Simple test endpoint
+app.get('/api/test', (req, res) => {
+    console.log('📍 Test endpoint requested');
+    res.json({ message: 'Server is running!', timestamp: new Date().toISOString() });
 });
 
 // Debug endpoint for testing database connection
 app.get('/api/debug/db-status', async (req, res) => {
     try {
+        console.log('📍 DB status check requested');
         const adminCount = await require('./models/Admin').countDocuments();
         const deptCount = await require('./models/Department').countDocuments();
         const seasonCount = await require('./models/Season').countDocuments();
@@ -110,12 +118,15 @@ app.get('/api/debug/db-status', async (req, res) => {
                 departments: deptCount,
                 seasons: seasonCount,
                 matches: matchCount
-            }
+            },
+            timestamp: new Date().toISOString()
         });
     } catch (error) {
+        console.error('❌ DB status error:', error.message);
         res.status(500).json({
             status: 'error',
-            message: error.message
+            message: error.message,
+            timestamp: new Date().toISOString()
         });
     }
 });
