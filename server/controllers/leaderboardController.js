@@ -33,6 +33,9 @@ const awardPoints = async (req, res) => {
 // @access  Public
 const getStandings = async (req, res) => {
     try {
+        console.log('📍 getStandings: Starting request');
+        const startTime = Date.now();
+        
         const standings = await PointLog.aggregate([
             {
                 $group: {
@@ -67,7 +70,10 @@ const getStandings = async (req, res) => {
                     history: 1
                 }
             }
-        ]);
+        ]).maxTimeMS(10000);
+
+        const elapsed = Date.now() - startTime;
+        console.log(`✅ getStandings: Fetched standings in ${elapsed}ms`);
 
         // Include departments with 0 points
         const allDepartments = await Department.find({});
@@ -90,10 +96,20 @@ const getStandings = async (req, res) => {
 
         finalStandings.sort((a, b) => b.points - a.points);
 
-        res.json({ success: true, data: finalStandings });
+        res.json({ 
+            success: true, 
+            count: finalStandings.length,
+            data: finalStandings,
+            timestamp: new Date().toISOString()
+        });
     } catch (error) {
-        console.error('Error fetching standings:', error);
-        res.status(500).json({ success: false, message: 'Server error' });
+        console.error('❌ getStandings Error:', error.message);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Server error',
+            error: error.message,
+            timestamp: new Date().toISOString()
+        });
     }
 };
 

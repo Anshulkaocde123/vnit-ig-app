@@ -40,6 +40,8 @@ const createSeason = async (req, res) => {
 // @access  Public
 const getSeasons = async (req, res) => {
     try {
+        console.log('📍 getSeasons: Starting request');
+        const startTime = Date.now();
         const { active } = req.query;
         let query = {};
 
@@ -47,14 +49,24 @@ const getSeasons = async (req, res) => {
             query.isActive = true;
         }
 
-        const seasons = await Season.find(query).sort({ createdAt: -1 });
+        const seasons = await Season.find(query).sort({ createdAt: -1 }).maxTimeMS(10000);
+
+        const elapsed = Date.now() - startTime;
+        console.log(`✅ getSeasons: Fetched ${seasons.length} seasons in ${elapsed}ms`);
 
         res.json({
             success: true,
-            data: seasons
+            count: seasons.length,
+            data: seasons,
+            timestamp: new Date().toISOString()
         });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error('❌ getSeasons Error:', error.message);
+        res.status(500).json({ 
+            success: false,
+            message: error.message,
+            timestamp: new Date().toISOString()
+        });
     }
 };
 

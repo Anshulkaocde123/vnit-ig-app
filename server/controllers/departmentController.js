@@ -6,19 +6,26 @@ const Department = require('../models/Department');
 const getDepartments = async (req, res) => {
     try {
         console.log('📍 getDepartments: Starting request');
-        const departments = await Department.find().sort({ name: 1 });
-        console.log(`📍 getDepartments: Found ${departments.length} departments`);
+        const startTime = Date.now();
+        
+        const departments = await Department.find().sort({ name: 1 }).maxTimeMS(10000);
+        
+        const elapsed = Date.now() - startTime;
+        console.log(`✅ getDepartments: Found ${departments.length} departments in ${elapsed}ms`);
+        
         res.status(200).json({
             success: true,
             count: departments.length,
-            data: departments
+            data: departments,
+            timestamp: new Date().toISOString()
         });
     } catch (error) {
-        console.error('❌ getDepartments Error:', error);
+        console.error('❌ getDepartments Error:', error.message);
         res.status(500).json({
             success: false,
             message: 'Server Error',
-            error: error.message
+            error: error.message,
+            timestamp: new Date().toISOString()
         });
     }
 };
