@@ -1,17 +1,17 @@
-# 🏆 VNIT Inter-Department Games - Sports Management System
+# VNIT Inter-Department Games - Sports Management System
 
 A professional web application for managing inter-department sports tournaments at VNIT (Visvesvaraya National Institute of Technology).
 
-## ✨ Features
+## Features
 
-### 🎯 Public Features
+### Public Features
 - **Live Matches Display** - Real-time match updates with Socket.io
 - **Department Leaderboard** - Live standings and rankings
 - **Match Details** - Complete match information and statistics
 - **About Page** - Event details and information
 - **Student Council** - Council member showcase
 
-### 👨‍💼 Admin Features
+### Admin Features
 - **Match Management** - Schedule and manage matches
 - **Live Scoring** - Real-time score updates
 - **Department Management** - Manage department information and logos
@@ -19,13 +19,13 @@ A professional web application for managing inter-department sports tournaments 
 - **Leaderboard Control** - Manual point awarding
 - **Reports & Analytics** - View comprehensive statistics
 
-### 🔐 Authentication
+### Authentication
 - **Traditional Login** - Username/password authentication
-- **Google OAuth** - Sign in with Google account ⭐ NEW
+- **Google OAuth** - Sign in with Google account (NEW)
 - **Role-Based Access** - Admin, Moderator, Viewer roles
 - **Secure Sessions** - JWT token-based authentication
 
-### 🎮 Sport-Specific Features
+### Sport-Specific Features
 Supports 9 different sports:
 - Cricket (Overs-based)
 - Badminton (Sets-based)
@@ -37,7 +37,7 @@ Supports 9 different sports:
 - Kabaddi (Points-based)
 - Chess (Result-based)
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React 19.2** - Modern UI library
@@ -65,14 +65,14 @@ Supports 9 different sports:
 - **Nginx** - Reverse proxy
 - **MongoDB Atlas** - Cloud database
 
-## 📋 Requirements
+## Requirements
 
 - Node.js 18+ ([Download](https://nodejs.org/))
 - npm or yarn
 - MongoDB account ([Create free](https://www.mongodb.com/cloud/atlas))
 - Google OAuth credentials ([Setup](./GOOGLE_OAUTH_SETUP.md))
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone Repository
 ```bash
@@ -120,14 +120,14 @@ Password: admin123
 - Click the Google Sign-In button
 - Sign in with your Google account
 
-## 📚 Documentation
+## Documentation
 
 - **[Setup Guide](./SETUP_GUIDE.md)** - Detailed setup and configuration
 - **[Deployment Guide](./DEPLOYMENT_GUIDE.md)** - Production deployment strategies
 - **[Google OAuth Setup](./GOOGLE_OAUTH_SETUP.md)** - Google authentication configuration
 - **[API Documentation](./API_DOCS.md)** - REST API endpoints
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 vnit-ig-app/
@@ -151,7 +151,7 @@ vnit-ig-app/
 └── package.json           # Root package configuration
 ```
 
-## 🔑 Key Files
+## Key Files
 
 - **Authentication**: `server/controllers/authController.js`
 - **User Model**: `server/models/Admin.js`
@@ -159,7 +159,7 @@ vnit-ig-app/
 - **Admin Layout**: `client/src/components/AdminLayout.jsx`
 - **API Config**: `client/src/api/axiosConfig.js`
 
-## 🌐 API Endpoints
+## API Endpoints
 
 ### Authentication
 ```
@@ -199,47 +199,47 @@ PUT    /api/seasons/:id             - Update season (admin)
 
 See [API_DOCS.md](./API_DOCS.md) for complete documentation.
 
-## 🔐 Security Features
+## Security Features
 
-✅ **JWT Token-based Authentication**
+**JWT Token-based Authentication**
 - 30-day expiration
 - Secure token storage
 - Automatic refresh on 401
 
-✅ **Password Security**
+**Password Security**
 - Bcryptjs hashing (10 salt rounds)
 - Never stored in plain text
 - Secure password reset
 
-✅ **Google OAuth 2.0**
+**Google OAuth 2.0**
 - Secure token verification
 - Automatic user creation
 - Email verification
 
-✅ **CORS Protection**
+**CORS Protection**
 - Domain-specific access
 - Credential validation
 
-✅ **Database Security**
+**Database Security**
 - MongoDB Atlas encryption at rest
 - Secure connection strings
 - IP whitelist support
 
-✅ **Environment Variables**
+**Environment Variables**
 - No hardcoded secrets
 - Separate dev/prod configs
 
-## 📈 Performance
+## Performance
 
 - **Frontend Build**: Optimized with Vite (~500KB gzipped)
 - **API Response**: <100ms average
 - **Database Queries**: Indexed for fast retrieval
 - **Real-time Updates**: Socket.io for instant sync
-- **Caching**: HTTP caching headers for static assets
+- Caching: HTTP caching headers for static assets
 
-## 🌍 Deployment Options
+## Deployment Options
 
-### ⭐ Recommended: Railway.app
+### Recommended: Railway.app
 - **Cost**: Free (within $5 credit)
 - **Setup Time**: 5 minutes
 - **Features**: Auto-deploy from GitHub, free SSL, environment variables
@@ -255,9 +255,9 @@ See [API_DOCS.md](./API_DOCS.md) for complete documentation.
 - **Cost**: Variable (hosting dependent)
 - **Setup Time**: 15 minutes
 - **Features**: Container-based, easy migration
-- [View Setup](./DEPLOYMENT_GUIDE.md#-simple-docker-deployment)
+- [View Setup](./DEPLOYMENT_GUIDE.md#-docker-deployment)
 
-## 📊 Database Schema
+## Database Schema
 
 ### Admin Model
 ```javascript
@@ -300,18 +300,18 @@ See [API_DOCS.md](./API_DOCS.md) for complete documentation.
 }
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Manual Testing Checklist
-- [ ] Can register with Google OAuth
-- [ ] Can login with username/password
-- [ ] Can access admin dashboard (authenticated)
-- [ ] Can create a new season
-- [ ] Can schedule a match
-- [ ] Can award points
-- [ ] Real-time updates work (Socket.io)
-- [ ] Leaderboard updates correctly
-- [ ] Logout clears session
+- Can register with Google OAuth
+- Can login with username/password
+- Can access admin dashboard (authenticated)
+- Can create a new season
+- Can schedule a match
+- Can award points
+- Real-time updates work (Socket.io)
+- Leaderboard updates correctly
+- Logout clears session
 
 ### API Testing
 ```bash
@@ -323,7 +323,7 @@ curl -X GET http://localhost:5000/api/seasons \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### "Cannot find module" errors
 ```bash
@@ -356,7 +356,7 @@ taskkill /PID <PID> /F
 
 See [SETUP_GUIDE.md](./SETUP_GUIDE.md) for more troubleshooting.
 
-## 📝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -364,22 +364,22 @@ See [SETUP_GUIDE.md](./SETUP_GUIDE.md) for more troubleshooting.
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👥 Authors
+## Authors
 
 - **Your Name** - Initial project setup
 - **VNIT Sports Committee** - Requirements and feedback
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - VNIT administration for the opportunity
 - All departments participating in the games
 - Student volunteers and coordinators
 
-## 📞 Support
+## Support
 
 For questions or issues:
 1. Check [SETUP_GUIDE.md](./SETUP_GUIDE.md)
@@ -387,18 +387,18 @@ For questions or issues:
 3. Check existing GitHub issues
 4. Create a new issue with details
 
-## 🚀 Roadmap
+## Roadmap
 
-- [ ] Email notifications for match updates
-- [ ] SMS notifications for important events
-- [ ] Mobile app (React Native)
-- [ ] Advanced analytics and visualizations
-- [ ] Live streaming integration
-- [ ] Payment integration for registration
-- [ ] Multi-language support
-- [ ] AI-powered match predictions
+- Email notifications for match updates
+- SMS notifications for important events
+- Mobile app (React Native)
+- Advanced analytics and visualizations
+- Live streaming integration
+- Payment integration for registration
+- Multi-language support
+- AI-powered match predictions
 
-## 📊 Statistics
+## Statistics
 
 - **Lines of Code**: ~15,000+
 - **API Endpoints**: 30+
@@ -410,6 +410,6 @@ For questions or issues:
 
 ---
 
-**Made with ❤️ for VNIT Inter-Department Games**
+**Made for VNIT Inter-Department Games**
 
-**Status**: ✅ Production Ready | **Last Updated**: 2025-12-20 | **Version**: 1.0.0
+**Status**: Production Ready | **Last Updated**: 2025-12-20 | **Version**: 1.0.0
