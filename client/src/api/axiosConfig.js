@@ -6,7 +6,7 @@ const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 const api = axios.create({
     baseURL: API_URL,
-    timeout: 10000,
+    timeout: 30000,
     headers: {
         'Content-Type': 'application/json'
     }
@@ -26,7 +26,7 @@ api.interceptors.request.use(
     }
 );
 
-// Response interceptor - handle token expiration
+// Response interceptor - handle token expiration and errors
 api.interceptors.response.use(
     (response) => response,
     (error) => {
@@ -38,8 +38,13 @@ api.interceptors.response.use(
             toast.error('Session expired. Please login again.');
         } else if (error.response?.status === 403) {
             toast.error('You do not have permission to perform this action');
+        } else if (error.response?.status === 502) {
+            toast.error('Server temporarily unavailable. Please try again.');
+            console.error('502 Bad Gateway - Server may be restarting or overloaded');
         } else if (error.response?.status === 500) {
             toast.error('Server error. Please try again later.');
+        } else if (error.code === 'ECONNABORTED' || error.message === 'timeout of 30000ms exceeded') {
+            toast.error('Request timeout. Please check your connection.');
         }
         return Promise.reject(error);
     }

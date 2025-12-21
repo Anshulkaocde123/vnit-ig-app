@@ -36,12 +36,20 @@ const app = express();
 // Create HTTP server for Socket.io
 const server = http.createServer(app);
 
-// Initialize Socket.io with CORS
+// Initialize Socket.io with CORS and connection settings
 const io = new Server(server, {
     cors: {
         origin: '*',
-        methods: ['GET', 'POST', 'PUT', 'DELETE']
-    }
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true
+    },
+    transports: ['websocket', 'polling'],
+    connectTimeout: 45000,
+    pingInterval: 25000,
+    pingTimeout: 60000,
+    upgradeSide: ['server'],
+    perMessageDeflate: false,
+    allowUpgrades: true
 });
 
 // Make io accessible to routes/controllers
@@ -78,13 +86,30 @@ if (process.env.NODE_ENV !== 'production') {
     app.use(morgan('dev'));
 }
 
-// Socket.io connection handling
+// Socket.io connection handling with error management
 io.on('connection', (socket) => {
     console.log('🔌 Client connected:', socket.id);
 
-    socket.on('disconnect', () => {
-        console.log('❌ Client disconnected:', socket.id);
+    socket.on('disconnect', (reason) => {
+        console.log('❌ Client disconnected:', socket.id, `(${reason})`);
     });
+
+    socket.on('connect_error', (error) => {
+        console.error('❌ Socket connection error:', error.message);
+    });
+
+    socket.on('error', (error) => {
+        console.error('❌ Socket error:', error);
+    });
+});
+
+// Socket.io server error handling
+io.engine.on('connection_error', (err) => {
+    console.error('⚠️  Socket.io connection error:', err.message);
+});
+
+server.on('upgrade', (req, socket, head) => {
+    console.log('🔄 WebSocket upgrade requested for:', req.url);
 });
 
 // Health check route
@@ -193,10 +218,22 @@ const serverInstance = server.listen(PORT, HOST, () => {
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 });
 
+// Set socket timeout to prevent hung connections
+serverInstance.setTimeout(120000); // 2 minutes
+serverInstance.keepAliveTimeout = 65000;
+
 // Handle server errors
 serverInstance.on('error', (err) => {
     console.error('❌ Server Error:', err);
     process.exit(1);
+});
+
+// Handle client socket errors
+serverInstance.on('clientError', (err, socket) => {
+    console.error('❌ Client socket error:', err.message);
+    if (socket.writable) {
+        socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+    }
 });
 
 // Handle uncaught exceptions
