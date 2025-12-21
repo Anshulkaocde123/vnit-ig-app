@@ -22,8 +22,17 @@ const AdvancedMatchFilter = ({ onFilter }) => {
     const MATCH_TYPES = ['REGULAR', 'SEMIFINAL', 'FINAL'];
 
     useEffect(() => {
+        console.log('🔄 AdvancedMatchFilter mounted');
+        console.log('API baseURL:', api.defaults.baseURL);
         fetchSeasons();
         fetchDepartments();
+        
+        // Log every 5 seconds to see state changes
+        const debugInterval = setInterval(() => {
+            console.log('📊 Current state - Departments:', departments.length, 'Seasons:', seasons.length);
+        }, 5000);
+        
+        return () => clearInterval(debugInterval);
     }, []);
 
     const fetchSeasons = async () => {
@@ -39,12 +48,18 @@ const AdvancedMatchFilter = ({ onFilter }) => {
 
     const fetchDepartments = async () => {
         try {
-            console.log('🔄 Fetching departments...');
+            console.log('🔄 Fetching departments from:', api.defaults.baseURL + '/departments');
             const res = await api.get('/departments');
             console.log('✅ Departments fetched:', res.data.data);
+            console.log('Department count:', res.data.count);
+            if (!res.data.data || res.data.data.length === 0) {
+                console.warn('⚠️  No departments returned!');
+            }
             setDepartments(res.data.data || []);
         } catch (error) {
-            console.error('❌ Error fetching departments:', error);
+            console.error('❌ Error fetching departments:', error.message);
+            console.error('Response status:', error.response?.status);
+            console.error('Response data:', error.response?.data);
         }
     };
 
@@ -77,6 +92,12 @@ const AdvancedMatchFilter = ({ onFilter }) => {
 
     return (
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-4 border border-slate-700">
+            {/* Debug Info */}
+            {process.env.NODE_ENV === 'development' && (
+                <div className="text-xs text-gray-400 mb-2">
+                    Departments: {departments.length} | Seasons: {seasons.length} | API: {api.defaults.baseURL}
+                </div>
+            )}
             {/* Quick Filter Bar */}
             <div className="flex flex-col md:flex-row gap-3 mb-3">
                 <div className="flex-1 relative">
