@@ -103,9 +103,18 @@ app.get('/api/test', (req, res) => {
 app.get('/api/debug/db-status', async (req, res) => {
     try {
         console.log('📍 DB status check requested');
+        const mongoose = require('mongoose');
+        const mongoUri = process.env.MONGODB_URI || 'NOT SET';
+        const maskedUri = mongoUri.replace(/\/\/.*:.*@/, '//***:***@');
+        
         res.json({
             status: 'ok',
-            database: 'ready_to_test',
+            database: {
+                connected: mongoose.connection.readyState === 1,
+                host: mongoose.connection.host || 'disconnected',
+                database: mongoose.connection.db?.databaseName || 'unknown',
+                uriMasked: maskedUri
+            },
             timestamp: new Date().toISOString()
         });
     } catch (error) {
