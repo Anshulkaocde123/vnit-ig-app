@@ -150,7 +150,7 @@ app.use((err, req, res, next) => {
 // React fallback for client-side routing - AFTER all API routes
 if (process.env.NODE_ENV === 'production') {
     const clientBuildPath = path.join(__dirname, '../client/dist');
-    app.get('*', (req, res) => {
+    app.get('/*', (req, res) => {
         // Don't interfere with API routes
         if (req.path.startsWith('/api')) {
             return res.status(404).json({ error: 'API route not found' });
