@@ -119,14 +119,23 @@ app.get('/api/debug/db-status', async (req, res) => {
 });
 
 // Mount routes
+console.log('📍 Mounting API routes...');
 app.use('/api/auth', require('./routes/authRoutes'));
+console.log('📍 Auth routes mounted');
 app.use('/api/matches', matchRoutes);
+console.log('📍 Matches routes mounted');
 app.use('/api/departments', departmentRoutes);
+console.log('📍 Departments routes mounted');
 app.use('/api/leaderboard', leaderboardRoutes);
+console.log('📍 Leaderboard routes mounted');
 app.use('/api/seasons', seasonRoutes);
+console.log('📍 Seasons routes mounted');
 app.use('/api/scoring-presets', scoringPresetRoutes);
+console.log('📍 Scoring presets routes mounted');
 app.use('/api/student-council', studentCouncilRoutes);
+console.log('📍 Student council routes mounted');
 app.use('/api/about', aboutRoutes);
+console.log('📍 About routes mounted');
 
 // Error handler middleware
 app.use((err, req, res, next) => {
