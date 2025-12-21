@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// Use relative URL for same-origin requests, supports both dev and production
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 const api = axios.create({
     baseURL: API_URL,

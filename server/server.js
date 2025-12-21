@@ -58,7 +58,8 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(clientBuildPath));
     
     // Fallback to index.html for client-side routing
-    app.get('*', (req, res) => {
+    // Use a regex to match any path — compatible with path-to-regexp
+    app.get(/.*/, (req, res) => {
         if (!req.path.startsWith('/api')) {
             res.sendFile(path.join(clientBuildPath, 'index.html'));
         }

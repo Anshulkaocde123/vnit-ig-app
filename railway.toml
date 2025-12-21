@@ -2,4 +2,5 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "npm --prefix server install && npm --prefix server start"
+startCommand = "npm install && npm --prefix client install && npm --prefix client run build && npm --prefix server install && npm --prefix server start"
+restartPolicyMaxRetries = 5
