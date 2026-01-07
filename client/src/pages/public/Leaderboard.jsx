@@ -63,9 +63,9 @@ const Leaderboard = () => {
         <div className={`min-h-screen ${isDarkMode ? 'bg-[#0a0a0f] text-white' : 'bg-gray-50 text-gray-900'}`}>
             <PublicNavbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <div className="flex flex-col justify-center items-center h-96">
-                <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                <div
+                    }
+                    }
                     className="w-16 h-16 rounded-full border-4 border-yellow-500/30 border-t-yellow-500"
                 />
                 <p className="mt-4 text-gray-500">Loading standings...</p>
@@ -89,18 +89,18 @@ const Leaderboard = () => {
 
                 {/* Hero Section */}
                 <div className="relative py-16 px-4 text-center overflow-hidden">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                    <div
+                        }
+                        }
+                        }
                     >
-                        <motion.div
-                            animate={{ rotate: [0, 5, -5, 0] }}
-                            transition={{ duration: 2, repeat: Infinity }}
+                        <div
+                            }
+                            }
                             className="inline-block mb-4"
                         >
                             <Trophy className="w-16 h-16 text-yellow-500" />
-                        </motion.div>
+                        </div>
                         <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-4">
                             <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
                                 Championship
@@ -109,22 +109,22 @@ const Leaderboard = () => {
                         <p className={`text-lg ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                             Real-time Department Standings
                         </p>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Leaderboard */}
                 <div className="max-w-4xl mx-auto px-4 pb-12">
                     {/* Top 3 Podium */}
                     {standings.length >= 3 && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
+                        <div
+                            }
+                            }
+                            }
                             className="grid grid-cols-3 gap-4 mb-10"
                         >
                             {/* 2nd Place */}
-                            <motion.div
-                                whileHover={{ scale: 1.03, y: -5 }}
+                            <div
+                                }
                                 className={`order-1 pt-8 backdrop-blur-xl rounded-3xl p-6 text-center border ${
                                     isDarkMode ? 'bg-white/5 border-gray-500/30' : 'bg-white/80 border-gray-300'
                                 }`}
@@ -142,24 +142,24 @@ const Leaderboard = () => {
                                 <div className="text-3xl font-black mt-2 bg-gradient-to-r from-gray-400 to-gray-500 bg-clip-text text-transparent">
                                     {standings[1]?.points || 0}
                                 </div>
-                            </motion.div>
+                            </div>
 
                             {/* 1st Place */}
-                            <motion.div
-                                whileHover={{ scale: 1.03, y: -5 }}
+                            <div
+                                }
                                 className={`order-2 backdrop-blur-xl rounded-3xl p-6 text-center border-2 relative overflow-hidden ${
                                     isDarkMode ? 'bg-yellow-500/10 border-yellow-500/50' : 'bg-yellow-50 border-yellow-400'
                                 }`}
                             >
                                 <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/20 to-transparent pointer-events-none" />
                                 <div className="relative">
-                                    <motion.div
-                                        animate={{ y: [0, -5, 0] }}
-                                        transition={{ duration: 2, repeat: Infinity }}
+                                    <div
+                                        }
+                                        }
                                         className="text-5xl mb-2"
                                     >
                                         👑
-                                    </motion.div>
+                                    </div>
                                     <div className="w-20 h-20 mx-auto mb-3 rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-600 flex items-center justify-center shadow-lg shadow-yellow-500/30">
                                         {getLogoUrl(standings[0]?.logo) ? (
                                             <img src={getLogoUrl(standings[0]?.logo)} alt="" className="w-16 h-16 object-contain" />
@@ -173,11 +173,11 @@ const Leaderboard = () => {
                                         {standings[0]?.points || 0}
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
 
                             {/* 3rd Place */}
-                            <motion.div
-                                whileHover={{ scale: 1.03, y: -5 }}
+                            <div
+                                }
                                 className={`order-3 pt-12 backdrop-blur-xl rounded-3xl p-6 text-center border ${
                                     isDarkMode ? 'bg-white/5 border-orange-500/30' : 'bg-white/80 border-orange-300'
                                 }`}
@@ -195,15 +195,15 @@ const Leaderboard = () => {
                                 <div className="text-2xl font-black mt-2 bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                                     {standings[2]?.points || 0}
                                 </div>
-                            </motion.div>
-                        </motion.div>
+                            </div>
+                        </div>
                     )}
 
                     {/* Full Rankings List */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
+                    <div
+                        }
+                        }
+                        }
                         className={`backdrop-blur-xl rounded-3xl border overflow-hidden ${
                             isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white/80 border-gray-200'
                         }`}
@@ -219,7 +219,7 @@ const Leaderboard = () => {
 
                         {/* Rows */}
                         <div className="divide-y divide-white/5">
-                            <AnimatePresence>
+                            
                                 {standings.map((team, index) => {
                                     const isExpanded = expandedRow === team._id;
                                     const deptName = team.name || team.department?.name || 'Unknown';
@@ -229,11 +229,11 @@ const Leaderboard = () => {
                                     const history = team.history || [];
 
                                     return (
-                                        <motion.div
+                                        <div
                                             key={team._id}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: index * 0.05 }}
+                                            }
+                                            }
+                                            }
                                         >
                                             <div
                                                 onClick={() => history.length > 0 && toggleRow(team._id)}
@@ -265,10 +265,10 @@ const Leaderboard = () => {
 
                                                 {/* Points */}
                                                 <div className="col-span-3 flex items-center justify-end gap-2">
-                                                    <motion.div
+                                                    <div
                                                         key={points}
-                                                        initial={{ scale: 1.2 }}
-                                                        animate={{ scale: 1 }}
+                                                        }
+                                                        }
                                                         className={`text-3xl font-black ${
                                                             index === 0 ? 'text-yellow-500' :
                                                             index === 1 ? 'text-gray-400' :
@@ -277,25 +277,25 @@ const Leaderboard = () => {
                                                         }`}
                                                     >
                                                         {points}
-                                                    </motion.div>
+                                                    </div>
                                                     {history.length > 0 && (
-                                                        <motion.div
-                                                            animate={{ rotate: isExpanded ? 180 : 0 }}
+                                                        <div
+                                                            }
                                                             className="text-gray-500"
                                                         >
                                                             <ChevronDown className="w-5 h-5" />
-                                                        </motion.div>
+                                                        </div>
                                                     )}
                                                 </div>
                                             </div>
 
                                             {/* Expanded History */}
-                                            <AnimatePresence>
+                                            
                                                 {isExpanded && history.length > 0 && (
-                                                    <motion.div
-                                                        initial={{ height: 0, opacity: 0 }}
-                                                        animate={{ height: 'auto', opacity: 1 }}
-                                                        exit={{ height: 0, opacity: 0 }}
+                                                    <div
+                                                        }
+                                                        }
+                                                        }
                                                         className={`overflow-hidden ${isDarkMode ? 'bg-black/30' : 'bg-gray-50'}`}
                                                     >
                                                         <div className="p-5">
@@ -308,11 +308,11 @@ const Leaderboard = () => {
                                                                     .sort((a, b) => new Date(b.createdAt || b.awardedAt) - new Date(a.createdAt || a.awardedAt))
                                                                     .slice(0, 10)
                                                                     .map((log, idx) => (
-                                                                        <motion.div
+                                                                        <div
                                                                             key={idx}
-                                                                            initial={{ opacity: 0, x: -10 }}
-                                                                            animate={{ opacity: 1, x: 0 }}
-                                                                            transition={{ delay: idx * 0.05 }}
+                                                                            }
+                                                                            }
+                                                                            }
                                                                             className={`flex justify-between items-center p-3 rounded-xl ${
                                                                                 isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200'
                                                                             }`}
@@ -330,19 +330,19 @@ const Leaderboard = () => {
                                                                                     {new Date(log.awardedAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
                                                                                 </div>
                                                                             </div>
-                                                                        </motion.div>
+                                                                        </div>
                                                                     ))}
                                                             </div>
                                                         </div>
-                                                    </motion.div>
+                                                    </div>
                                                 )}
-                                            </AnimatePresence>
-                                        </motion.div>
+                                            
+                                        </div>
                                     );
                                 })}
-                            </AnimatePresence>
+                            
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Footer */}

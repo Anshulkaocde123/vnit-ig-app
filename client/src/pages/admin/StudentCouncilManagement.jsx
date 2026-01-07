@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import axios from '../../api/axios';
 import toast from 'react-hot-toast';
 import { Users, Plus, Edit, Trash2, X, Save, User } from 'lucide-react';
@@ -71,23 +70,23 @@ const StudentCouncilManagement = () => {
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-                    <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+                    <div } }>
                         <h1 className="text-3xl md:text-4xl font-black text-white flex items-center gap-3">
                             <Users className="w-8 h-8 text-indigo-400" />
                             Student Council
                         </h1>
                         <p className="text-gray-400 mt-1">Manage council members and positions</p>
-                    </motion.div>
-                    <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setShowForm(!showForm)}
+                    </div>
+                    <button } } onClick={() => setShowForm(!showForm)}
                         className={`px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all ${showForm ? 'bg-red-600 hover:bg-red-700' : 'bg-gradient-to-r from-indigo-600 to-purple-600'} text-white shadow-lg`}>
                         {showForm ? <><X className="w-5 h-5" /> Cancel</> : <><Plus className="w-5 h-5" /> Add Member</>}
-                    </motion.button>
+                    </button>
                 </div>
 
                 {/* Form */}
-                <AnimatePresence>
+                
                     {showForm && (
-                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+                        <div } } }
                             className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-8 overflow-hidden">
                             <h2 className="text-2xl font-bold text-white mb-6">{editingId ? 'Edit' : 'Add New'} Member</h2>
                             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -136,20 +135,20 @@ const StudentCouncilManagement = () => {
                                         className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none resize-none" />
                                 </div>
                                 <div className="md:col-span-2 flex gap-4">
-                                    <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={loading}
+                                    <button } } type="submit" disabled={loading}
                                         className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold shadow-lg disabled:opacity-50">
                                         {loading ? <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Save className="w-5 h-5" />}
                                         {editingId ? 'Update' : 'Add'} Member
-                                    </motion.button>
-                                    <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="button" onClick={resetForm}
+                                    </button>
+                                    <button } } type="button" onClick={resetForm}
                                         className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-xl font-bold">
                                         Cancel
-                                    </motion.button>
+                                    </button>
                                 </div>
                             </form>
-                        </motion.div>
+                        </div>
                     )}
-                </AnimatePresence>
+                
 
                 {/* Members Grid */}
                 {loading && members.length === 0 ? (
@@ -163,7 +162,7 @@ const StudentCouncilManagement = () => {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {members.map((member, idx) => (
-                            <motion.div key={member._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
+                            <div key={member._id} } } }
                                 className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group">
                                 <div className="flex items-start gap-4">
                                     <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${getPositionColor(member.position)} flex items-center justify-center text-white shadow-lg`}>
@@ -177,12 +176,12 @@ const StudentCouncilManagement = () => {
                                 </div>
                                 {member.pledge && <p className="text-sm text-gray-400 mt-3 italic">"{member.pledge}"</p>}
                                 <div className="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => handleEdit(member)}
-                                        className="p-2 bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-400 rounded-lg"><Edit className="w-4 h-4" /></motion.button>
-                                    <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => handleDelete(member._id)}
-                                        className="p-2 bg-red-500/20 hover:bg-red-500/40 text-red-400 rounded-lg"><Trash2 className="w-4 h-4" /></motion.button>
+                                    <button } } onClick={() => handleEdit(member)}
+                                        className="p-2 bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-400 rounded-lg"><Edit className="w-4 h-4" /></button>
+                                    <button } } onClick={() => handleDelete(member._id)}
+                                        className="p-2 bg-red-500/20 hover:bg-red-500/40 text-red-400 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
                 )}

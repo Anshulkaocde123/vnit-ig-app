@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../api/axios';
 import socket from '../../socket';
 import PublicNavbar from '../../components/PublicNavbar';
@@ -141,47 +140,47 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
             <PublicNavbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
             {/* Hero Section */}
-            <motion.div 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+            <div 
+                }
+                }
+                }
                 className={`py-10 px-4 shadow-2xl transition-all duration-300 relative z-10 ${
                 isDarkMode
                     ? 'bg-gradient-to-r from-vnit-primary via-vnit-secondary to-purple-600'
                     : 'bg-gradient-to-r from-blue-600 via-red-500 to-purple-600'
             }`}>
                 <div className="max-w-5xl mx-auto text-center">
-                    <motion.h1 
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+                    <h1 
+                        }
+                        }
+                        }
                         className="text-4xl md:text-5xl font-black mb-2 tracking-tight text-white"
                     >
                         VNIT Inter-Department Games
-                    </motion.h1>
-                    <motion.p 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
+                    </h1>
+                    <p 
+                        }
+                        }
+                        }
                         className="text-white/90 text-base md:text-lg font-light"
                     >
                         Live scores, standings & instant updates
-                    </motion.p>
+                    </p>
                 </div>
-            </motion.div>
+            </div>
 
             {/* Status Cards */}
-            <motion.div 
-                variants={staggerContainer}
+            <div 
+                
                 initial="hidden"
                 animate="visible"
                 className="max-w-5xl mx-auto px-4 -mt-7 relative z-10"
             >
                 <div className="grid grid-cols-3 gap-3">
-                    <motion.button
-                        variants={scaleIn}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
+                    <button
+                        
+                        }
+                        }
                         onClick={() => setSelectedStatus(selectedStatus === 'LIVE' ? '' : 'LIVE')}
                         className={`p-4 rounded-lg border transition-all duration-200 text-center backdrop-blur-sm ${
                             selectedStatus === 'LIVE'
@@ -197,20 +196,20 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         <div className={`text-xs font-bold tracking-tight ${isDarkMode ? 'text-red-400' : 'text-red-600'}`}>
                             🔴 LIVE
                         </div>
-                        <motion.div 
+                        <div 
                             key={liveCount}
-                            initial={{ scale: 1.3 }}
-                            animate={{ scale: 1 }}
+                            }
+                            }
                             className={`text-lg font-black ${isDarkMode ? 'text-red-300' : 'text-red-700'}`}
                         >
                             {liveCount}
-                        </motion.div>
-                    </motion.button>
+                        </div>
+                    </button>
 
-                    <motion.button
-                        variants={scaleIn}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
+                    <button
+                        
+                        }
+                        }
                         onClick={() => setSelectedStatus(selectedStatus === 'SCHEDULED' ? '' : 'SCHEDULED')}
                         className={`p-4 rounded-lg border transition-all duration-200 text-center backdrop-blur-sm ${
                             selectedStatus === 'SCHEDULED'
@@ -226,20 +225,20 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         <div className={`text-xs font-bold tracking-tight ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
                             📅 UPCOMING
                         </div>
-                        <motion.div 
+                        <div 
                             key={upcomingCount}
-                            initial={{ scale: 1.3 }}
-                            animate={{ scale: 1 }}
+                            }
+                            }
                             className={`text-lg font-black ${isDarkMode ? 'text-blue-300' : 'text-blue-700'}`}
                         >
                             {upcomingCount}
-                        </motion.div>
-                    </motion.button>
+                        </div>
+                    </button>
 
-                    <motion.button
-                        variants={scaleIn}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
+                    <button
+                        
+                        }
+                        }
                         onClick={() => setSelectedStatus(selectedStatus === 'COMPLETED' ? '' : 'COMPLETED')}
                         className={`p-4 rounded-lg border transition-all duration-200 text-center backdrop-blur-sm ${
                             selectedStatus === 'COMPLETED'
@@ -255,17 +254,17 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         <div className={`text-xs font-bold tracking-tight ${isDarkMode ? 'text-green-400' : 'text-green-600'}`}>
                             ✅ COMPLETED
                         </div>
-                        <motion.div 
+                        <div 
                             key={completedCount}
-                            initial={{ scale: 1.3 }}
-                            animate={{ scale: 1 }}
+                            }
+                            }
                             className={`text-lg font-black ${isDarkMode ? 'text-green-300' : 'text-green-700'}`}
                         >
                             {completedCount}
-                        </motion.div>
-                    </motion.button>
+                        </div>
+                    </button>
                 </div>
-            </motion.div>
+            </div>
 
             {/* Filters Section */}
             <div className={`max-w-5xl mx-auto px-4 mt-8 mb-8 p-6 rounded-lg border transition-all duration-300 ${
@@ -371,11 +370,11 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                             </div>
                         ) : (
                             <div className="space-y-4">
-                                <AnimatePresence>
+                                
                                     {selectedStatus === '' && liveCount > 0 && (
-                                        <motion.div 
-                                            initial={{ opacity: 0, x: -20 }}
-                                            animate={{ opacity: 1, x: 0 }}
+                                        <div 
+                                            }
+                                            }
                                             className="flex items-center gap-3 pt-2 pb-2"
                                         >
                                             <span className="relative flex h-4 w-4">
@@ -383,9 +382,9 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                                                 <span className="relative rounded-full h-4 w-4 bg-red-500"></span>
                                             </span>
                                             <h2 className={`text-xl font-black tracking-tight ${isDarkMode ? 'text-red-400' : 'text-red-600'}`}>🔴 LIVE NOW</h2>
-                                        </motion.div>
+                                        </div>
                                     )}
-                                </AnimatePresence>
+                                
 
                                 {filteredMatches.map((match, index) => {
                                     const prevMatch = filteredMatches[index - 1];
@@ -400,33 +399,33 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                                     return (
                                         <React.Fragment key={match._id}>
                                             {showUpcomingHeader && (
-                                                <motion.div 
-                                                    initial={{ opacity: 0, x: -20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
+                                                <div 
+                                                    }
+                                                    }
                                                     className="flex items-center gap-3 pt-8 pb-2"
                                                 >
                                                     <span className="text-xl">📅</span>
                                                     <h2 className={`text-xl font-black tracking-tight ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>UPCOMING</h2>
-                                                </motion.div>
+                                                </div>
                                             )}
                                             {showCompletedHeader && (
-                                                <motion.div 
-                                                    initial={{ opacity: 0, x: -20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
+                                                <div 
+                                                    }
+                                                    }
                                                     className="flex items-center gap-3 pt-8 pb-2"
                                                 >
                                                     <span className="text-xl">✅</span>
                                                     <h2 className={`text-xl font-black tracking-tight ${isDarkMode ? 'text-green-400' : 'text-green-600'}`}>COMPLETED</h2>
-                                                </motion.div>
+                                                </div>
                                             )}
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: index * 0.05 }}
-                                                whileHover={{ scale: 1.01, y: -2 }}
+                                            <div
+                                                }
+                                                }
+                                                }
+                                                }
                                             >
                                                 <MatchCard match={match} formatIST={formatIST} isDarkMode={isDarkMode} />
-                                            </motion.div>
+                                            </div>
                                         </React.Fragment>
                                     );
                                 })}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import PublicNavbar from '../../components/PublicNavbar';
 import axios from '../../api/axios';
 import { GraduationCap, Mail, Phone, ArrowLeft, User } from 'lucide-react';
@@ -42,7 +41,7 @@ const StudentCouncilPage = ({ isDarkMode, setIsDarkMode }) => {
             <div className={`min-h-screen ${isDarkMode ? 'bg-[#0a0a0f] text-white' : 'bg-gray-50 text-gray-900'}`}>
                 <PublicNavbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
                 <div className="flex flex-col items-center justify-center h-96">
-                    <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    <div } }
                         className="w-16 h-16 rounded-full border-4 border-purple-500/30 border-t-purple-500" />
                     <p className="mt-4 text-gray-500">Loading Student Council...</p>
                 </div>
@@ -65,15 +64,15 @@ const StudentCouncilPage = ({ isDarkMode, setIsDarkMode }) => {
 
                 {/* Hero */}
                 <div className="relative py-16 px-4 text-center">
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
-                        <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity }} className="inline-block mb-6">
+                    <div } }>
+                        <div } } className="inline-block mb-6">
                             <GraduationCap className="w-20 h-20 text-purple-500" />
-                        </motion.div>
+                        </div>
                         <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-4">
                             <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">Student Council</span>
                         </h1>
                         <p className={`text-xl max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Meet the Leadership Behind VNIT IG</p>
-                    </motion.div>
+                    </div>
                 </div>
 
                 <div className="max-w-6xl mx-auto px-4 pb-12">
@@ -90,7 +89,7 @@ const StudentCouncilPage = ({ isDarkMode, setIsDarkMode }) => {
                                     <h2 className={`text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Executive Board</h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                         {executives.map((member, idx) => (
-                                            <motion.div key={member._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }}
+                                            <div key={member._id} } } }
                                                 className={`rounded-2xl p-6 text-center ${isDarkMode ? 'bg-white/5 border border-white/10 backdrop-blur-xl' : 'bg-white border border-gray-200 shadow-lg'}`}>
                                                 <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-r ${getPositionColor(member.position)} flex items-center justify-center text-white shadow-lg mb-4`}>
                                                     {member.photo ? <img src={member.photo} alt={member.name} className="w-full h-full rounded-full object-cover" /> : <User className="w-10 h-10" />}
@@ -99,7 +98,7 @@ const StudentCouncilPage = ({ isDarkMode, setIsDarkMode }) => {
                                                 <p className={`text-sm font-semibold bg-gradient-to-r ${getPositionColor(member.position)} bg-clip-text text-transparent`}>{member.position}</p>
                                                 <p className={`text-xs mt-1 ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>{member.department}</p>
                                                 {member.pledge && <p className={`text-xs mt-2 italic ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>"{member.pledge}"</p>}
-                                            </motion.div>
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
@@ -111,7 +110,7 @@ const StudentCouncilPage = ({ isDarkMode, setIsDarkMode }) => {
                                     <h2 className={`text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Department Heads</h2>
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                         {heads.map((member, idx) => (
-                                            <motion.div key={member._id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }}
+                                            <div key={member._id} } } }
                                                 className={`rounded-2xl p-6 ${isDarkMode ? 'bg-white/5 border border-white/10 backdrop-blur-xl' : 'bg-white border border-gray-200 shadow-lg'}`}>
                                                 <div className="flex items-center gap-4">
                                                     <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${getPositionColor(member.position)} flex items-center justify-center text-white shadow-lg`}>
@@ -123,7 +122,7 @@ const StudentCouncilPage = ({ isDarkMode, setIsDarkMode }) => {
                                                         <p className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>{member.department}</p>
                                                     </div>
                                                 </div>
-                                            </motion.div>
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
@@ -135,14 +134,14 @@ const StudentCouncilPage = ({ isDarkMode, setIsDarkMode }) => {
                                     <h2 className={`text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>Members</h2>
                                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                         {others.map((member, idx) => (
-                                            <motion.div key={member._id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: idx * 0.05 }}
+                                            <div key={member._id} } } }
                                                 className={`rounded-xl p-4 text-center ${isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200'}`}>
                                                 <div className="w-12 h-12 mx-auto rounded-full bg-gradient-to-r from-slate-500 to-slate-600 flex items-center justify-center text-white mb-2">
                                                     {member.photo ? <img src={member.photo} alt={member.name} className="w-full h-full rounded-full object-cover" /> : <User className="w-6 h-6" />}
                                                 </div>
                                                 <h3 className={`text-sm font-bold ${isDarkMode ? 'text-white' : 'text-gray-800'}`}>{member.name}</h3>
                                                 <p className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-500'}`}>{member.department}</p>
-                                            </motion.div>
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
@@ -151,11 +150,11 @@ const StudentCouncilPage = ({ isDarkMode, setIsDarkMode }) => {
                     )}
 
                     {/* Back Button */}
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-12 text-center">
+                    <div } } } className="mt-12 text-center">
                         <Link to="/" className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${isDarkMode ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'}`}>
                             <ArrowLeft className="w-5 h-5" /> Back to Home
                         </Link>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,7 +2,6 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { motion, AnimatePresence } from 'framer-motion';
 
 // Lazy load 3D background for performance
 const ThreeBackground = React.lazy(() => import('../../components/ThreeBackground'));
@@ -133,7 +132,7 @@ const Login = () => {
     const FloatingParticles = () => (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {[...Array(20)].map((_, i) => (
-                <motion.div
+                <div
                     key={i}
                     className="absolute w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
                     initial={{
@@ -173,10 +172,10 @@ const Login = () => {
             
             {/* Main content */}
             <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
-                <motion.div
-                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                <div
+                    }
+                    }
+                    }
                     className="w-full max-w-md"
                 >
                     {/* Glassmorphism Card */}
@@ -186,36 +185,36 @@ const Login = () => {
                         
                         <div className="relative backdrop-blur-xl bg-white/10 p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl">
                             {/* Logo/Header */}
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
+                            <div
+                                }
+                                }
+                                }
                                 className="text-center mb-8"
                             >
-                                <motion.div
-                                    whileHover={{ scale: 1.05, rotate: 3 }}
+                                <div
+                                    }
                                     className="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/30"
                                 >
                                     <span className="text-3xl">🏆</span>
-                                </motion.div>
+                                </div>
                                 <h1 className="text-3xl font-black text-white tracking-tight">
                                     Admin <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Portal</span>
                                 </h1>
                                 <p className="text-gray-400 mt-2 text-sm">VNIT Inter-Department Games</p>
-                            </motion.div>
+                            </div>
 
                             {/* Google Sign-In Button */}
                             {import.meta.env.VITE_GOOGLE_CLIENT_ID && 
                              import.meta.env.VITE_GOOGLE_CLIENT_ID !== 'YOUR_GOOGLE_CLIENT_ID_HERE' ? (
                                 <>
-                                    <motion.div 
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.3 }}
+                                    <div 
+                                        }
+                                        }
+                                        }
                                         className="mb-6"
                                     >
                                         <div id="google-signin-button" className="w-full flex justify-center"></div>
-                                    </motion.div>
+                                    </div>
 
                                     {/* Divider */}
                                     <div className="relative mb-6">
@@ -233,9 +232,9 @@ const Login = () => {
                             <motion.form 
                                 onSubmit={handleSubmit} 
                                 className="space-y-5"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.4 }}
+                                }
+                                }
+                                }
                             >
                                 {/* Username Field */}
                                 <div className="relative">
@@ -260,7 +259,7 @@ const Login = () => {
                                             placeholder="Enter your username"
                                             required
                                         />
-                                        <motion.div 
+                                        <div 
                                             className="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-focus-within:opacity-100 transition-opacity -z-10 blur-xl"
                                         />
                                     </div>
@@ -289,18 +288,18 @@ const Login = () => {
                                             placeholder="Enter your password"
                                             required
                                         />
-                                        <motion.div 
+                                        <div 
                                             className="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-focus-within:opacity-100 transition-opacity -z-10 blur-xl"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Submit Button */}
-                                <motion.button
+                                <button
                                     type="submit"
                                     disabled={loading}
-                                    whileHover={{ scale: loading ? 1 : 1.02 }}
-                                    whileTap={{ scale: loading ? 1 : 0.98 }}
+                                    }
+                                    }
                                     className={`relative w-full py-4 rounded-xl text-white font-bold text-lg overflow-hidden group transition-all duration-300 ${
                                         loading
                                             ? 'bg-gray-600 cursor-not-allowed'
@@ -309,7 +308,7 @@ const Login = () => {
                                 >
                                     {/* Button shine effect */}
                                     {!loading && (
-                                        <motion.div 
+                                        <div 
                                             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
                                         />
                                     )}
@@ -325,49 +324,49 @@ const Login = () => {
                                         ) : (
                                             <>
                                                 Sign In
-                                                <motion.span
-                                                    initial={{ x: 0 }}
-                                                    whileHover={{ x: 5 }}
+                                                <span
+                                                    }
+                                                    }
                                                 >
                                                     →
-                                                </motion.span>
+                                                </span>
                                             </>
                                         )}
                                     </span>
-                                </motion.button>
+                                </button>
                             </motion.form>
 
                             {/* Security Badge */}
-                            <motion.div 
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.6 }}
+                            <div 
+                                }
+                                }
+                                }
                                 className="mt-8 flex items-center justify-center gap-2 text-gray-500 text-xs"
                             >
                                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                 </svg>
                                 <span>Secured with JWT Authentication</span>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
 
                     {/* Back to Home Link */}
-                    <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.7 }}
+                    <div 
+                        }
+                        }
+                        }
                         className="mt-6 text-center"
                     >
                         <a 
                             href="/" 
                             className="text-gray-400 hover:text-white text-sm transition-colors inline-flex items-center gap-2 group"
                         >
-                            <motion.span whileHover={{ x: -3 }}>←</motion.span>
+                            <span }>←</span>
                             Back to Home
                         </a>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </div>
         </div>
     );

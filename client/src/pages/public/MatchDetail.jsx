@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../api/axios';
 import socket from '../../socket';
 import PublicNavbar from '../../components/PublicNavbar';
@@ -147,7 +146,7 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
         <div className={`min-h-screen ${isDarkMode ? 'bg-[#0a0a0f] text-white' : 'bg-gray-50 text-gray-900'}`}>
             <PublicNavbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <div className="flex flex-col items-center justify-center h-96">
-                <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }} className="w-16 h-16 rounded-full border-4 border-indigo-500/30 border-t-indigo-500" />
+                <div } } className="w-16 h-16 rounded-full border-4 border-indigo-500/30 border-t-indigo-500" />
             </div>
         </div>
     );
@@ -169,17 +168,17 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
                 <PublicNavbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
                 <div className="max-w-4xl mx-auto p-4 md:p-6 pt-8">
                     <Link to="/">
-                        <motion.button whileHover={{ x: -5 }} className={`flex items-center gap-2 mb-6 font-medium ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
+                        <button } className={`flex items-center gap-2 mb-6 font-medium ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                             <ArrowLeft className="w-5 h-5" /> Back to Matches
-                        </motion.button>
+                        </button>
                     </Link>
 
                     {/* Match Header */}
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className={`backdrop-blur-xl rounded-3xl border overflow-hidden mb-6 ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white/80 border-gray-200'}`}>
+                    <div } } className={`backdrop-blur-xl rounded-3xl border overflow-hidden mb-6 ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white/80 border-gray-200'}`}>
                         {/* Status Bar */}
                         <div className={`px-6 py-3 flex justify-between items-center text-white font-bold ${match.status === 'LIVE' ? 'bg-gradient-to-r from-red-600 to-red-500' : match.status === 'COMPLETED' ? 'bg-gradient-to-r from-green-600 to-emerald-500' : 'bg-gradient-to-r from-blue-600 to-indigo-500'}`}>
                             <span className="flex items-center gap-2 uppercase tracking-wider text-sm">
-                                {match.status === 'LIVE' && <motion.span animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1, repeat: Infinity }} className="w-2 h-2 bg-white rounded-full" />}
+                                {match.status === 'LIVE' && <span } } className="w-2 h-2 bg-white rounded-full" />}
                                 {match.status}
                             </span>
                             <span className="text-sm opacity-80">{match.sport.replace('_', ' ')}</span>
@@ -188,15 +187,15 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
                         {/* Teams */}
                         <div className="p-8">
                             <div className="flex items-center justify-between">
-                                <motion.div whileHover={{ scale: 1.05 }} className="text-center flex-1">
+                                <div } className="text-center flex-1">
                                     <div className="text-5xl md:text-6xl font-black bg-gradient-to-br from-indigo-400 to-purple-500 bg-clip-text text-transparent mb-2">{match.teamA?.shortCode}</div>
                                     <div className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>{match.teamA?.name}</div>
-                                </motion.div>
+                                </div>
                                 <div className={`px-8 text-3xl font-black ${isDarkMode ? 'text-gray-600' : 'text-gray-300'}`}>VS</div>
-                                <motion.div whileHover={{ scale: 1.05 }} className="text-center flex-1">
+                                <div } className="text-center flex-1">
                                     <div className="text-5xl md:text-6xl font-black bg-gradient-to-br from-pink-400 to-red-500 bg-clip-text text-transparent mb-2">{match.teamB?.shortCode}</div>
                                     <div className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>{match.teamB?.name}</div>
-                                </motion.div>
+                                </div>
                             </div>
                         </div>
 
@@ -205,20 +204,20 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
                             <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> {formatDate(match.scheduledAt)}</span>
                             {match.venue && <span className="flex items-center gap-2"><MapPin className="w-4 h-4" /> {match.venue}</span>}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Scoreboard */}
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                    <div } } }>
                         {renderScoreboard()}
-                    </motion.div>
+                    </div>
 
                     {/* Winner */}
                     {match.status === 'COMPLETED' && match.winner && (
-                        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4 }} className={`mt-6 p-6 rounded-3xl text-center border ${isDarkMode ? 'bg-gradient-to-r from-yellow-500/10 to-amber-500/10 border-yellow-500/30' : 'bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-300'}`}>
+                        <div } } } className={`mt-6 p-6 rounded-3xl text-center border ${isDarkMode ? 'bg-gradient-to-r from-yellow-500/10 to-amber-500/10 border-yellow-500/30' : 'bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-300'}`}>
                             <Trophy className="w-10 h-10 mx-auto mb-2 text-yellow-500" />
                             <div className={`text-sm font-bold uppercase tracking-wider mb-1 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>Winner</div>
                             <div className="text-3xl font-black bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">{match.winner.name || match.winner.shortCode}</div>
-                        </motion.div>
+                        </div>
                     )}
                 </div>
             </div>
@@ -417,19 +416,19 @@ const FootballScoreboard = ({ match, isDarkMode, fouls = [] }) => {
             )}
             
             {/* Foul Detail Modal */}
-            <AnimatePresence>
+            
                 {selectedFoul && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                    <div
+                        }
+                        }
+                        }
                         onClick={() => setSelectedFoul(null)}
                         className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
                     >
-                        <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
+                        <div
+                            }
+                            }
+                            }
                             onClick={(e) => e.stopPropagation()}
                             className={`rounded-2xl p-6 max-w-md w-full shadow-2xl ${isDarkMode ? 'bg-gray-800 border border-white/10' : 'bg-white border border-gray-200'}`}
                         >
@@ -495,10 +494,10 @@ const FootballScoreboard = ({ match, isDarkMode, fouls = [] }) => {
                             >
                                 Close
                             </button>
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
                 )}
-            </AnimatePresence>
+            
         </div>
     );
 };

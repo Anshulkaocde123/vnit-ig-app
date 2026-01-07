@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../api/axios';
 import { toast } from 'react-hot-toast';
 import ConfirmModal from '../../components/ConfirmModal';
@@ -49,17 +48,17 @@ const AwardPoints = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 md:p-8">
             {/* Header */}
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
+            <div } } className="mb-8">
                 <h1 className="text-3xl md:text-4xl font-black text-white flex items-center gap-3">
                     <Award className="w-8 h-8 text-yellow-500" />
                     Judge's Console
                 </h1>
                 <p className="text-gray-400 mt-1">Award points to departments for events and achievements</p>
-            </motion.div>
+            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Form */}
-                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="lg:col-span-2">
+                <div } } className="lg:col-span-2">
                     <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Department */}
@@ -119,24 +118,24 @@ const AwardPoints = () => {
                                     className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none resize-none" />
                             </div>
 
-                            <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={loading}
+                            <button } } type="submit" disabled={loading}
                                 className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-xl font-bold text-lg shadow-lg shadow-yellow-500/25 disabled:opacity-50">
                                 {loading ? <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Send className="w-5 h-5" />}
                                 {loading ? 'Awarding...' : 'Award Points'}
-                            </motion.button>
+                            </button>
                         </form>
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Recent Logs */}
-                <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                <div } }>
                     <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6">
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-lg font-bold text-white flex items-center gap-2"><Clock className="w-5 h-5 text-indigo-400" /> Recent Awards</h3>
                             {recentLogs.length > 0 && (
-                                <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => setShowClearConfirm(true)} className="p-2 text-gray-500 hover:text-red-400 transition-colors">
+                                <button } } onClick={() => setShowClearConfirm(true)} className="p-2 text-gray-500 hover:text-red-400 transition-colors">
                                     <Trash2 className="w-4 h-4" />
-                                </motion.button>
+                                </button>
                             )}
                         </div>
                         {recentLogs.length === 0 ? (
@@ -146,9 +145,9 @@ const AwardPoints = () => {
                             </div>
                         ) : (
                             <div className="space-y-3 max-h-[500px] overflow-y-auto">
-                                <AnimatePresence>
+                                
                                     {recentLogs.map((log, idx) => (
-                                        <motion.div key={log.id || idx} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, x: -20 }}
+                                        <div key={log.id || idx} } } }
                                             className="p-4 bg-white/5 border border-white/10 rounded-xl">
                                             <div className="flex justify-between items-start">
                                                 <div>
@@ -161,13 +160,13 @@ const AwardPoints = () => {
                                                     <div className="text-xs text-gray-500">{formatTime(log.awardedAt)}</div>
                                                 </div>
                                             </div>
-                                        </motion.div>
+                                        </div>
                                     ))}
-                                </AnimatePresence>
+                                
                             </div>
                         )}
                     </div>
-                </motion.div>
+                </div>
             </div>
 
             <ConfirmModal isOpen={showClearConfirm} title="Clear History" message="Clear all session logs?" confirmText="Clear" onConfirm={() => { setRecentLogs([]); setShowClearConfirm(false); toast.success('Cleared'); }} onCancel={() => setShowClearConfirm(false)} variant="danger" />

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../api/axios';
 import socket from '../../socket';
 import { useNavigate } from 'react-router-dom';
@@ -66,14 +65,14 @@ const Dashboard = () => {
         switch (status) {
             case 'LIVE':
                 return (
-                    <motion.span 
-                        animate={{ opacity: [1, 0.7, 1] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
+                    <span 
+                        }
+                        }
                         className="px-3 py-1 bg-red-500/20 text-red-400 text-xs font-bold rounded-full border border-red-500/40 flex items-center gap-1.5"
                     >
                         <span className="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
                         LIVE
-                    </motion.span>
+                    </span>
                 );
             case 'COMPLETED':
                 return <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-full border border-emerald-500/40">✓ COMPLETED</span>;
@@ -143,18 +142,18 @@ const Dashboard = () => {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen bg-[#0a0a0f]">
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                <div 
+                    }
+                    }
                     className="text-center"
                 >
-                    <motion.div 
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    <div 
+                        }
+                        }
                         className="w-16 h-16 rounded-full border-4 border-indigo-500/30 border-t-indigo-500 mx-auto mb-4"
                     />
                     <p className="text-gray-500 font-medium">Loading dashboard...</p>
-                </motion.div>
+                </div>
             </div>
         );
     }
@@ -169,9 +168,9 @@ const Dashboard = () => {
 
             <div className="relative z-10 p-6 md:p-8 max-w-7xl mx-auto">
                 {/* Header */}
-                <motion.div 
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                <div 
+                    }
+                    }
                     className="mb-10"
                 >
                     <div className="flex items-center gap-3 mb-2">
@@ -181,18 +180,18 @@ const Dashboard = () => {
                         </h1>
                     </div>
                     <p className="text-gray-500 font-medium ml-11">Manage matches, scores, and events</p>
-                </motion.div>
+                </div>
 
                 {/* Stats Cards Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 mb-10">
                     {cards.map((card, idx) => (
-                        <motion.button
+                        <button
                             key={idx}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: idx * 0.1 }}
-                            whileHover={{ scale: 1.03, y: -5 }}
-                            whileTap={{ scale: 0.98 }}
+                            }
+                            }
+                            }
+                            }
+                            }
                             onClick={() => navigate(card.action)}
                             className={`relative bg-gradient-to-br ${card.gradient} rounded-3xl p-6 text-left overflow-hidden group transition-all duration-300 hover:shadow-2xl ${card.glow}`}
                         >
@@ -200,9 +199,9 @@ const Dashboard = () => {
                             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                             
                             {card.pulse && (
-                                <motion.div
-                                    animate={{ opacity: [0.5, 0.2, 0.5] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
+                                <div
+                                    }
+                                    }
                                     className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-transparent rounded-3xl"
                                 />
                             )}
@@ -213,55 +212,55 @@ const Dashboard = () => {
                                         {card.icon}
                                     </div>
                                 </div>
-                                <motion.div 
+                                <div 
                                     key={card.value}
-                                    initial={{ scale: 1.2 }}
-                                    animate={{ scale: 1 }}
+                                    }
+                                    }
                                     className="text-4xl md:text-5xl font-black text-white mb-1"
                                 >
                                     {card.value}
-                                </motion.div>
+                                </div>
                                 <div className="text-xs font-bold text-white/80 uppercase tracking-wider">
                                     {card.title}
                                 </div>
                                 <div className="text-[10px] text-white/50 font-medium mt-0.5">{card.subtext}</div>
                             </div>
-                        </motion.button>
+                        </button>
                     ))}
                 </div>
 
                 {/* Quick Actions */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
+                <div 
+                    }
+                    }
+                    }
                     className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
                 >
                     {quickActions.map((action, idx) => (
-                        <motion.button
+                        <button
                             key={idx}
-                            whileHover={{ scale: 1.02, y: -3 }}
-                            whileTap={{ scale: 0.98 }}
+                            }
+                            }
                             onClick={() => navigate(action.path)}
                             className={`p-6 bg-gradient-to-br ${action.gradient} backdrop-blur-xl rounded-2xl border ${action.border} hover:border-opacity-60 transition-all duration-300 group`}
                         >
-                            <motion.div 
-                                whileHover={{ scale: 1.2, rotate: 10 }}
+                            <div 
+                                }
                                 className="text-4xl mb-3"
                             >
                                 {action.icon}
-                            </motion.div>
+                            </div>
                             <div className={`text-sm font-bold ${action.text} uppercase tracking-wider`}>{action.title}</div>
                             <div className="text-xs text-gray-500 mt-1">{action.subtitle}</div>
-                        </motion.button>
+                        </button>
                     ))}
-                </motion.div>
+                </div>
 
                 {/* Recent Matches */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
+                <div 
+                    }
+                    }
+                    }
                     className="backdrop-blur-xl bg-white/5 rounded-3xl border border-white/10 overflow-hidden"
                 >
                     <div className="p-6 border-b border-white/10 flex items-center justify-between">
@@ -280,32 +279,32 @@ const Dashboard = () => {
                         </button>
                     </div>
 
-                    <AnimatePresence>
+                    
                         {recentMatches.length === 0 ? (
-                            <motion.div 
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
+                            <div 
+                                }
+                                }
                                 className="p-12 text-center"
                             >
                                 <div className="text-5xl mb-4">🏟️</div>
                                 <p className="text-gray-500">No matches yet. Create your first match!</p>
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
+                                <button
+                                    }
+                                    }
                                     onClick={() => navigate('/admin/schedule')}
                                     className="mt-4 px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-indigo-500/30 transition-all"
                                 >
                                     Create Match
-                                </motion.button>
-                            </motion.div>
+                                </button>
+                            </div>
                         ) : (
                             <div className="divide-y divide-white/5">
                                 {recentMatches.map((match, idx) => (
-                                    <motion.div
+                                    <div
                                         key={match._id || idx}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: idx * 0.1 }}
+                                        }
+                                        }
+                                        }
                                         onClick={() => navigate(`/admin/live`)}
                                         className="p-5 cursor-pointer hover:bg-white/5 transition-all group"
                                     >
@@ -324,26 +323,26 @@ const Dashboard = () => {
                                                 </div>
                                             </div>
                                             <div className="text-right">
-                                                <motion.div 
+                                                <div 
                                                     key={`${match.scoreA}-${match.scoreB}`}
-                                                    initial={{ scale: 1.1 }}
-                                                    animate={{ scale: 1 }}
+                                                    }
+                                                    }
                                                     className="text-3xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent"
                                                 >
                                                     {typeof match.scoreA === 'object' ? (match.scoreA?.runs || 0) : (match.scoreA || 0)} - {typeof match.scoreB === 'object' ? (match.scoreB?.runs || 0) : (match.scoreB || 0)}
-                                                </motion.div>
+                                                </div>
                                                 <div className="text-xs text-gray-600 font-medium mt-1">
                                                     {match.venue || 'TBD'}
                                                 </div>
                                             </div>
                                             <ArrowRight className="w-5 h-5 text-gray-700 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all" />
                                         </div>
-                                    </motion.div>
+                                    </div>
                                 ))}
                             </div>
                         )}
-                    </AnimatePresence>
-                </motion.div>
+                    
+                </div>
             </div>
         </div>
     );

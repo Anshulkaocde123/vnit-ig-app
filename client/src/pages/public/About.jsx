@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import PublicNavbar from '../../components/PublicNavbar';
 import axios from '../../api/axios';
 import { Mail, Phone, Trophy, Target, Eye, History, Sparkles, Users, ArrowRight } from 'lucide-react';
@@ -42,9 +41,9 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
             <div className={`min-h-screen ${isDarkMode ? 'bg-[#0a0a0f] text-white' : 'bg-gray-50 text-gray-900'}`}>
                 <PublicNavbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
                 <div className="flex flex-col items-center justify-center h-96">
-                    <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    <div
+                        }
+                        }
                         className="w-16 h-16 rounded-full border-4 border-indigo-500/30 border-t-indigo-500"
                     />
                     <p className="mt-4 text-gray-500">Loading...</p>
@@ -69,18 +68,18 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
 
                 {/* Hero Section */}
                 <div className="relative py-20 px-4 text-center overflow-hidden">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                    <div
+                        }
+                        }
+                        }
                     >
-                        <motion.div
-                            animate={{ scale: [1, 1.1, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
+                        <div
+                            }
+                            }
                             className="inline-block mb-6"
                         >
                             <Trophy className="w-20 h-20 text-yellow-500" />
-                        </motion.div>
+                        </div>
                         <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-4">
                             <span className="bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                                 VNIT Inter-Games
@@ -89,16 +88,16 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
                         <p className={`text-xl max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                             Celebrating Excellence in Sports & Sportsmanship
                         </p>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Main Content */}
                 <div className="max-w-5xl mx-auto px-4 pb-12">
                     {/* Description Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
+                    <div
+                        }
+                        }
+                        }
                         className={`backdrop-blur-xl rounded-3xl p-8 mb-8 border ${
                             isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white/80 border-gray-200'
                         }`}
@@ -109,16 +108,16 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
                         <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                             {about?.description || "VNIT Inter-Games is the annual inter-department sports championship that brings together students from all departments to compete in various sports and foster a spirit of healthy competition and camaraderie."}
                         </p>
-                    </motion.div>
+                    </div>
 
                     {/* Vision and Mission */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         {/* Mission */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.3 }}
-                            whileHover={{ scale: 1.02, y: -5 }}
+                        <div
+                            }
+                            }
+                            }
+                            }
                             className={`backdrop-blur-xl rounded-3xl p-8 border relative overflow-hidden group ${
                                 isDarkMode ? 'bg-gradient-to-br from-pink-500/10 to-red-500/10 border-pink-500/30' : 'bg-gradient-to-br from-pink-50 to-red-50 border-pink-200'
                             }`}
@@ -131,14 +130,14 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
                                     {about?.missionStatement || "To promote sports culture and physical fitness among students while building team spirit and leadership qualities."}
                                 </p>
                             </div>
-                        </motion.div>
+                        </div>
 
                         {/* Vision */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.4 }}
-                            whileHover={{ scale: 1.02, y: -5 }}
+                        <div
+                            }
+                            }
+                            }
+                            }
                             className={`backdrop-blur-xl rounded-3xl p-8 border relative overflow-hidden group ${
                                 isDarkMode ? 'bg-gradient-to-br from-amber-500/10 to-yellow-500/10 border-amber-500/30' : 'bg-gradient-to-br from-amber-50 to-yellow-50 border-amber-200'
                             }`}
@@ -151,15 +150,15 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
                                     {about?.visionStatement || "To become the premier inter-departmental sports event that inspires excellence and unity."}
                                 </p>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* History Section */}
                     {about?.history && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 }}
+                        <div
+                            }
+                            }
+                            }
                             className={`backdrop-blur-xl rounded-3xl p-8 mb-8 border ${
                                 isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white/80 border-gray-200'
                             }`}
@@ -173,15 +172,15 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
                             <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                                 {about.history}
                             </p>
-                        </motion.div>
+                        </div>
                     )}
 
                     {/* Highlights */}
                     {about?.highlights && about.highlights.length > 0 && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6 }}
+                        <div
+                            }
+                            }
+                            }
                             className="mb-8"
                         >
                             <div className="flex items-center gap-3 mb-6">
@@ -192,9 +191,9 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {about.highlights.map((highlight, index) => (
-                                    <motion.div
+                                    <div
                                         key={index}
-                                        whileHover={{ scale: 1.02, y: -3 }}
+                                        }
                                         className={`backdrop-blur-xl rounded-2xl p-6 border group ${
                                             isDarkMode ? 'bg-white/5 border-white/10 hover:border-yellow-500/30' : 'bg-white/80 border-gray-200 hover:border-yellow-400'
                                         }`}
@@ -205,17 +204,17 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
                                         <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                                             {highlight.description}
                                         </p>
-                                    </motion.div>
+                                    </div>
                                 ))}
                             </div>
-                        </motion.div>
+                        </div>
                     )}
 
                     {/* Contact Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.7 }}
+                    <div
+                        }
+                        }
+                        }
                         className={`backdrop-blur-xl rounded-3xl p-8 mb-8 border ${
                             isDarkMode ? 'bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-indigo-500/30' : 'bg-gradient-to-br from-indigo-50 to-purple-50 border-indigo-200'
                         }`}
@@ -251,38 +250,38 @@ const AboutPage = ({ isDarkMode, setIsDarkMode }) => {
                                 </div>
                             )}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Navigation Links */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.8 }}
+                    <div
+                        }
+                        }
+                        }
                         className="flex flex-wrap gap-4 justify-center"
                     >
                         <Link to="/student-council">
-                            <motion.button
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
+                            <button
+                                }
+                                }
                                 className="flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25"
                             >
                                 <Users className="w-5 h-5" />
                                 Meet the Student Council
                                 <ArrowRight className="w-5 h-5" />
-                            </motion.button>
+                            </button>
                         </Link>
                         <Link to="/leaderboard">
-                            <motion.button
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
+                            <button
+                                }
+                                }
                                 className="flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 shadow-lg shadow-orange-500/25"
                             >
                                 <Trophy className="w-5 h-5" />
                                 View Leaderboard
                                 <ArrowRight className="w-5 h-5" />
-                            </motion.button>
+                            </button>
                         </Link>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Footer */}

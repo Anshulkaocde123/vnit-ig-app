@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../api/axios';
 import socket from '../../socket';
 import ScoringControls from '../../components/ScoringControls';
@@ -175,7 +174,7 @@ const LiveConsole = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-3 sm:p-6 md:p-8">
             {/* Header */}
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 mb-6 sm:mb-8">
+            <div } } className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 mb-6 sm:mb-8">
                 <div>
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white flex items-center gap-2 sm:gap-3">
                         <Radio className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" />
@@ -183,36 +182,36 @@ const LiveConsole = () => {
                     </h1>
                     <p className="text-gray-400 mt-1 text-sm sm:text-base">Manage and score live matches in real-time</p>
                 </div>
-                <motion.button
-                    whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                <button
+                    } }
                     onClick={fetchMatches}
                     disabled={loading}
                     className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium shadow-lg shadow-indigo-500/25 disabled:opacity-50 text-sm sm:text-base touch-manipulation"
                 >
                     <RefreshCw className={`w-4 h-4 sm:w-5 sm:h-5 ${loading ? 'animate-spin' : ''}`} />
                     Refresh
-                </motion.button>
-            </motion.div>
+                </button>
+            </div>
 
             {loading ? (
                 <div className="text-center py-20">
-                    <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }} className="w-12 h-12 mx-auto rounded-full border-4 border-indigo-500/30 border-t-indigo-500" />
+                    <div } } className="w-12 h-12 mx-auto rounded-full border-4 border-indigo-500/30 border-t-indigo-500" />
                     <p className="text-gray-400 mt-4">Loading matches...</p>
                 </div>
             ) : matches.length === 0 ? (
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center py-20 backdrop-blur-xl bg-white/5 rounded-3xl border border-white/10">
+                <div } } className="text-center py-20 backdrop-blur-xl bg-white/5 rounded-3xl border border-white/10">
                     <div className="text-5xl mb-4">🏟️</div>
                     <p className="text-gray-400 text-lg">No matches scheduled yet</p>
                     <p className="text-gray-500 text-sm mt-2">Create a match from the Schedule page</p>
-                </motion.div>
+                </div>
             ) : (
                 <div className="grid gap-4">
                     {matches.map((match, idx) => (
-                        <motion.div
+                        <div
                             key={match._id}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.05 }}
+                            }
+                            }
+                            }
                             className={`backdrop-blur-xl rounded-xl sm:rounded-2xl border p-3 sm:p-4 md:p-5 transition-all ${
                                 match.status === 'LIVE' 
                                     ? 'bg-red-500/10 border-red-500/30 ring-2 ring-red-500/20' 
@@ -259,19 +258,19 @@ const LiveConsole = () => {
                                 <div className="flex flex-wrap gap-2 w-full lg:w-auto">
                                     {/* Manage Squad Button - Cricket Only */}
                                     {match.sport === 'CRICKET' && (
-                                        <motion.button
-                                            whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                                        <button
+                                            } }
                                             onClick={() => setSquadManagerMatch(match)}
                                             className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-amber-600 to-orange-500 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-amber-500/25 text-xs sm:text-sm touch-manipulation"
                                         >
                                             <Users className="w-3 h-3 sm:w-4 sm:h-4" />
                                             {match.squadA?.length > 0 || match.squadB?.length > 0 ? 'Edit Squads' : 'Add Players'}
-                                        </motion.button>
+                                        </button>
                                     )}
 
                                     {match.status === 'SCHEDULED' && (
-                                        <motion.button
-                                            whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                                        <button
+                                            } }
                                             onClick={() => handleGoLive(match)}
                                             disabled={actionLoading === match._id + '-live'}
                                             className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-red-500/25 disabled:opacity-50 text-xs sm:text-sm touch-manipulation"
@@ -282,27 +281,27 @@ const LiveConsole = () => {
                                                 <Play className="w-3 h-3 sm:w-4 sm:h-4" />
                                             )}
                                             Go Live
-                                        </motion.button>
+                                        </button>
                                     )}
 
                                     {match.status === 'LIVE' && (
                                         <>
-                                            <motion.button
-                                                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                                            <button
+                                                } }
                                                 onClick={() => setSelectedMatch(match)}
                                                 className="px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-indigo-500/25 text-xs sm:text-sm touch-manipulation"
                                             >
                                                 Update Score
-                                            </motion.button>
-                                            <motion.button
-                                                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                                            </button>
+                                            <button
+                                                } }
                                                 onClick={() => handleEndMatch(match)}
                                                 disabled={actionLoading === match._id + '-end'}
                                                 className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-green-500/25 disabled:opacity-50 text-xs sm:text-sm touch-manipulation"
                                             >
                                                 <Square className="w-3 h-3 sm:w-4 sm:h-4" />
                                                 {actionLoading === match._id + '-end' ? 'Ending...' : 'End Match'}
-                                            </motion.button>
+                                            </button>
                                         </>
                                     )}
 
@@ -312,18 +311,18 @@ const LiveConsole = () => {
                                         </span>
                                     )}
 
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                                    <button
+                                        } }
                                         onClick={() => setConfirmModal({ isOpen: true, matchId: match._id, action: 'delete' })}
                                         disabled={actionLoading === match._id}
                                         className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-white/5 text-gray-400 hover:bg-red-500/20 hover:text-red-400 rounded-lg sm:rounded-xl font-medium border border-white/10 hover:border-red-500/30 transition-all disabled:opacity-50 text-xs sm:text-sm touch-manipulation"
                                     >
                                         <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
                                         <span className="hidden sm:inline">Delete</span>
-                                    </motion.button>
+                                    </button>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             )}
@@ -340,15 +339,15 @@ const LiveConsole = () => {
             />
 
             {/* Scoring Modal */}
-            <AnimatePresence>
+            
                 {selectedMatch && (
-                    <motion.div 
-                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                    <div 
+                        } } }
                         className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4 overflow-y-auto"
                         onClick={() => setSelectedMatch(null)}
                     >
-                        <motion.div 
-                            initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
+                        <div 
+                            } } }
                             onClick={(e) => e.stopPropagation()}
                             className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-white/10 my-auto"
                         >
@@ -359,13 +358,13 @@ const LiveConsole = () => {
                                         {selectedMatch.sport.replace('_', ' ')} • {selectedMatch.teamA?.shortCode} vs {selectedMatch.teamB?.shortCode}
                                     </p>
                                 </div>
-                                <motion.button
-                                    whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+                                <button
+                                    } }
                                     onClick={() => setSelectedMatch(null)}
                                     className="p-2 bg-white/10 hover:bg-white/20 rounded-lg sm:rounded-xl transition-colors flex-shrink-0 touch-manipulation"
                                 >
                                     <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
-                                </motion.button>
+                                </button>
                             </div>
 
                             <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
@@ -420,19 +419,19 @@ const LiveConsole = () => {
 
                                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pt-3 sm:pt-4 border-t border-white/10">
                                     <span className="text-xs text-gray-500">Changes saved instantly via Socket.io</span>
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                                    <button
+                                        } }
                                         onClick={() => handleEndMatch(selectedMatch)}
                                         className="px-3 sm:px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-lg sm:rounded-xl font-medium text-sm shadow-lg shadow-green-500/25 w-full sm:w-auto touch-manipulation"
                                     >
                                         Complete Match
-                                    </motion.button>
+                                    </button>
                                 </div>
                             </div>
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
                 )}
-            </AnimatePresence>
+            
 
             {/* Squad Manager Modal */}
             {squadManagerMatch && (

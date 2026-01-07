@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import axios from '../../api/axios';
 import toast from 'react-hot-toast';
 import { BookOpen, Target, Eye, History, Star, Plus, Trash2, Save, Mail, Phone } from 'lucide-react';
@@ -52,18 +51,18 @@ const AboutManagement = () => {
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 md:p-8">
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
-                <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
+                <div } } className="mb-8">
                     <h1 className="text-3xl md:text-4xl font-black text-white flex items-center gap-3">
                         <BookOpen className="w-8 h-8 text-indigo-400" />
                         About VNIT IG
                     </h1>
                     <p className="text-gray-400 mt-1">Manage your about page content</p>
-                </motion.div>
+                </div>
 
                 {loading && !formData.title ? (
                     <div className="text-center py-12"><div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto"></div></div>
                 ) : (
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8">
+                    <div } } className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Title */}
                             <div>
@@ -108,20 +107,20 @@ const AboutManagement = () => {
                                         className="flex-1 px-4 py-2 bg-slate-900/50 border border-green-500/30 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-green-500 outline-none" />
                                     <input type="text" value={newHighlight.description} onChange={(e) => setNewHighlight(prev => ({ ...prev, description: e.target.value }))} placeholder="Highlight description"
                                         className="flex-1 px-4 py-2 bg-slate-900/50 border border-green-500/30 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-green-500 outline-none" />
-                                    <motion.button type="button" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleAddHighlight}
+                                    <button type="button" } } onClick={handleAddHighlight}
                                         className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold flex items-center gap-2">
                                         <Plus className="w-4 h-4" /> Add
-                                    </motion.button>
+                                    </button>
                                 </div>
-                                <AnimatePresence>
+                                
                                     {formData.highlights?.map((h, idx) => (
-                                        <motion.div key={idx} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}
+                                        <div key={idx} } } }
                                             className="flex items-center justify-between p-3 bg-white/5 border border-white/10 rounded-lg mb-2">
                                             <div><span className="font-bold text-white">{h.title}</span><span className="text-gray-400 ml-2">- {h.description}</span></div>
                                             <button type="button" onClick={() => handleRemoveHighlight(idx)} className="p-1 text-red-400 hover:text-red-300"><Trash2 className="w-4 h-4" /></button>
-                                        </motion.div>
+                                        </div>
                                     ))}
-                                </AnimatePresence>
+                                
                             </div>
 
                             {/* Contact Info */}
@@ -139,13 +138,13 @@ const AboutManagement = () => {
                             </div>
 
                             {/* Submit */}
-                            <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" disabled={loading}
+                            <button } } type="submit" disabled={loading}
                                 className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold text-lg shadow-lg shadow-indigo-500/25 disabled:opacity-50">
                                 {loading ? <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Save className="w-5 h-5" />}
                                 {loading ? 'Saving...' : 'Save Changes'}
-                            </motion.button>
+                            </button>
                         </form>
-                    </motion.div>
+                    </div>
                 )}
             </div>
         </div>
