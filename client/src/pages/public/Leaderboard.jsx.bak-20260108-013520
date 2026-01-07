@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import api from '../../api/axios';
 import PublicNavbar from '../../components/PublicNavbar';
 import { ChevronDown, Trophy, TrendingUp } from 'lucide-react';
 
-const Leaderboard = () => {
+// Lazy load 3D background
+const ThreeBackground = React.lazy(() => import('../../components/ThreeBackground'));
+
+const Leaderboard = ({ isDarkMode, setIsDarkMode }) => {
     const [standings, setStandings] = useState([]);
     const [loading, setLoading] = useState(true);
     const [expandedRow, setExpandedRow] = useState(null);
