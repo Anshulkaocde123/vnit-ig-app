@@ -74,12 +74,12 @@ const BadmintonAdminControls = ({ match, onUpdate }) => {
             {currentSet && (
                 <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl sm:rounded-2xl p-3 sm:p-4">
                     <div className="flex justify-between items-center mb-2 sm:mb-3 gap-2 flex-wrap">
-                        <span className="text-xs sm:text-sm font-bold text-purple-400">
+                        <span className="text-sm font-semibold sm:text-sm font-bold text-purple-400">
                             Current Set: {(scoreA + scoreB + 1)} of {maxSets}
                         </span>
                         <button
                             onClick={handleToggleServer}
-                            className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 bg-white/10 hover:bg-white/20 active:bg-white/30 rounded-lg transition-all text-xs sm:text-sm"
+                            className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 bg-white/10 hover:bg-white/20 active:bg-white/30 rounded-lg transition-all text-sm font-semibold sm:text-sm"
                         >
                             <ServerCog className="w-3 h-3 sm:w-4 sm:h-4" />
                             <span className="font-bold">
@@ -100,13 +100,13 @@ const BadmintonAdminControls = ({ match, onUpdate }) => {
                 {/* Team A Controls */}
                 <div className="space-y-2 sm:space-y-3">
                     <div className="text-center">
-                        <div className="text-xs sm:text-sm font-bold text-purple-400 mb-1 sm:mb-2">
+                        <div className="text-sm font-semibold sm:text-sm font-bold text-purple-400 mb-1 sm:mb-2">
                             {match.teamA?.shortCode || 'Team A'}
                         </div>
                         <div className="text-3xl sm:text-4xl font-black text-white">
                             {scoreA || 0}
                         </div>
-                        <div className="text-xs text-gray-500">Sets Won</div>
+                        <div className="text-sm font-semibold text-gray-500">Sets Won</div>
                     </div>
 
                     <div className="space-y-2">
@@ -152,13 +152,13 @@ const BadmintonAdminControls = ({ match, onUpdate }) => {
                 {/* Team B Controls */}
                 <div className="space-y-2 sm:space-y-3">
                     <div className="text-center">
-                        <div className="text-xs sm:text-sm font-bold text-pink-400 mb-1 sm:mb-2">
+                        <div className="text-sm font-semibold sm:text-sm font-bold text-pink-400 mb-1 sm:mb-2">
                             {match.teamB?.shortCode || 'Team B'}
                         </div>
                         <div className="text-3xl sm:text-4xl font-black text-white">
                             {scoreB || 0}
                         </div>
-                        <div className="text-xs text-gray-500">Sets Won</div>
+                        <div className="text-sm font-semibold text-gray-500">Sets Won</div>
                     </div>
 
                     <div className="space-y-2">
@@ -222,17 +222,17 @@ const BadmintonAdminControls = ({ match, onUpdate }) => {
 
             {/* Match Info */}
             <div className="bg-white/5 border border-white/10 rounded-xl p-3 sm:p-4">
-                <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center text-xs sm:text-sm">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center text-sm font-semibold sm:text-sm">
                     <div>
-                        <div className="text-gray-500 text-xs">Sets to Win</div>
+                        <div className="text-gray-800 text-xs">Sets to Win</div>
                         <div className="text-white font-bold text-sm sm:text-base">{setsToWin}</div>
                     </div>
                     <div>
-                        <div className="text-gray-500 text-xs">Format</div>
+                        <div className="text-gray-800 text-xs">Format</div>
                         <div className="text-white font-bold text-sm sm:text-base">Best of {maxSets}</div>
                     </div>
                     <div>
-                        <div className="text-gray-500 text-xs">Server</div>
+                        <div className="text-gray-800 text-xs">Server</div>
                         <div className="text-white font-bold flex items-center justify-center gap-1 text-sm sm:text-base">
                             {currentServer === 'A' ? (
                                 <span className="text-purple-400">{match.teamA?.shortCode}</span>

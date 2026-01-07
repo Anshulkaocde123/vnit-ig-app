@@ -49,7 +49,7 @@ const AdminLayout = () => {
             {isMobile && (
                 <button
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="fixed top-4 left-4 z-50 p-2 bg-white border-2 border-gray-300 rounded-lg shadow-lg lg:hidden hover:bg-gray-50"
+                    className="fixed top-4 left-4 z-50 p-2 bg-white border-2 border-gray-700 rounded-lg shadow-lg lg:hidden hover:bg-gray-50"
                 >
                     {isSidebarOpen ? <X className="w-6 h-6 text-gray-700" /> : <Menu className="w-6 h-6 text-gray-700" />}
                 </button>
@@ -72,7 +72,7 @@ const AdminLayout = () => {
                         !isMobile && !isSidebarOpen ? 'w-0 hidden' : 'w-64'
                     } flex flex-col bg-white border-r-2 border-gray-200 shadow-xl`}
                 >
-                    <div className="p-4 sm:p-6 border-b-2 border-gray-200 flex items-center justify-between">
+                    <div className="p-4 sm:p-6 border-b-2 border-gray-600 flex items-center justify-between">
                         <h1 className="text-lg sm:text-xl font-bold text-gray-900">
                             VNIT Sports Admin
                         </h1>
@@ -109,7 +109,7 @@ const AdminLayout = () => {
                     <div className="p-3 sm:p-4 border-t-2 border-gray-200">
                         <button
                             onClick={handleLogout}
-                            className="w-full flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-3 rounded-lg font-medium text-sm sm:text-base text-red-600 border-2 border-red-300 hover:bg-red-50 shadow-sm"
+                            className="w-full flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-3 rounded-lg font-bold text-sm sm:text-base text-red-600 border-2 border-red-300 hover:bg-red-50 shadow-sm"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -124,7 +124,7 @@ const AdminLayout = () => {
             {!isMobile && !isSidebarOpen && (
                 <button
                     onClick={() => setIsSidebarOpen(true)}
-                    className="fixed top-4 left-4 z-40 p-2 bg-white border-2 border-gray-300 rounded-lg shadow-lg hover:bg-gray-50"
+                    className="fixed top-4 left-4 z-40 p-2 bg-white border-2 border-gray-700 rounded-lg shadow-lg hover:bg-gray-50"
                 >
                     <ChevronRight className="w-6 h-6 text-gray-700" />
                 </button>

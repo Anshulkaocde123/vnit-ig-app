@@ -94,7 +94,7 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                             <motion.span
                                 animate={{ opacity: [1, 0.5, 1] }}
                                 transition={{ duration: 1, repeat: Infinity }}
-                                className="px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full"
+                                className="px-2 py-0.5 bg-red-500 text-white text-sm font-semibold font-bold rounded-full"
                             >
                                 LIVE
                             </motion.span>
@@ -131,7 +131,7 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                             <h2 className="text-2xl font-bold text-white">
                                 {battingTeamData?.shortCode || 'Team'}
                             </h2>
-                            <span className="text-gray-400 text-sm">Batting</span>
+                            <span className="text-gray-700 text-sm">Batting</span>
                         </div>
                     </div>
 
@@ -146,7 +146,7 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                             {battingScore?.runs || 0}
                             <span className="text-3xl text-gray-400">/{battingScore?.wickets || 0}</span>
                         </div>
-                        <div className="text-gray-400 mt-1">
+                        <div className="text-gray-700 mt-1">
                             <span className="text-lg">{overs}</span>
                             <span className="text-sm ml-1">overs</span>
                         </div>
@@ -154,11 +154,11 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
 
                     {/* Run Rate */}
                     <div className="text-right">
-                        <div className="text-gray-400 text-sm">Run Rate</div>
+                        <div className="text-gray-700 text-sm">Run Rate</div>
                         <div className="text-2xl font-bold text-green-400">{runRate}</div>
                         {currentInnings === 2 && target && (
                             <div className="mt-2">
-                                <div className="text-gray-400 text-xs">Target: {target}</div>
+                                <div className="text-gray-700 text-xs">Target: {target}</div>
                                 <div className="text-yellow-400 text-xs">
                                     Need {target - (battingScore?.runs || 0)} from {(totalOvers * 6) - ((battingScore?.overs || 0) * 6 + (battingScore?.balls || 0))} balls
                                 </div>
@@ -169,7 +169,7 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
 
                 {/* Current Over Display */}
                 <div className="bg-gray-800/50 rounded-xl p-4 mb-6">
-                    <div className="text-gray-400 text-sm mb-2">This Over</div>
+                    <div className="text-gray-700 text-sm mb-2">This Over</div>
                     <div className="flex gap-2 flex-wrap">
                         {currentOverBalls.length > 0 ? (
                             currentOverBalls.map((ball, idx) => (
@@ -197,7 +197,7 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                 {/* Batsmen at Crease */}
                 {(currentBatsmen?.striker || currentBatsmen?.nonStriker || battingSquad.filter(p => p.isCurrentBatsman).length > 0) && (
                     <div className="bg-gray-800/50 rounded-xl p-4 mb-6">
-                        <div className="text-gray-400 text-sm mb-3">Batsmen</div>
+                        <div className="text-gray-700 text-sm mb-3">Batsmen</div>
                         <div className="space-y-2">
                             {[currentBatsmen?.striker, currentBatsmen?.nonStriker].filter(Boolean).map((batsman, idx) => (
                                 <div 
@@ -214,13 +214,13 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                                             {batsman?.playerName || 'Batsman'}
                                         </span>
                                         {batsman?.jerseyNumber && (
-                                            <span className="text-gray-500 text-sm">#{batsman.jerseyNumber}</span>
+                                            <span className="text-gray-800 text-sm">#{batsman.jerseyNumber}</span>
                                         )}
                                     </div>
                                     <div className="text-right">
                                         <span className="text-white font-bold">{batsman?.runsScored || 0}</span>
-                                        <span className="text-gray-400 text-sm ml-1">({batsman?.ballsFaced || 0})</span>
-                                        <div className="text-xs text-gray-500">
+                                        <span className="text-gray-700 text-sm ml-1">({batsman?.ballsFaced || 0})</span>
+                                        <div className="text-sm font-semibold text-gray-500">
                                             {batsman?.fours || 0}×4 {batsman?.sixes || 0}×6
                                         </div>
                                     </div>
@@ -233,7 +233,7 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                 {/* Current Bowler */}
                 {currentBowler && (
                     <div className="bg-gray-800/50 rounded-xl p-4 mb-6">
-                        <div className="text-gray-400 text-sm mb-3">Bowler</div>
+                        <div className="text-gray-700 text-sm mb-3">Bowler</div>
                         <div className="flex justify-between items-center p-2 rounded-lg bg-gray-700/50">
                             <div className="flex items-center gap-3">
                                 <span className="text-blue-400 text-xl">🎯</span>
@@ -245,7 +245,7 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                                 <span className="text-white font-bold">
                                     {currentBowler?.wicketsTaken || 0}/{currentBowler?.runsConceded || 0}
                                 </span>
-                                <span className="text-gray-400 text-sm ml-1">
+                                <span className="text-gray-700 text-sm ml-1">
                                     ({currentBowler?.oversBowled || 0}.{currentBowler?.ballsBowled % 6 || 0})
                                 </span>
                             </div>
@@ -254,7 +254,7 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                 )}
 
                 {/* Extras */}
-                <div className="flex justify-between text-sm text-gray-400 border-t border-gray-700 pt-4">
+                <div className="flex justify-between text-sm text-gray-700 border-t border-gray-700 pt-4">
                     <span>Extras: {
                         (battingScore?.extras?.wides || 0) + 
                         (battingScore?.extras?.noBalls || 0) + 
@@ -273,7 +273,7 @@ const CricketScoreboard = ({ match, onUpdate, isAdmin = false }) => {
             {/* Partnership Info (if available) */}
             {currentBatsmen?.striker && currentBatsmen?.nonStriker && (
                 <div className="bg-gray-800 border-t border-gray-700 px-6 py-3 text-center">
-                    <span className="text-gray-400 text-sm">
+                    <span className="text-gray-700 text-sm">
                         Partnership: {(currentBatsmen.striker.runsScored || 0) + (currentBatsmen.nonStriker.runsScored || 0)} runs
                     </span>
                 </div>

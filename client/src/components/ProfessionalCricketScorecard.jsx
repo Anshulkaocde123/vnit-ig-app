@@ -185,11 +185,11 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                                 className="flex items-center gap-1 px-3 py-1 bg-red-600 rounded-full"
                             >
                                 <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                                <span className="text-white text-xs font-bold">LIVE</span>
+                                <span className="text-white text-sm font-semibold font-bold">LIVE</span>
                             </motion.div>
                         )}
                         {status === 'COMPLETED' && (
-                            <span className="px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full">
+                            <span className="px-3 py-1 bg-green-600 text-white text-sm font-semibold font-bold rounded-full">
                                 COMPLETED
                             </span>
                         )}
@@ -229,7 +229,7 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                                 {teamInfo?.score && (
                                     <span className="font-display text-lg">
                                         {teamInfo.score.runs || 0}/{teamInfo.score.wickets || 0}
-                                        <span className="text-xs text-slate-400 ml-1">
+                                        <span className="text-sm font-semibold text-slate-400 ml-1">
                                             ({formatOvers(teamInfo.score.overs, teamInfo.score.balls)})
                                         </span>
                                     </span>
@@ -257,7 +257,7 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                         <div className="bg-gradient-to-r from-green-900/40 to-emerald-900/40 border border-green-500/30 rounded-xl p-4">
                             <div className="flex justify-between items-center">
                                 <div>
-                                    <div className="text-green-400 text-xs uppercase tracking-wider font-bold">Current Partnership</div>
+                                    <div className="text-green-400 text-sm font-semibold uppercase tracking-wider font-bold">Current Partnership</div>
                                     <div className="text-white text-2xl font-display mt-1">
                                         {partnership.runs} <span className="text-sm text-slate-400">({partnership.balls} balls)</span>
                                     </div>
@@ -275,7 +275,7 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                     {/* Current Over Display */}
                     {status === 'LIVE' && activeTab === currentInnings && currentOverBalls.length > 0 && (
                         <div className="bg-slate-800/50 rounded-xl p-4">
-                            <div className="text-slate-400 text-xs uppercase tracking-wider mb-3">This Over</div>
+                            <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-3">This Over</div>
                             <div className="flex gap-2 flex-wrap">
                                 {currentOverBalls.map((ball, idx) => (
                                     <motion.div
@@ -309,7 +309,7 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                         <div className="overflow-x-auto">
                             <table className="w-full min-w-[600px]">
                                 <thead>
-                                    <tr className="text-slate-400 text-xs uppercase tracking-wider border-b border-slate-700">
+                                    <tr className="text-slate-400 text-sm font-semibold uppercase tracking-wider border-b border-slate-700">
                                         <th className="text-left px-4 py-3 font-semibold">Batter</th>
                                         <th className="text-left px-4 py-3 font-semibold"></th>
                                         <th className="text-center px-3 py-3 font-semibold">R</th>
@@ -346,10 +346,10 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                                                         <span className="text-slate-400 text-xs">^</span>
                                                     )}
                                                     {batter.role === 'WICKET_KEEPER' && (
-                                                        <span className="text-xs text-slate-500">(wk)</span>
+                                                        <span className="text-sm font-semibold text-slate-500">(wk)</span>
                                                     )}
                                                     {batter.role === 'ALL_ROUNDER' && (
-                                                        <span className="text-xs text-slate-500">(c)</span>
+                                                        <span className="text-sm font-semibold text-slate-500">(c)</span>
                                                     )}
                                                 </div>
                                             </td>
@@ -410,7 +410,7 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                         {/* Yet to Bat */}
                         {getYetToBat(activeInnings).length > 0 && (
                             <div className="px-4 py-3 border-t border-slate-700 bg-slate-800/20">
-                                <div className="text-slate-500 text-xs uppercase tracking-wider mb-2">Yet to Bat</div>
+                                <div className="text-slate-500 text-sm font-semibold uppercase tracking-wider mb-2">Yet to Bat</div>
                                 <div className="flex flex-wrap gap-2">
                                     {getYetToBat(activeInnings).map((player, idx) => (
                                         <span key={idx} className="text-slate-300 text-sm">
@@ -426,7 +426,7 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                     {/* ========== FALL OF WICKETS ========== */}
                     {activeInnings?.fallOfWickets?.length > 0 && (
                         <div className="bg-slate-800/30 rounded-xl p-4">
-                            <h4 className="text-slate-400 text-xs uppercase tracking-wider mb-3 font-semibold">Fall of Wickets</h4>
+                            <h4 className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-3 font-semibold">Fall of Wickets</h4>
                             <div className="flex flex-wrap gap-3">
                                 {activeInnings.fallOfWickets.map((fow, idx) => (
                                     <div key={idx} className="bg-slate-700/50 px-3 py-2 rounded-lg text-sm">
@@ -452,7 +452,7 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                         <div className="overflow-x-auto">
                             <table className="w-full min-w-[600px]">
                                 <thead>
-                                    <tr className="text-slate-400 text-xs uppercase tracking-wider border-b border-slate-700">
+                                    <tr className="text-slate-400 text-sm font-semibold uppercase tracking-wider border-b border-slate-700">
                                         <th className="text-left px-4 py-3 font-semibold">Bowler</th>
                                         <th className="text-center px-3 py-3 font-semibold">O</th>
                                         <th className="text-center px-3 py-3 font-semibold">M</th>
@@ -517,17 +517,17 @@ const ProfessionalCricketScorecard = ({ match, isAdmin = false, onUpdate }) => {
                         <div className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 border border-amber-500/30 rounded-xl p-4">
                             <div className="grid grid-cols-3 gap-4 text-center">
                                 <div>
-                                    <div className="text-amber-400 text-xs uppercase tracking-wider">Target</div>
+                                    <div className="text-amber-400 text-sm font-semibold uppercase tracking-wider">Target</div>
                                     <div className="text-white text-2xl font-display">{target}</div>
                                 </div>
                                 <div>
-                                    <div className="text-amber-400 text-xs uppercase tracking-wider">Need</div>
+                                    <div className="text-amber-400 text-sm font-semibold uppercase tracking-wider">Need</div>
                                     <div className="text-white text-2xl font-display">
                                         {Math.max(0, target - (battingScore?.runs || 0))}
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="text-amber-400 text-xs uppercase tracking-wider">RRR</div>
+                                    <div className="text-amber-400 text-sm font-semibold uppercase tracking-wider">RRR</div>
                                     <div className="text-white text-2xl font-display">
                                         {(() => {
                                             const needed = target - (battingScore?.runs || 0);

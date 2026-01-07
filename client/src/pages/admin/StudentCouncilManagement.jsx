@@ -75,7 +75,7 @@ const StudentCouncilManagement = () => {
                             <Users className="w-8 h-8 text-indigo-400" />
                             Student Council
                         </h1>
-                        <p className="text-gray-400 mt-1">Manage council members and positions</p>
+                        <p className="text-gray-700 mt-1">Manage council members and positions</p>
                     </div>
                     <button onClick={() => setShowForm(!showForm)}
                         className={`px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all ${showForm ? 'bg-red-600 hover:bg-red-700' : 'bg-gradient-to-r from-indigo-600 to-purple-600'} text-white shadow-lg`}>
@@ -153,9 +153,9 @@ const StudentCouncilManagement = () => {
                     <div className="text-center py-12"><div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto"></div></div>
                 ) : members.length === 0 ? (
                     <div className="text-center py-16 backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl">
-                        <Users className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                        <p className="text-gray-400 text-lg">No council members yet</p>
-                        <p className="text-gray-500 text-sm mt-2">Add your first member to get started</p>
+                        <Users className="w-16 h-16 text-gray-900 mx-auto mb-4" />
+                        <p className="text-gray-700 text-lg">No council members yet</p>
+                        <p className="text-gray-800 text-sm mt-2">Add your first member to get started</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -168,10 +168,10 @@ const StudentCouncilManagement = () => {
                                     <div className="flex-1 min-w-0">
                                         <h3 className="text-lg font-bold text-white truncate">{member.name}</h3>
                                         <p className={`text-sm font-semibold bg-gradient-to-r ${getPositionColor(member.position)} bg-clip-text text-transparent`}>{member.position}</p>
-                                        <p className="text-xs text-gray-500 mt-1">{member.department}</p>
+                                        <p className="text-sm font-semibold text-gray-800 mt-1">{member.department}</p>
                                     </div>
                                 </div>
-                                {member.pledge && <p className="text-sm text-gray-400 mt-3 italic">"{member.pledge}"</p>}
+                                {member.pledge && <p className="text-sm text-gray-700 mt-3 italic">"{member.pledge}"</p>}
                                 <div className="flex gap-2 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <button onClick={() => handleEdit(member)}
                                         className="p-2 bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-400 rounded-lg"><Edit className="w-4 h-4" /></button>

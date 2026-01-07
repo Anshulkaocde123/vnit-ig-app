@@ -125,7 +125,7 @@ const FoulManagement = ({
                     onClick={() => setShowAddModal(true)}
                     disabled={disabled}
                     className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-600 
-                               text-white font-medium px-3 py-1 rounded-lg text-sm"
+                               text-white font-bold px-3 py-1 rounded-lg text-sm"
                 >
                     + Add Card/Foul
                 </motion.button>
@@ -135,7 +135,7 @@ const FoulManagement = ({
             <div className="grid grid-cols-2 gap-4 mb-4">
                 {/* Team A */}
                 <div className="bg-gray-900/50 rounded-lg p-3">
-                    <div className="text-sm text-gray-400 mb-2">
+                    <div className="text-sm text-gray-700 mb-2">
                         {match?.teamA?.shortCode || 'Team A'}
                     </div>
                     <div className="flex gap-3">
@@ -152,7 +152,7 @@ const FoulManagement = ({
 
                 {/* Team B */}
                 <div className="bg-gray-900/50 rounded-lg p-3">
-                    <div className="text-sm text-gray-400 mb-2">
+                    <div className="text-sm text-gray-700 mb-2">
                         {match?.teamB?.shortCode || 'Team B'}
                     </div>
                     <div className="flex gap-3">
@@ -171,7 +171,7 @@ const FoulManagement = ({
             {/* Quick Card Buttons */}
             <div className="grid grid-cols-2 gap-2 mb-4">
                 <div className="space-y-2">
-                    <div className="text-xs text-gray-400 text-center">
+                    <div className="text-sm font-semibold text-gray-700 text-center">
                         {match?.teamA?.shortCode || 'Team A'}
                     </div>
                     <div className="flex gap-2">
@@ -198,7 +198,7 @@ const FoulManagement = ({
                     </div>
                 </div>
                 <div className="space-y-2">
-                    <div className="text-xs text-gray-400 text-center">
+                    <div className="text-sm font-semibold text-gray-700 text-center">
                         {match?.teamB?.shortCode || 'Team B'}
                     </div>
                     <div className="flex gap-2">
@@ -229,7 +229,7 @@ const FoulManagement = ({
             {/* Recent Fouls List */}
             {fouls.length > 0 && (
                 <div className="mt-4 pt-4 border-t border-gray-700">
-                    <div className="text-sm text-gray-400 mb-2">Match Fouls ({fouls.length})</div>
+                    <div className="text-sm text-gray-700 mb-2">Match Fouls ({fouls.length})</div>
                     <div className="space-y-2 max-h-40 overflow-y-auto">
                         {fouls.slice().reverse().map((foul, idx) => (
                             <motion.div
@@ -243,16 +243,16 @@ const FoulManagement = ({
                                     <div>
                                         <span className="text-white text-sm">{foul.playerName}</span>
                                         {foul.jerseyNumber && (
-                                            <span className="text-gray-400 text-xs ml-1">#{foul.jerseyNumber}</span>
+                                            <span className="text-gray-700 text-sm font-semibold ml-1">#{foul.jerseyNumber}</span>
                                         )}
-                                        <span className="text-gray-500 text-xs ml-2">
+                                        <span className="text-gray-800 text-sm font-semibold ml-2">
                                             ({foul.team === 'A' ? match?.teamA?.shortCode : match?.teamB?.shortCode})
                                         </span>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     {foul.gameTime && (
-                                        <span className="text-gray-400 text-xs">{foul.gameTime}'</span>
+                                        <span className="text-gray-700 text-xs">{foul.gameTime}'</span>
                                     )}
                                     {!disabled && onRemoveFoul && (
                                         <button
@@ -290,7 +290,7 @@ const FoulManagement = ({
 
                             {/* Team Selection */}
                             <div className="mb-4">
-                                <label className="text-gray-400 text-sm block mb-2">Team</label>
+                                <label className="text-gray-700 text-sm block mb-2">Team</label>
                                 <div className="grid grid-cols-2 gap-2">
                                     <button
                                         onClick={() => setSelectedTeam('A')}
@@ -317,7 +317,7 @@ const FoulManagement = ({
 
                             {/* Foul Type */}
                             <div className="mb-4">
-                                <label className="text-gray-400 text-sm block mb-2">Type</label>
+                                <label className="text-gray-700 text-sm block mb-2">Type</label>
                                 <div className="grid grid-cols-2 gap-2">
                                     {availableFoulTypes.map(type => (
                                         <button
@@ -339,7 +339,7 @@ const FoulManagement = ({
 
                             {/* Player Name */}
                             <div className="mb-4">
-                                <label className="text-gray-400 text-sm block mb-2">Player Name *</label>
+                                <label className="text-gray-700 text-sm block mb-2">Player Name *</label>
                                 <input
                                     type="text"
                                     value={playerName}
@@ -353,7 +353,7 @@ const FoulManagement = ({
                             {/* Jersey Number & Game Time */}
                             <div className="grid grid-cols-2 gap-3 mb-4">
                                 <div>
-                                    <label className="text-gray-400 text-sm block mb-2">Jersey #</label>
+                                    <label className="text-gray-700 text-sm block mb-2">Jersey #</label>
                                     <input
                                         type="number"
                                         value={jerseyNumber}
@@ -364,7 +364,7 @@ const FoulManagement = ({
                                     />
                                 </div>
                                 <div>
-                                    <label className="text-gray-400 text-sm block mb-2">Time (min)</label>
+                                    <label className="text-gray-700 text-sm block mb-2">Time (min)</label>
                                     <input
                                         type="number"
                                         value={gameTime}
@@ -378,7 +378,7 @@ const FoulManagement = ({
 
                             {/* Reason */}
                             <div className="mb-4">
-                                <label className="text-gray-400 text-sm block mb-2">Reason (optional)</label>
+                                <label className="text-gray-700 text-sm block mb-2">Reason (optional)</label>
                                 <input
                                     type="text"
                                     value={reason}

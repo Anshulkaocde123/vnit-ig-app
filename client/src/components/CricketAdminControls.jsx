@@ -177,30 +177,30 @@ const CricketAdminControls = ({ match, onUpdate }) => {
 
             {/* Current Status Header */}
             <div className="bg-gradient-to-r from-green-900/50 to-emerald-900/50 rounded-xl p-4 border border-green-500/30">
-                <div className="text-xs text-green-400 uppercase tracking-wider font-bold mb-2">
+                <div className="text-sm font-semibold text-green-400 uppercase tracking-wider font-bold mb-2">
                     {battingTeamData?.name || battingTeamData?.shortCode || 'Team'} Batting • {currentInnings === 1 ? '1st' : '2nd'} Innings
                 </div>
                 
                 {/* Current Batsmen */}
                 <div className="grid grid-cols-2 gap-4 mb-4" key={`batsmen-${currentBatsmen?.striker?.playerName}-${currentBatsmen?.nonStriker?.playerName}`}>
                     <div className="bg-black/30 rounded-lg p-3">
-                        <div className="text-xs text-yellow-400 font-bold">⚡ STRIKER</div>
+                        <div className="text-sm font-semibold text-yellow-400 font-bold">⚡ STRIKER</div>
                         <div className="text-white font-bold text-lg">
                             {currentBatsmen?.striker?.playerName || 'Not Selected'}
                         </div>
                         {currentBatsmen?.striker && (
-                            <div className="text-slate-400 text-xs mt-1">
+                            <div className="text-slate-400 text-sm font-semibold mt-1">
                                 {currentBatsmen.striker.runsScored || 0}({currentBatsmen.striker.ballsFaced || 0})
                             </div>
                         )}
                     </div>
                     <div className="bg-black/30 rounded-lg p-3">
-                        <div className="text-xs text-slate-400 font-bold">🏃 NON-STRIKER</div>
+                        <div className="text-sm font-semibold text-slate-400 font-bold">🏃 NON-STRIKER</div>
                         <div className="text-white font-bold text-lg">
                             {currentBatsmen?.nonStriker?.playerName || 'Not Selected'}
                         </div>
                         {currentBatsmen?.nonStriker && (
-                            <div className="text-slate-400 text-xs mt-1">
+                            <div className="text-slate-400 text-sm font-semibold mt-1">
                                 {currentBatsmen.nonStriker.runsScored || 0}({currentBatsmen.nonStriker.ballsFaced || 0})
                             </div>
                         )}
@@ -209,7 +209,7 @@ const CricketAdminControls = ({ match, onUpdate }) => {
 
                 {/* Current Bowler */}
                 <div className="bg-black/30 rounded-lg p-3">
-                    <div className="text-xs text-blue-400 font-bold">🎯 CURRENT BOWLER</div>
+                    <div className="text-sm font-semibold text-blue-400 font-bold">🎯 CURRENT BOWLER</div>
                     <div className="flex justify-between items-center">
                         <div className="text-white font-bold text-lg">
                             {currentBowler?.playerName || 'Not Selected'}
@@ -310,7 +310,7 @@ const CricketAdminControls = ({ match, onUpdate }) => {
                             
                             {/* Dismissed Batsman */}
                             <div className="mb-4">
-                                <label className="text-xs text-slate-400 block mb-1">Dismissed Batsman</label>
+                                <label className="text-sm font-semibold text-slate-400 block mb-1">Dismissed Batsman</label>
                                 <div className="bg-red-500/20 text-red-300 p-3 rounded-lg font-bold">
                                     {currentBatsmen?.striker?.playerName || 'Striker'}
                                 </div>
@@ -318,7 +318,7 @@ const CricketAdminControls = ({ match, onUpdate }) => {
 
                             {/* Dismissal Type */}
                             <div className="mb-4">
-                                <label className="text-xs text-slate-400 block mb-2">Dismissal Type</label>
+                                <label className="text-sm font-semibold text-slate-400 block mb-2">Dismissal Type</label>
                                 <div className="grid grid-cols-2 gap-2">
                                     {dismissalTypes.map(dt => (
                                         <button
@@ -339,7 +339,7 @@ const CricketAdminControls = ({ match, onUpdate }) => {
                             {/* Fielder/Catcher (if needed) */}
                             {dismissalTypes.find(d => d.value === selectedDismissalType)?.needsCatcher && (
                                 <div className="mb-4">
-                                    <label className="text-xs text-slate-400 block mb-2">
+                                    <label className="text-sm font-semibold text-slate-400 block mb-2">
                                         {selectedDismissalType === 'RUN_OUT' ? 'Fielder' : 'Catcher/Keeper'}
                                     </label>
                                     <select
@@ -360,7 +360,7 @@ const CricketAdminControls = ({ match, onUpdate }) => {
                             {/* Bowler (for bowled, caught, lbw, stumped, hit wicket) */}
                             {['BOWLED', 'CAUGHT', 'LBW', 'STUMPED', 'HIT_WICKET'].includes(selectedDismissalType) && !currentBowler && (
                                 <div className="mb-4">
-                                    <label className="text-xs text-slate-400 block mb-2">Bowler</label>
+                                    <label className="text-sm font-semibold text-slate-400 block mb-2">Bowler</label>
                                     <select
                                         value={selectedBowler}
                                         onChange={(e) => setSelectedBowler(e.target.value)}
@@ -426,13 +426,13 @@ const CricketAdminControls = ({ match, onUpdate }) => {
                                                         {player.name || player.playerName}
                                                     </div>
                                                     {player.jerseyNumber && (
-                                                        <div className="text-xs text-slate-500">
+                                                        <div className="text-sm font-semibold text-slate-500">
                                                             #{player.jerseyNumber}
                                                         </div>
                                                     )}
                                                 </div>
                                                 {player.role && (
-                                                    <span className="text-xs text-slate-400 bg-slate-700 px-3 py-1 rounded-full font-bold">
+                                                    <span className="text-sm font-semibold text-slate-400 bg-slate-700 px-3 py-1 rounded-full font-bold">
                                                         {player.role === 'WICKET_KEEPER' ? '🧤 WK' : 
                                                          player.role === 'ALL_ROUNDER' ? '⭐ AR' :
                                                          player.role === 'BATSMAN' ? '🏏 BAT' :
@@ -475,7 +475,7 @@ const CricketAdminControls = ({ match, onUpdate }) => {
                                 <div className="text-center text-slate-500 py-8 bg-slate-800/50 rounded-xl">
                                     <div className="text-4xl mb-2">🏏</div>
                                     <div>No batsmen available</div>
-                                    <div className="text-xs mt-1">All players are either batting or out</div>
+                                    <div className="text-sm font-semibold mt-1">All players are either batting or out</div>
                                 </div>
                             )}
 
@@ -530,7 +530,7 @@ const CricketAdminControls = ({ match, onUpdate }) => {
                                                     )}
                                                 </div>
                                                 {player.oversBowled > 0 && (
-                                                    <span className="text-xs text-slate-400 font-mono">
+                                                    <span className="text-sm font-semibold text-slate-400 font-mono">
                                                         {player.oversBowled}-{player.maidens || 0}-{player.runsConceded || 0}-{player.wicketsTaken || 0}
                                                     </span>
                                                 )}

@@ -208,7 +208,7 @@ const PenaltyShootout = ({ match, onUpdate, disabled = false }) => {
             <div className="grid grid-cols-3 gap-4 items-center mb-6">
                 {/* Team A */}
                 <div className="text-center">
-                    <div className="text-sm text-gray-400 mb-2">{match.teamA?.shortCode}</div>
+                    <div className="text-sm text-gray-700 mb-2">{match.teamA?.shortCode}</div>
                     <motion.div 
                         key={teamAScore}
                         initial={{ scale: 1.3 }}
@@ -231,11 +231,11 @@ const PenaltyShootout = ({ match, onUpdate, disabled = false }) => {
                 </div>
 
                 {/* VS */}
-                <div className="text-4xl font-black text-gray-600 text-center">VS</div>
+                <div className="text-4xl font-black text-gray-900 text-center">VS</div>
 
                 {/* Team B */}
                 <div className="text-center">
-                    <div className="text-sm text-gray-400 mb-2">{match.teamB?.shortCode}</div>
+                    <div className="text-sm text-gray-700 mb-2">{match.teamB?.shortCode}</div>
                     <motion.div 
                         key={teamBScore}
                         initial={{ scale: 1.3 }}
@@ -261,7 +261,7 @@ const PenaltyShootout = ({ match, onUpdate, disabled = false }) => {
             {/* Kick Recording Buttons */}
             {shootoutActive && (
                 <div className="space-y-3">
-                    <div className="text-center text-gray-400 text-sm mb-2">
+                    <div className="text-center text-gray-700 text-sm mb-2">
                         Record penalty kick result:
                     </div>
                     <div className="grid grid-cols-2 gap-4">

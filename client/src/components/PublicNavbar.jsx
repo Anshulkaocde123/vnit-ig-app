@@ -17,7 +17,7 @@ const PublicNavbar = () => {
     ];
 
     return (
-        <nav className="sticky top-0 z-50 bg-white border-b-2 border-gray-200 shadow-lg">
+        <nav className="sticky top-0 z-50 bg-white border-b-2 border-gray-600 shadow-lg">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
@@ -57,7 +57,7 @@ const PublicNavbar = () => {
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="w-10 h-10 bg-gray-100 border-2 border-gray-200 rounded-lg flex items-center justify-center text-xl shadow-sm"
+                            className="w-10 h-10 bg-gray-100 border-2 border-gray-600 rounded-lg flex items-center justify-center text-xl shadow-sm"
                         >
                             {isOpen ? '✕' : '☰'}
                         </button>

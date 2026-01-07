@@ -146,7 +146,7 @@ const Home = () => {
                 <PublicNavbar />
 
                 {/* Hero Section */}
-                <div className="relative py-20 px-6 text-center bg-white border-b-2 border-gray-200 shadow-md">
+                <div className="relative py-20 px-6 text-center bg-white border-b-2 border-gray-600 shadow-md">
                     <div className="relative">
                         <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-4">
                             <span className="text-gray-900">VNIT</span>
@@ -208,11 +208,11 @@ const Home = () => {
                 <div className="max-w-5xl mx-auto px-4 mt-10">
                     <div className="flex flex-wrap gap-4 p-6 rounded-2xl bg-white shadow-lg border-2 border-gray-200">
                         <div className="relative flex-1 min-w-[140px]">
-                            <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-gray-700">Department</label>
+                            <label className="block text-sm font-semibold font-bold uppercase tracking-wider mb-1.5 text-gray-700">Department</label>
                             <select
                                 value={selectedDept}
                                 onChange={(e) => setSelectedDept(e.target.value)}
-                                className="w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all outline-none appearance-none cursor-pointer bg-white text-gray-900 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-300 shadow-sm"
+                                className="w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all outline-none appearance-none cursor-pointer bg-white text-gray-900 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-700 shadow-sm"
                             >
                                 <option value="">All Departments</option>
                                 {departments.map(dept => (
@@ -227,11 +227,11 @@ const Home = () => {
                         </div>
 
                         <div className="relative flex-1 min-w-[140px]">
-                            <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-gray-700">Sport</label>
+                            <label className="block text-sm font-semibold font-bold uppercase tracking-wider mb-1.5 text-gray-700">Sport</label>
                             <select
                                 value={selectedSport}
                                 onChange={(e) => setSelectedSport(e.target.value)}
-                                className="w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all outline-none appearance-none cursor-pointer bg-white text-gray-900 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-300 shadow-sm"
+                                className="w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all outline-none appearance-none cursor-pointer bg-white text-gray-900 focus:ring-2 focus:ring-indigo-500 border-2 border-gray-700 shadow-sm"
                             >
                                 <option value="">All Sports</option>
                                 {sports.map(sport => (
@@ -270,7 +270,7 @@ const Home = () => {
                             <div className="text-7xl mb-6">
                                 🏟️
                             </div>
-                            <p className="text-xl font-medium text-gray-500">
+                            <p className="text-xl font-bold text-gray-500">
                                 No matches found
                             </p>
                             {(selectedDept || selectedSport || selectedStatus) && (
@@ -330,11 +330,11 @@ const Home = () => {
                 </div>
 
                 {/* Footer */}
-                <footer className="py-10 text-center border-t-2 border-gray-200 bg-white shadow-inner text-gray-500">
+                <footer className="py-10 text-center border-t-2 border-gray-600 bg-white shadow-inner text-gray-500">
                     <p className="text-sm font-medium">
                         VNIT Inter-Games © {new Date().getFullYear()}
                     </p>
-                    <p className="text-xs mt-2 text-gray-400">
+                    <p className="text-sm font-semibold mt-2 text-gray-400">
                         Real-time updates powered by Socket.io
                     </p>
                 </footer>

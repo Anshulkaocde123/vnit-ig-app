@@ -180,13 +180,13 @@ const LiveConsole = () => {
                         <Radio className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" />
                         Live Console
                     </h1>
-                    <p className="text-gray-400 mt-1 text-sm sm:text-base">Manage and score live matches in real-time</p>
+                    <p className="text-gray-700 mt-1 text-sm sm:text-base">Manage and score live matches in real-time</p>
                 </div>
                 <button
 
                     onClick={fetchMatches}
                     disabled={loading}
-                    className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium shadow-lg shadow-indigo-500/25 disabled:opacity-50 text-sm sm:text-base touch-manipulation"
+                    className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold shadow-lg shadow-indigo-500/25 disabled:opacity-50 text-sm sm:text-base touch-manipulation"
                 >
                     <RefreshCw className={`w-4 h-4 sm:w-5 sm:h-5 ${loading ? 'animate-spin' : ''}`} />
                     Refresh
@@ -196,13 +196,13 @@ const LiveConsole = () => {
             {loading ? (
                 <div className="text-center py-20">
                     <div className="w-12 h-12 mx-auto rounded-full border-4 border-indigo-500/30 border-t-indigo-500" />
-                    <p className="text-gray-400 mt-4">Loading matches...</p>
+                    <p className="text-gray-700 mt-4">Loading matches...</p>
                 </div>
             ) : matches.length === 0 ? (
                 <div className="text-center py-20 backdrop-blur-xl bg-white/5 rounded-3xl border border-white/10">
                     <div className="text-5xl mb-4">🏟️</div>
-                    <p className="text-gray-400 text-lg">No matches scheduled yet</p>
-                    <p className="text-gray-500 text-sm mt-2">Create a match from the Schedule page</p>
+                    <p className="text-gray-700 text-lg">No matches scheduled yet</p>
+                    <p className="text-gray-800 text-sm mt-2">Create a match from the Schedule page</p>
                 </div>
             ) : (
                 <div className="grid gap-4">
@@ -221,7 +221,7 @@ const LiveConsole = () => {
                                 {/* Match Info */}
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 flex-wrap">
-                                        <span className="px-2 sm:px-3 py-1 text-xs font-bold bg-white/10 text-gray-300 rounded-lg uppercase tracking-wider">
+                                        <span className="px-2 sm:px-3 py-1 text-sm font-semibold font-bold bg-white/10 text-gray-300 rounded-lg uppercase tracking-wider">
                                             {match.sport.replace('_', ' ')}
                                         </span>
                                         <span className={`px-2 sm:px-3 py-1 text-xs font-bold rounded-lg flex items-center gap-1.5 ${
@@ -236,7 +236,7 @@ const LiveConsole = () => {
 
                                     <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
                                         <span className="text-base sm:text-lg md:text-xl font-black text-white">{match.teamA?.shortCode || match.teamA?.name}</span>
-                                        <span className="text-gray-500 font-medium text-sm sm:text-base">vs</span>
+                                        <span className="text-gray-800 font-bold text-sm sm:text-base">vs</span>
                                         <span className="text-base sm:text-lg md:text-xl font-black text-white">{match.teamB?.shortCode || match.teamB?.name}</span>
                                     </div>
 
@@ -246,7 +246,7 @@ const LiveConsole = () => {
                                         </div>
                                     )}
 
-                                    <div className="text-xs sm:text-sm text-gray-500 mt-2">
+                                    <div className="text-sm font-semibold sm:text-sm text-gray-800 mt-2">
                                         {new Date(match.scheduledAt).toLocaleString()}
                                     </div>
                                 </div>
@@ -258,7 +258,7 @@ const LiveConsole = () => {
                                         <button
 
                                             onClick={() => setSquadManagerMatch(match)}
-                                            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-amber-600 to-orange-500 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-amber-500/25 text-xs sm:text-sm touch-manipulation"
+                                            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-amber-600 to-orange-500 text-white rounded-lg sm:rounded-xl font-bold shadow-lg shadow-amber-500/25 text-sm font-semibold sm:text-sm touch-manipulation"
                                         >
                                             <Users className="w-3 h-3 sm:w-4 sm:h-4" />
                                             {match.squadA?.length > 0 || match.squadB?.length > 0 ? 'Edit Squads' : 'Add Players'}
@@ -270,7 +270,7 @@ const LiveConsole = () => {
 
                                             onClick={() => handleGoLive(match)}
                                             disabled={actionLoading === match._id + '-live'}
-                                            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-red-500/25 disabled:opacity-50 text-xs sm:text-sm touch-manipulation"
+                                            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-lg sm:rounded-xl font-bold shadow-lg shadow-red-500/25 disabled:opacity-50 text-sm font-semibold sm:text-sm touch-manipulation"
                                         >
                                             {actionLoading === match._id + '-live' ? (
                                                 <span className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -286,7 +286,7 @@ const LiveConsole = () => {
                                             <button
 
                                                 onClick={() => setSelectedMatch(match)}
-                                                className="px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-indigo-500/25 text-xs sm:text-sm touch-manipulation"
+                                                className="px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg sm:rounded-xl font-bold shadow-lg shadow-indigo-500/25 text-sm font-semibold sm:text-sm touch-manipulation"
                                             >
                                                 Update Score
                                             </button>
@@ -294,7 +294,7 @@ const LiveConsole = () => {
 
                                                 onClick={() => handleEndMatch(match)}
                                                 disabled={actionLoading === match._id + '-end'}
-                                                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-green-500/25 disabled:opacity-50 text-xs sm:text-sm touch-manipulation"
+                                                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-lg sm:rounded-xl font-bold shadow-lg shadow-green-500/25 disabled:opacity-50 text-sm font-semibold sm:text-sm touch-manipulation"
                                             >
                                                 <Square className="w-3 h-3 sm:w-4 sm:h-4" />
                                                 {actionLoading === match._id + '-end' ? 'Ending...' : 'End Match'}
@@ -303,7 +303,7 @@ const LiveConsole = () => {
                                     )}
 
                                     {match.status === 'COMPLETED' && (
-                                        <span className="px-3 sm:px-4 py-2 sm:py-2.5 bg-green-500/20 text-green-400 rounded-lg sm:rounded-xl font-medium border border-green-500/30 text-xs sm:text-sm">
+                                        <span className="px-3 sm:px-4 py-2 sm:py-2.5 bg-green-500/20 text-green-400 rounded-lg sm:rounded-xl font-bold border border-green-500/30 text-sm font-semibold sm:text-sm">
                                             ✓ Completed
                                         </span>
                                     )}
@@ -312,7 +312,7 @@ const LiveConsole = () => {
 
                                         onClick={() => setConfirmModal({ isOpen: true, matchId: match._id, action: 'delete' })}
                                         disabled={actionLoading === match._id}
-                                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-white/5 text-gray-400 hover:bg-red-500/20 hover:text-red-400 rounded-lg sm:rounded-xl font-medium border border-white/10 hover:border-red-500/30 transition-all disabled:opacity-50 text-xs sm:text-sm touch-manipulation"
+                                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-white/5 text-gray-700 hover:bg-red-500/20 hover:text-red-400 rounded-lg sm:rounded-xl font-bold border border-white/10 hover:border-red-500/30 transition-all disabled:opacity-50 text-sm font-semibold sm:text-sm touch-manipulation"
                                     >
                                         <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
                                         <span className="hidden sm:inline">Delete</span>
@@ -348,7 +348,7 @@ const LiveConsole = () => {
                             <div className="sticky top-0 bg-slate-900/95 backdrop-blur-xl p-4 sm:p-6 border-b border-white/10 flex justify-between items-start sm:items-center gap-3 z-10">
                                 <div className="flex-1 min-w-0">
                                     <h3 className="text-lg sm:text-xl font-black text-white">Score Management</h3>
-                                    <p className="text-xs sm:text-sm text-gray-400 mt-1 truncate">
+                                    <p className="text-sm font-semibold sm:text-sm text-gray-700 mt-1 truncate">
                                         {selectedMatch.sport.replace('_', ' ')} • {selectedMatch.teamA?.shortCode} vs {selectedMatch.teamB?.shortCode}
                                     </p>
                                 </div>
@@ -365,7 +365,7 @@ const LiveConsole = () => {
                                 {/* Live Scoreboard Preview */}
                                 <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-white/5 rounded-xl sm:rounded-2xl border border-white/10">
                                     <div className="text-center">
-                                        <div className="text-xs text-gray-500 uppercase tracking-wider mb-1 sm:mb-2">Current Score</div>
+                                        <div className="text-sm font-semibold text-gray-800 uppercase tracking-wider mb-1 sm:mb-2">Current Score</div>
                                         <div className="text-2xl sm:text-3xl md:text-4xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                                             {formatScore(selectedMatch)}
                                         </div>
@@ -412,11 +412,11 @@ const LiveConsole = () => {
                                 )}
 
                                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pt-3 sm:pt-4 border-t border-white/10">
-                                    <span className="text-xs text-gray-500">Changes saved instantly via Socket.io</span>
+                                    <span className="text-sm font-semibold text-gray-500">Changes saved instantly via Socket.io</span>
                                     <button
 
                                         onClick={() => handleEndMatch(selectedMatch)}
-                                        className="px-3 sm:px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-lg sm:rounded-xl font-medium text-sm shadow-lg shadow-green-500/25 w-full sm:w-auto touch-manipulation"
+                                        className="px-3 sm:px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-lg sm:rounded-xl font-bold text-sm shadow-lg shadow-green-500/25 w-full sm:w-auto touch-manipulation"
                                     >
                                         Complete Match
                                     </button>

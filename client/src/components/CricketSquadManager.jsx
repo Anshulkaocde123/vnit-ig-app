@@ -179,7 +179,7 @@ const CricketSquadManager = ({ match, onUpdate, onClose }) => {
                         }`}
                     >
                         <span className="text-lg">{match?.teamA?.shortCode || 'Team A'}</span>
-                        <span className="ml-2 text-xs text-slate-500">
+                        <span className="ml-2 text-sm font-semibold text-slate-500">
                             ({squadA.filter(p => p.playerName.trim()).length} players)
                         </span>
                     </button>
@@ -192,7 +192,7 @@ const CricketSquadManager = ({ match, onUpdate, onClose }) => {
                         }`}
                     >
                         <span className="text-lg">{match?.teamB?.shortCode || 'Team B'}</span>
-                        <span className="ml-2 text-xs text-slate-500">
+                        <span className="ml-2 text-sm font-semibold text-slate-500">
                             ({squadB.filter(p => p.playerName.trim()).length} players)
                         </span>
                     </button>

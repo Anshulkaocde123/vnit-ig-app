@@ -56,7 +56,7 @@ const AboutManagement = () => {
                         <BookOpen className="w-8 h-8 text-indigo-400" />
                         About VNIT IG
                     </h1>
-                    <p className="text-gray-400 mt-1">Manage your about page content</p>
+                    <p className="text-gray-700 mt-1">Manage your about page content</p>
                 </div>
 
                 {loading && !formData.title ? (
@@ -115,7 +115,7 @@ const AboutManagement = () => {
                                 
                                     {formData.highlights?.map((h, idx) => (
                                         <div key={idx} className="flex items-center justify-between p-3 bg-white/5 border border-white/10 rounded-lg mb-2">
-                                            <div><span className="font-bold text-white">{h.title}</span><span className="text-gray-400 ml-2">- {h.description}</span></div>
+                                            <div><span className="font-bold text-white">{h.title}</span><span className="text-gray-700 ml-2">- {h.description}</span></div>
                                             <button type="button" onClick={() => handleRemoveHighlight(idx)} className="p-1 text-red-400 hover:text-red-300"><Trash2 className="w-4 h-4" /></button>
                                         </div>
                                     ))}

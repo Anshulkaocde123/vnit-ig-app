@@ -154,7 +154,7 @@ const Leaderboard = ({ isDarkMode, setIsDarkMode }) => {
                                             <div className="text-sm md:text-lg font-bold text-white">
                                                 {deptName}
                                             </div>
-                                            <div className="text-xs md:text-sm text-gray-400 font-medium">
+                                            <div className="text-sm font-semibold md:text-sm text-gray-700 font-medium">
                                                 {deptCode}
                                             </div>
                                         </div>
@@ -163,7 +163,7 @@ const Leaderboard = ({ isDarkMode, setIsDarkMode }) => {
                                         <div className="col-span-3 flex items-center justify-end">
                                             <div className={`text-right ${index < 3 ? 'text-white' : 'text-indigo-400'}`}>
                                                 <div className="text-xl md:text-3xl font-black">{points}</div>
-                                                <div className="text-[10px] md:text-xs text-gray-400 font-medium">pts</div>
+                                                <div className="text-[10px] md:text-sm font-semibold text-gray-700 font-medium">pts</div>
                                             </div>
                                             {history?.length > 0 && (
                                                 <div className={`ml-3 transition-transform ${isExpanded ? 'rotate-180' : ''}`}>
@@ -185,15 +185,15 @@ const Leaderboard = ({ isDarkMode, setIsDarkMode }) => {
                                                         .map((log, idx) => (
                                                             <div key={idx} className="flex justify-between items-start p-2 bg-gray-800/50 rounded-lg border border-gray-700/30">
                                                                 <div className="flex-1">
-                                                                    <div className="text-xs md:text-sm font-bold text-white">{log.eventName}</div>
-                                                                    <div className="text-[10px] md:text-xs text-gray-400">{log.category}</div>
+                                                                    <div className="text-sm font-semibold md:text-sm font-bold text-white">{log.eventName}</div>
+                                                                    <div className="text-[10px] md:text-sm font-semibold text-gray-400">{log.category}</div>
                                                                     {log.position && (
                                                                         <div className="text-[10px] text-indigo-300 font-semibold">📍 {log.position}</div>
                                                                     )}
                                                                 </div>
                                                                 <div className="text-right">
                                                                     <div className="text-lg font-black text-yellow-400">+{log.points}</div>
-                                                                    <div className="text-[10px] text-gray-500 font-medium">
+                                                                    <div className="text-[10px] text-gray-800 font-medium">
                                                                         {new Date(log.awardedAt).toLocaleDateString('en-IN', {
                                                                             day: 'numeric',
                                                                             month: 'short'

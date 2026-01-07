@@ -171,7 +171,7 @@ export const StatsCard = ({
                 </motion.div>
 
                 {/* Label */}
-                <div className="text-gray-400 text-sm">{label}</div>
+                <div className="text-gray-700 text-sm">{label}</div>
 
                 {/* Trend */}
                 {trend && (
@@ -230,7 +230,7 @@ export const FeatureCard = ({
                 <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
 
                 {/* Description */}
-                <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+                <p className="text-gray-700 text-sm leading-relaxed">{description}</p>
             </div>
         </motion.div>
     );

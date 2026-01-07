@@ -61,17 +61,17 @@ const Dashboard = () => {
         switch (status) {
             case 'LIVE':
                 return (
-                    <span className="px-3 py-1 bg-red-50 text-red-700 text-xs font-bold rounded-full border-2 border-red-300 flex items-center gap-1.5 shadow-sm">
+                    <span className="px-3 py-1 bg-red-50 text-red-700 text-sm font-semibold font-bold rounded-full border-2 border-red-300 flex items-center gap-1.5 shadow-sm">
                         <span className="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse"></span>
                         LIVE
                     </span>
                 );
             case 'COMPLETED':
-                return <span className="px-3 py-1 bg-green-50 text-green-700 text-xs font-bold rounded-full border-2 border-green-300 shadow-sm">✓ COMPLETED</span>;
+                return <span className="px-3 py-1 bg-green-50 text-green-700 text-sm font-semibold font-bold rounded-full border-2 border-green-300 shadow-sm">✓ COMPLETED</span>;
             case 'SCHEDULED':
-                return <span className="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-full border-2 border-blue-300 shadow-sm">📅 UPCOMING</span>;
+                return <span className="px-3 py-1 bg-blue-50 text-blue-700 text-sm font-semibold font-bold rounded-full border-2 border-blue-300 shadow-sm">📅 UPCOMING</span>;
             default:
-                return <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-full border-2 border-gray-300">{status}</span>;
+                return <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold font-bold rounded-full border-2 border-gray-300">{status}</span>;
         }
     };
 
@@ -131,7 +131,7 @@ const Dashboard = () => {
             <div className="flex justify-center items-center h-screen bg-gray-50">
                 <div className="text-center">
                     <div className="w-16 h-16 rounded-full border-4 border-indigo-200 border-t-indigo-600 mx-auto mb-4 animate-spin"></div>
-                    <p className="text-gray-600 font-medium">Loading dashboard...</p>
+                    <p className="text-gray-900 font-medium">Loading dashboard...</p>
                 </div>
             </div>
         );
@@ -148,7 +148,7 @@ const Dashboard = () => {
                             Dashboard
                         </h1>
                     </div>
-                    <p className="text-gray-600 font-medium ml-11">Manage matches, scores, and events</p>
+                    <p className="text-gray-900 font-bold ml-11">Manage matches, scores, and events</p>
                 </div>
 
                 {/* Stats Cards Grid */}
@@ -172,10 +172,10 @@ const Dashboard = () => {
                                 <div className="text-4xl md:text-5xl font-black text-white mb-1">
                                     {card.value}
                                 </div>
-                                <div className="text-xs font-bold text-white/90 uppercase tracking-wider">
+                                <div className="text-sm font-semibold font-bold text-white/90 uppercase tracking-wider">
                                     {card.title}
                                 </div>
-                                <div className="text-[10px] text-white/70 font-medium mt-0.5">{card.subtext}</div>
+                                <div className="text-[10px] text-white/70 font-bold mt-0.5">{card.subtext}</div>
                             </div>
                         </button>
                     ))}
@@ -193,14 +193,14 @@ const Dashboard = () => {
                                 {action.icon}
                             </div>
                             <div className={`text-sm font-bold ${action.text} uppercase tracking-wider`}>{action.title}</div>
-                            <div className="text-xs text-gray-600 mt-1">{action.subtitle}</div>
+                            <div className="text-sm font-semibold text-gray-900 mt-1">{action.subtitle}</div>
                         </button>
                     ))}
                 </div>
 
                 {/* Recent Matches */}
-                <div className="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden shadow-lg">
-                    <div className="p-6 border-b-2 border-gray-200 flex items-center justify-between">
+                <div className="bg-white rounded-2xl border-2 border-gray-600 overflow-hidden shadow-lg">
+                    <div className="p-6 border-b-2 border-gray-600 flex items-center justify-between">
                         <h2 className="text-xl font-bold text-gray-900 flex items-center gap-3">
                             <div className="p-2 bg-yellow-100 rounded-xl border-2 border-yellow-300">
                                 <Zap className="w-5 h-5 text-yellow-700" />
@@ -209,7 +209,7 @@ const Dashboard = () => {
                         </h2>
                         <button 
                             onClick={() => navigate('/admin/live')}
-                            className="text-sm text-indigo-600 hover:text-indigo-700 font-medium flex items-center gap-1"
+                            className="text-sm text-indigo-600 hover:text-indigo-700 font-bold flex items-center gap-1"
                         >
                             View all
                             <ArrowRight className="w-4 h-4" />
@@ -238,14 +238,14 @@ const Dashboard = () => {
                                     <div className="flex items-center justify-between gap-4">
                                         <div className="flex-1">
                                             <div className="flex items-center gap-3 mb-2 flex-wrap">
-                                                <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                                <span className="text-sm font-semibold font-bold text-gray-900 uppercase tracking-wider">
                                                     {match.sport?.replace('_', ' ')}
                                                 </span>
                                                 {getStatusBadge(match.status)}
                                             </div>
                                             <div className="flex items-center gap-3 text-gray-900">
                                                 <span className="font-bold">{match.teamA?.shortCode || 'TBD'}</span>
-                                                <span className="text-gray-400 text-sm">vs</span>
+                                                <span className="text-gray-700 text-sm">vs</span>
                                                 <span className="font-bold">{match.teamB?.shortCode || 'TBD'}</span>
                                             </div>
                                         </div>
@@ -253,7 +253,7 @@ const Dashboard = () => {
                                             <div className="text-3xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                                                 {typeof match.scoreA === 'object' ? (match.scoreA?.runs || 0) : (match.scoreA || 0)} - {typeof match.scoreB === 'object' ? (match.scoreB?.runs || 0) : (match.scoreB || 0)}
                                             </div>
-                                            <div className="text-xs text-gray-600 font-medium mt-1">
+                                            <div className="text-sm font-semibold text-gray-900 font-bold mt-1">
                                                 {match.venue || 'TBD'}
                                             </div>
                                         </div>

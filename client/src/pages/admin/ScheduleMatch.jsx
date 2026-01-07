@@ -80,7 +80,7 @@ const ScheduleMatch = () => {
                         <Sparkles className="w-8 h-8 text-indigo-400" />
                         Schedule Match
                     </h1>
-                    <p className="text-gray-400 mt-1">Create a new match with custom settings</p>
+                    <p className="text-gray-700 mt-1">Create a new match with custom settings</p>
                 </div>
 
                 {/* Form Card */}
@@ -96,7 +96,7 @@ const ScheduleMatch = () => {
                                             ? `bg-gradient-to-r ${sport.color} border-white/30 shadow-lg` 
                                             : 'bg-white/5 border-white/10 hover:border-white/20'}`}>
                                         <div className="text-2xl mb-1">{sport.label.split(' ')[0]}</div>
-                                        <div className="text-xs text-white/80">{sport.label.split(' ')[1]}</div>
+                                        <div className="text-sm font-semibold text-white/80">{sport.label.split(' ')[1]}</div>
                                     </button>
                                 ))}
                             </div>
@@ -107,7 +107,7 @@ const ScheduleMatch = () => {
                             <div className="flex items-center justify-center gap-4">
                                 <div className="flex-1 text-center p-4 rounded-xl bg-blue-500/10 border border-blue-500/30">
                                     <div className="text-3xl font-black text-blue-400">{teamADept?.shortCode || '???'}</div>
-                                    <div className="text-sm text-gray-400 mt-1">{teamADept?.name || 'Select Team A'}</div>
+                                    <div className="text-sm text-gray-700 mt-1">{teamADept?.name || 'Select Team A'}</div>
                                 </div>
                                 <div className="relative">
                                     <div className="w-14 h-14 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-indigo-500/30">
@@ -116,7 +116,7 @@ const ScheduleMatch = () => {
                                 </div>
                                 <div className="flex-1 text-center p-4 rounded-xl bg-pink-500/10 border border-pink-500/30">
                                     <div className="text-3xl font-black text-pink-400">{teamBDept?.shortCode || '???'}</div>
-                                    <div className="text-sm text-gray-400 mt-1">{teamBDept?.name || 'Select Team B'}</div>
+                                    <div className="text-sm text-gray-700 mt-1">{teamBDept?.name || 'Select Team B'}</div>
                                 </div>
                             </div>
                         </div>
@@ -161,7 +161,7 @@ const ScheduleMatch = () => {
                                 <label className="block text-sm font-bold text-green-300 mb-3 flex items-center gap-2"><Settings className="w-4 h-4" /> Cricket Config</label>
                                 <input type="number" name="overs" value={formData.config.overs} onChange={handleConfigChange} min="5" max="50"
                                     className="w-full px-4 py-2 bg-slate-900/50 border border-green-500/30 rounded-lg text-white focus:ring-2 focus:ring-green-500 outline-none" />
-                                <p className="text-xs text-gray-500 mt-2">Overs: 20 (T20) / 50 (ODI)</p>
+                                <p className="text-sm font-semibold text-gray-800 mt-2">Overs: 20 (T20) / 50 (ODI)</p>
                             </div>
                         )}
 

@@ -22,14 +22,14 @@ const ConfirmModal = ({ isOpen, title, message, confirmText = 'Confirm', cancelT
                     )}
                     <div className="flex-1">
                         <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
-                        <p className="text-gray-600 text-sm">{message}</p>
+                        <p className="text-gray-900 text-sm">{message}</p>
                     </div>
                 </div>
 
                 <div className="flex justify-end gap-3 mt-6">
                     <button
                         onClick={onCancel}
-                        className="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium transition-colors"
+                        className="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg font-bold transition-colors"
                     >
                         {cancelText}
                     </button>

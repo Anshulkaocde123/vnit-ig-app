@@ -138,17 +138,17 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
             {/* Cumulative Fouls Counter */}
             <div className="grid grid-cols-2 gap-3 mb-4">
                 <div className="bg-gradient-to-r from-indigo-900/50 to-indigo-800/50 p-3 rounded-lg border border-indigo-600/30">
-                    <div className="text-xs text-indigo-300 mb-1">{match.teamA?.shortCode} Fouls</div>
+                    <div className="text-sm font-semibold text-indigo-300 mb-1">{match.teamA?.shortCode} Fouls</div>
                     <div className="text-2xl font-bold text-white">{teamAFouls.length}</div>
-                    <div className="text-xs text-gray-400 mt-1">
+                    <div className="text-sm font-semibold text-gray-700 mt-1">
                         🟨 {teamAFouls.filter(f => f.foulType === 'YELLOW_CARD').length} | 
                         🟥 {teamAFouls.filter(f => f.foulType === 'RED_CARD').length}
                     </div>
                 </div>
                 <div className="bg-gradient-to-r from-pink-900/50 to-pink-800/50 p-3 rounded-lg border border-pink-600/30">
-                    <div className="text-xs text-pink-300 mb-1">{match.teamB?.shortCode} Fouls</div>
+                    <div className="text-sm font-semibold text-pink-300 mb-1">{match.teamB?.shortCode} Fouls</div>
                     <div className="text-2xl font-bold text-white">{teamBFouls.length}</div>
-                    <div className="text-xs text-gray-400 mt-1">
+                    <div className="text-sm font-semibold text-gray-700 mt-1">
                         🟨 {teamBFouls.filter(f => f.foulType === 'YELLOW_CARD').length} | 
                         🟥 {teamBFouls.filter(f => f.foulType === 'RED_CARD').length}
                     </div>
@@ -161,7 +161,7 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
                     <div className="text-sm font-bold text-red-400 mb-2">🚨 Suspended Players</div>
                     <div className="space-y-1">
                         {suspendedPlayers.map((player, idx) => (
-                            <div key={idx} className="text-xs text-white flex items-center gap-2">
+                            <div key={idx} className="text-sm font-semibold text-white flex items-center gap-2">
                                 <span>{player.name}</span>
                                 {player.yellow >= 2 && <span className="text-yellow-400">(2 Yellow Cards)</span>}
                                 {player.red >= 1 && <span className="text-red-400">(Red Card)</span>}
@@ -192,7 +192,7 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
 
                             {/* Team Selection */}
                             <div className="mb-4">
-                                <label className="block text-sm font-bold text-gray-400 mb-2">Team</label>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Team</label>
                                 <div className="grid grid-cols-2 gap-2">
                                     {[
                                         { id: 'A', name: match.teamA?.shortCode || 'Team A' },
@@ -215,7 +215,7 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
 
                             {/* Foul Type */}
                             <div className="mb-4">
-                                <label className="block text-sm font-bold text-gray-400 mb-2">Foul Type</label>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Foul Type</label>
                                 <select
                                     value={foulType}
                                     onChange={(e) => {
@@ -234,7 +234,7 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
 
                             {/* Consequence */}
                             <div className="mb-4">
-                                <label className="block text-sm font-bold text-gray-400 mb-2">Consequence</label>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Consequence</label>
                                 <select
                                     value={consequence}
                                     onChange={(e) => setConsequence(e.target.value)}
@@ -250,7 +250,7 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
                             {/* Player Details */}
                             <div className="grid grid-cols-2 gap-3 mb-4">
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-400 mb-2">Player Name *</label>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">Player Name *</label>
                                     <input
                                         type="text"
                                         value={playerName}
@@ -260,7 +260,7 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-bold text-gray-400 mb-2">Jersey #</label>
+                                    <label className="block text-sm font-bold text-gray-700 mb-2">Jersey #</label>
                                     <input
                                         type="number"
                                         value={jerseyNumber}
@@ -273,7 +273,7 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
 
                             {/* Game Time */}
                             <div className="mb-4">
-                                <label className="block text-sm font-bold text-gray-400 mb-2">Minute</label>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Minute</label>
                                 <input
                                     type="number"
                                     value={gameTime}
@@ -285,7 +285,7 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
 
                             {/* Pitch Location */}
                             <div className="mb-4">
-                                <label className="block text-sm font-bold text-gray-400 mb-2">Pitch Location (Tactical View)</label>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Pitch Location (Tactical View)</label>
                                 <div className="bg-green-900/30 border-2 border-green-600 rounded-lg p-4">
                                     <div className="grid grid-cols-3 gap-2">
                                         {pitchZones.filter((_, idx) => idx < 9).map((zone, idx) => (
@@ -317,7 +317,7 @@ const EnhancedFoulSystem = ({ match, onAddFoul, onRemoveFoul, disabled = false }
 
                             {/* Reason */}
                             <div className="mb-4">
-                                <label className="block text-sm font-bold text-gray-400 mb-2">Reason/Notes</label>
+                                <label className="block text-sm font-bold text-gray-700 mb-2">Reason/Notes</label>
                                 <textarea
                                     value={reason}
                                     onChange={(e) => setReason(e.target.value)}

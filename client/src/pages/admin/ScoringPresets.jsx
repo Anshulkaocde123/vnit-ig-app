@@ -95,7 +95,7 @@ const ScoringPresets = () => {
                             <Settings className="w-8 h-8 text-indigo-400" />
                             Scoring Presets
                         </h1>
-                        <p className="text-gray-400 mt-1">Configure points for each sport</p>
+                        <p className="text-gray-700 mt-1">Configure points for each sport</p>
                     </div>
                     <button onClick={() => setShowForm(!showForm)}
                         className={`px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all ${showForm ? 'bg-red-600 hover:bg-red-700' : 'bg-gradient-to-r from-indigo-600 to-purple-600'} text-white shadow-lg`}>
@@ -180,9 +180,9 @@ const ScoringPresets = () => {
                 {/* Presets Grid */}
                 {presets.length === 0 ? (
                     <div className="text-center py-16 backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl">
-                        <Settings className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                        <p className="text-gray-400 text-lg">No scoring presets yet</p>
-                        <p className="text-gray-500 text-sm mt-2">Create your first preset to get started</p>
+                        <Settings className="w-16 h-16 text-gray-900 mx-auto mb-4" />
+                        <p className="text-gray-700 text-lg">No scoring presets yet</p>
+                        <p className="text-gray-800 text-sm mt-2">Create your first preset to get started</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -197,16 +197,16 @@ const ScoringPresets = () => {
                                             </div>
                                             <div>
                                                 <h3 className="text-lg font-bold text-white">{preset.name}</h3>
-                                                <p className="text-gray-500 text-xs">{preset.sport}</p>
+                                                <p className="text-gray-800 text-xs">{preset.sport}</p>
                                             </div>
                                         </div>
                                         {preset.isDefault && (
-                                            <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 rounded-full text-xs font-bold flex items-center gap-1">
+                                            <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 rounded-full text-sm font-semibold font-bold flex items-center gap-1">
                                                 <Star className="w-3 h-3" /> Default
                                             </span>
                                         )}
                                     </div>
-                                    {preset.description && <p className="text-sm text-gray-400 mb-4">{preset.description}</p>}
+                                    {preset.description && <p className="text-sm text-gray-700 mb-4">{preset.description}</p>}
                                     <div className="grid grid-cols-4 gap-2 mb-4">
                                         <div className="text-center p-2 bg-green-500/10 rounded-lg"><div className="text-lg font-black text-green-400">{preset.winPoints}</div><div className="text-[10px] text-gray-500">Win</div></div>
                                         <div className="text-center p-2 bg-red-500/10 rounded-lg"><div className="text-lg font-black text-red-400">{preset.lossPoints}</div><div className="text-[10px] text-gray-500">Loss</div></div>

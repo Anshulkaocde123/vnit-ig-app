@@ -76,7 +76,7 @@ const ScoringControls = ({ match, onUpdate, onTimerAction, onAddFoul, onRemoveFo
                     <div className="flex items-center gap-3">
                         <span className="text-2xl">{periodInfo.icon}</span>
                         <div>
-                            <div className="text-xs text-indigo-300 uppercase tracking-wider font-bold">Current {periodInfo.label}</div>
+                            <div className="text-sm font-semibold text-indigo-300 uppercase tracking-wider font-bold">Current {periodInfo.label}</div>
                             <div className="text-2xl font-black text-white font-display">
                                 {sport === 'CRICKET' ? (
                                     periodInfo.current === 1 ? '1st Innings' : '2nd Innings'
@@ -178,14 +178,14 @@ const ScoringControls = ({ match, onUpdate, onTimerAction, onAddFoul, onRemoveFo
                         className="bg-gray-900 p-4 rounded-xl border border-gray-800 shadow-inner"
                     >
                         <div className="flex justify-between items-center mb-4">
-                            <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">{t.name}</span>
+                            <span className="text-sm font-bold text-gray-700 uppercase tracking-widest">{t.name}</span>
                             <motion.span 
                                 key={`${t.score.runs}-${t.score.wickets}`}
                                 initial={{ scale: 1.1 }}
                                 animate={{ scale: 1 }}
                                 className="text-2xl font-black text-white"
                             >
-                                {t.score.runs}/{t.score.wickets} <span className="text-xs text-gray-500 font-mono">({t.score.overs})</span>
+                                {t.score.runs}/{t.score.wickets} <span className="text-sm font-semibold text-gray-800 font-mono">({t.score.overs})</span>
                             </motion.span>
                         </div>
 
@@ -268,7 +268,7 @@ const ScoringControls = ({ match, onUpdate, onTimerAction, onAddFoul, onRemoveFo
 
                 {/* Advanced Cricket Admin Controls */}
                 <div className="mt-6 pt-6 border-t border-slate-700">
-                    <h4 className="text-slate-400 text-xs uppercase tracking-wider font-bold mb-4">
+                    <h4 className="text-slate-400 text-sm font-semibold uppercase tracking-wider font-bold mb-4">
                         Advanced Controls
                     </h4>
                     <CricketAdminControls match={match} onUpdate={onUpdate} />
@@ -324,7 +324,7 @@ const ScoringControls = ({ match, onUpdate, onTimerAction, onAddFoul, onRemoveFo
                             animate={{ opacity: 1, y: 0 }}
                             className="bg-gray-900 p-4 rounded-xl border border-gray-800 text-center"
                         >
-                            <div className="text-xs font-bold text-gray-500 uppercase mb-2">{t.name}</div>
+                            <div className="text-sm font-semibold font-bold text-gray-800 uppercase mb-2">{t.name}</div>
                             <motion.div 
                                 key={t.val}
                                 initial={{ scale: 1.2 }}
@@ -425,12 +425,12 @@ const ScoringControls = ({ match, onUpdate, onTimerAction, onAddFoul, onRemoveFo
             <div className="space-y-6">
                 <div className="bg-gray-900 p-4 rounded-xl border border-gray-800 flex justify-around">
                     <div className="text-center">
-                        <div className="text-xs text-gray-500 mb-1">{match.teamA?.shortCode}</div>
+                        <div className="text-sm font-semibold text-gray-800 mb-1">{match.teamA?.shortCode}</div>
                         <div className="text-3xl font-black text-white">{scoreA || 0}</div>
                     </div>
                     <div className="text-gray-700 text-2xl font-bold self-center">SETS</div>
                     <div className="text-center">
-                        <div className="text-xs text-gray-500 mb-1">{match.teamB?.shortCode}</div>
+                        <div className="text-sm font-semibold text-gray-800 mb-1">{match.teamB?.shortCode}</div>
                         <div className="text-3xl font-black text-white">{scoreB || 0}</div>
                     </div>
                 </div>

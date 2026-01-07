@@ -57,7 +57,7 @@ const StudentCouncilPage = () => {
             <PublicNavbar />
 
             {/* Hero */}
-            <div className="relative py-16 px-4 text-center bg-white border-b-2 border-gray-200 shadow-md">
+            <div className="relative py-16 px-4 text-center bg-white border-b-2 border-gray-600 shadow-md">
                 <div className="inline-block mb-6">
                     <GraduationCap className="w-20 h-20 text-purple-600" />
                 </div>
@@ -69,9 +69,9 @@ const StudentCouncilPage = () => {
 
             <div className="max-w-6xl mx-auto px-4 py-12">
                 {members.length === 0 ? (
-                    <div className="text-center py-16 rounded-2xl bg-white border-2 border-gray-200 shadow-lg">
-                        <GraduationCap className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                        <p className="text-gray-500 text-lg">No council members found</p>
+                    <div className="text-center py-16 rounded-2xl bg-white border-2 border-gray-600 shadow-lg">
+                        <GraduationCap className="w-16 h-16 text-gray-700 mx-auto mb-4" />
+                        <p className="text-gray-800 text-lg">No council members found</p>
                     </div>
                 ) : (
                     <>
@@ -81,7 +81,7 @@ const StudentCouncilPage = () => {
                                 <h2 className="text-2xl font-bold mb-6 text-gray-900">Executive Board</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                     {executives.map((member) => (
-                                        <div key={member._id} className="rounded-2xl p-6 text-center bg-white border-2 border-gray-200 shadow-lg hover:shadow-xl">
+                                        <div key={member._id} className="rounded-2xl p-6 text-center bg-white border-2 border-gray-600 shadow-lg hover:shadow-xl">
                                             <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-r ${getPositionColor(member.position)} flex items-center justify-center text-white shadow-md mb-4`}>
                                                 {member.photo ? 
                                                     <img src={member.photo} alt={member.name} className="w-full h-full rounded-full object-cover" /> : 
@@ -92,9 +92,9 @@ const StudentCouncilPage = () => {
                                             <p className={`text-sm font-semibold bg-gradient-to-r ${getPositionColor(member.position)} bg-clip-text text-transparent`}>
                                                 {member.position}
                                             </p>
-                                            <p className="text-xs mt-1 text-gray-600">{member.department}</p>
+                                            <p className="text-sm font-semibold mt-1 text-gray-600">{member.department}</p>
                                             {member.pledge && (
-                                                <p className="text-xs mt-2 italic text-gray-500">"{member.pledge}"</p>
+                                                <p className="text-sm font-semibold mt-2 italic text-gray-500">"{member.pledge}"</p>
                                             )}
                                         </div>
                                     ))}
@@ -108,7 +108,7 @@ const StudentCouncilPage = () => {
                                 <h2 className="text-2xl font-bold mb-6 text-gray-900">Department Heads</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     {heads.map((member) => (
-                                        <div key={member._id} className="rounded-2xl p-6 bg-white border-2 border-gray-200 shadow-lg hover:shadow-xl">
+                                        <div key={member._id} className="rounded-2xl p-6 bg-white border-2 border-gray-600 shadow-lg hover:shadow-xl">
                                             <div className="flex items-center gap-4">
                                                 <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${getPositionColor(member.position)} flex items-center justify-center text-white shadow-md flex-shrink-0`}>
                                                     {member.photo ? 
@@ -121,7 +121,7 @@ const StudentCouncilPage = () => {
                                                     <p className={`text-sm font-semibold bg-gradient-to-r ${getPositionColor(member.position)} bg-clip-text text-transparent`}>
                                                         {member.position}
                                                     </p>
-                                                    <p className="text-xs text-gray-600">{member.department}</p>
+                                                    <p className="text-sm font-semibold text-gray-600">{member.department}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,7 +136,7 @@ const StudentCouncilPage = () => {
                                 <h2 className="text-2xl font-bold mb-6 text-gray-900">Members</h2>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     {others.map((member) => (
-                                        <div key={member._id} className="rounded-xl p-4 text-center bg-white border-2 border-gray-200 shadow-md hover:shadow-lg">
+                                        <div key={member._id} className="rounded-xl p-4 text-center bg-white border-2 border-gray-600 shadow-md hover:shadow-lg">
                                             <div className="w-12 h-12 mx-auto rounded-full bg-gradient-to-r from-slate-500 to-slate-600 flex items-center justify-center text-white mb-2">
                                                 {member.photo ? 
                                                     <img src={member.photo} alt={member.name} className="w-full h-full rounded-full object-cover" /> : 
@@ -144,7 +144,7 @@ const StudentCouncilPage = () => {
                                                 }
                                             </div>
                                             <h3 className="text-sm font-bold text-gray-900">{member.name}</h3>
-                                            <p className="text-xs text-gray-600">{member.department}</p>
+                                            <p className="text-sm font-semibold text-gray-600">{member.department}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -155,7 +155,7 @@ const StudentCouncilPage = () => {
 
                 {/* Back Button */}
                 <div className="mt-12 text-center">
-                    <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold bg-gray-100 hover:bg-gray-200 text-gray-900 border-2 border-gray-200 shadow-md hover:shadow-lg">
+                    <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold bg-gray-100 hover:bg-gray-200 text-gray-900 border-2 border-gray-600 shadow-md hover:shadow-lg">
                         <ArrowLeft className="w-5 h-5" /> Back to Home
                     </Link>
                 </div>

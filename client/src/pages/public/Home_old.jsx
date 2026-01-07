@@ -227,7 +227,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                             <span className="text-xl">📅</span>
                             <span className="font-black text-2xl">{upcomingCount}</span>
                         </div>
-                        <div className="text-xs text-white/80 uppercase tracking-widest font-bold">Upcoming</div>
+                        <div className="text-sm font-semibold text-white/80 uppercase tracking-widest font-bold">Upcoming</div>
                     </button>
 
                     <button
@@ -241,7 +241,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                             <span className="text-xl">✅</span>
                             <span className="font-black text-2xl">{completedCount}</span>
                         </div>
-                        <div className="text-xs text-white/80 uppercase tracking-widest font-bold">Completed</div>
+                        <div className="text-sm font-semibold text-white/80 uppercase tracking-widest font-bold">Completed</div>
                     </button>
                 </div>
             </div>
@@ -282,7 +282,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                     {(selectedDept || selectedSport || selectedStatus) && (
                         <button
                             onClick={() => { setSelectedDept(''); setSelectedSport(''); setSelectedStatus(''); }}
-                            className="text-xs text-indigo-400 hover:text-indigo-300 font-bold whitespace-nowrap bg-indigo-500/10 px-3 py-2 rounded-lg hover:bg-indigo-500/20 transition-all"
+                            className="text-sm font-semibold text-indigo-400 hover:text-indigo-300 font-bold whitespace-nowrap bg-indigo-500/10 px-3 py-2 rounded-lg hover:bg-indigo-500/20 transition-all"
                         >
                             ✕ Clear
                         </button>
@@ -296,7 +296,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                     <div className="flex justify-center items-center h-80">
                         <div className="text-center">
                             <div className="animate-spin rounded-full h-12 w-12 border-4 border-indigo-500/30 border-t-indigo-500 mx-auto mb-4"></div>
-                            <p className="text-gray-400 font-medium">Loading matches...</p>
+                            <p className="text-gray-700 font-medium">Loading matches...</p>
                         </div>
                     </div>
                 ) : (
@@ -304,7 +304,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
                         {filteredMatches.length === 0 ? (
                             <div className="text-center py-24">
                                 <div className="text-7xl mb-4">🏟️</div>
-                                <p className="text-xl text-gray-400 mb-2 font-medium">No matches found</p>
+                                <p className="text-xl text-gray-700 mb-2 font-medium">No matches found</p>
                                 {(selectedDept || selectedSport || selectedStatus) && (
                                     <button
                                         onClick={() => { setSelectedDept(''); setSelectedSport(''); setSelectedStatus(''); }}
@@ -361,7 +361,7 @@ const Home = ({ isDarkMode, setIsDarkMode }) => {
             </div>
 
             {/* Footer */}
-            <div className="border-t border-gray-800/50 bg-slate-900/50 text-center py-6 text-gray-500 text-sm">
+            <div className="border-t border-gray-800/50 bg-slate-900/50 text-center py-6 text-gray-800 text-sm">
                 <p className="font-medium">VNIT Inter-Games • Live Updates with Socket.io</p>
             </div>
         </div>

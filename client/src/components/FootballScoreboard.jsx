@@ -99,7 +99,7 @@ const FootballScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                             <motion.span
                                 animate={{ opacity: [1, 0.5, 1] }}
                                 transition={{ duration: 1, repeat: Infinity }}
-                                className="px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full"
+                                className="px-2 py-0.5 bg-red-500 text-white text-sm font-semibold font-bold rounded-full"
                             >
                                 LIVE
                             </motion.span>
@@ -150,7 +150,7 @@ const FootballScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                         <h2 className="text-xl font-bold text-white mb-1">
                             {teamA?.shortCode || 'Team A'}
                         </h2>
-                        <span className="text-gray-400 text-sm">{teamA?.name}</span>
+                        <span className="text-gray-700 text-sm">{teamA?.name}</span>
                         
                         {/* Cards */}
                         <div className="flex justify-center gap-2 mt-2">
@@ -186,7 +186,7 @@ const FootballScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                             <div className="mt-4 grid grid-cols-4 gap-2 text-center">
                                 {match.periodScores?.map((ps, idx) => (
                                     <div key={idx} className="bg-gray-800/50 rounded px-2 py-1">
-                                        <div className="text-xs text-gray-400">Q{ps.period}</div>
+                                        <div className="text-sm font-semibold text-gray-400">Q{ps.period}</div>
                                         <div className="text-sm text-white">{ps.scoreA}-{ps.scoreB}</div>
                                     </div>
                                 ))}
@@ -206,7 +206,7 @@ const FootballScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                         <h2 className="text-xl font-bold text-white mb-1">
                             {teamB?.shortCode || 'Team B'}
                         </h2>
-                        <span className="text-gray-400 text-sm">{teamB?.name}</span>
+                        <span className="text-gray-700 text-sm">{teamB?.name}</span>
                         
                         {/* Cards */}
                         <div className="flex justify-center gap-2 mt-2">
@@ -241,7 +241,7 @@ const FootballScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                                     <span className="text-white">{scorer.playerName}</span>
                                     <span className="text-gray-400">{scorer.time}'</span>
                                     {scorer.type === 'PENALTY' && (
-                                        <span className="text-xs bg-yellow-500/20 text-yellow-400 px-1 rounded">P</span>
+                                        <span className="text-sm font-semibold bg-yellow-500/20 text-yellow-400 px-1 rounded">P</span>
                                     )}
                                 </motion.div>
                             ))}
@@ -255,7 +255,7 @@ const FootballScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                                     className="flex items-center gap-2 text-sm justify-end"
                                 >
                                     {scorer.type === 'PENALTY' && (
-                                        <span className="text-xs bg-yellow-500/20 text-yellow-400 px-1 rounded">P</span>
+                                        <span className="text-sm font-semibold bg-yellow-500/20 text-yellow-400 px-1 rounded">P</span>
                                     )}
                                     <span className="text-gray-400">{scorer.time}'</span>
                                     <span className="text-white">{scorer.playerName}</span>
@@ -269,7 +269,7 @@ const FootballScoreboard = ({ match, onUpdate, isAdmin = false }) => {
                 {/* Recent Fouls/Cards */}
                 {fouls.length > 0 && (
                     <div className="mt-4 pt-4 border-t border-gray-700">
-                        <div className="text-gray-400 text-sm mb-2">Recent Cards</div>
+                        <div className="text-gray-700 text-sm mb-2">Recent Cards</div>
                         <div className="flex flex-wrap gap-2">
                             {fouls.slice(-5).map((foul, idx) => (
                                 <div 

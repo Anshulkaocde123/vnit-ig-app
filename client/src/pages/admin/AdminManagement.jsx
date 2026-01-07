@@ -92,7 +92,7 @@ const AdminManagement = () => {
                             <Shield className="w-8 h-8 text-indigo-400" />
                             Admin Management
                         </h1>
-                        <p className="text-gray-400 mt-1">Manage admin users and permissions</p>
+                        <p className="text-gray-700 mt-1">Manage admin users and permissions</p>
                     </div>
                     <button onClick={() => setShowCreateModal(true)}
                         className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold flex items-center gap-2 shadow-lg">
@@ -113,14 +113,14 @@ const AdminManagement = () => {
                                     <div className="w-10 h-10 bg-indigo-500/20 rounded-full flex items-center justify-center"><span className="text-indigo-400">👤</span></div>
                                     <div>
                                         <div className="text-white font-medium">{activity.adminName}</div>
-                                        <div className="text-gray-500 text-xs">{activity.role}</div>
+                                        <div className="text-gray-800 text-xs">{activity.role}</div>
                                     </div>
                                 </div>
                                 <div className="text-gray-300 text-sm">{activity.action}</div>
-                                <div className="text-gray-500 text-xs mt-1">{activity.match}</div>
+                                <div className="text-gray-800 text-sm font-semibold mt-1">{activity.match}</div>
                             </div>
                         )) : (
-                            <div className="col-span-3 text-center text-gray-500 py-4">No active sessions</div>
+                            <div className="col-span-3 text-center text-gray-800 py-4">No active sessions</div>
                         )}
                     </div>
                 </div>
@@ -134,10 +134,10 @@ const AdminManagement = () => {
                             <table className="w-full">
                                 <thead className="bg-white/5 border-b border-white/10">
                                     <tr>
-                                        <th className="text-left px-6 py-4 text-xs font-bold text-gray-400 uppercase">Admin</th>
-                                        <th className="text-left px-6 py-4 text-xs font-bold text-gray-400 uppercase">Role</th>
-                                        <th className="text-left px-6 py-4 text-xs font-bold text-gray-400 uppercase">Status</th>
-                                        <th className="text-left px-6 py-4 text-xs font-bold text-gray-400 uppercase">Actions</th>
+                                        <th className="text-left px-6 py-4 text-sm font-semibold font-bold text-gray-700 uppercase">Admin</th>
+                                        <th className="text-left px-6 py-4 text-sm font-semibold font-bold text-gray-700 uppercase">Role</th>
+                                        <th className="text-left px-6 py-4 text-sm font-semibold font-bold text-gray-700 uppercase">Status</th>
+                                        <th className="text-left px-6 py-4 text-sm font-semibold font-bold text-gray-700 uppercase">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-white/5">
@@ -150,7 +150,7 @@ const AdminManagement = () => {
                                                     </div>
                                                     <div>
                                                         <div className="text-white font-medium">{admin.username}</div>
-                                                        <div className="text-gray-500 text-xs">{admin.email}</div>
+                                                        <div className="text-gray-800 text-xs">{admin.email}</div>
                                                     </div>
                                                 </div>
                                             </td>
@@ -162,11 +162,11 @@ const AdminManagement = () => {
                                             </td>
                                             <td className="px-6 py-4">
                                                 {admin.isTrusted ? (
-                                                    <span className="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-xs font-bold">✓ Verified</span>
+                                                    <span className="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-sm font-semibold font-bold">✓ Verified</span>
                                                 ) : admin.isSuspended ? (
-                                                    <span className="px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-full text-xs font-bold">Suspended</span>
+                                                    <span className="px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-full text-sm font-semibold font-bold">Suspended</span>
                                                 ) : (
-                                                    <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 rounded-full text-xs font-bold">Pending</span>
+                                                    <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 rounded-full text-sm font-semibold font-bold">Pending</span>
                                                 )}
                                             </td>
                                             <td className="px-6 py-4">
@@ -205,26 +205,26 @@ const AdminManagement = () => {
                         <div className="bg-slate-800 border border-white/10 rounded-2xl p-6 w-full max-w-md">
                                 <div className="flex justify-between items-center mb-6">
                                     <h3 className="text-xl font-bold text-white">Add New Admin</h3>
-                                    <button onClick={() => setShowCreateModal(false)} className="p-2 text-gray-400 hover:text-white"><X className="w-5 h-5" /></button>
+                                    <button onClick={() => setShowCreateModal(false)} className="p-2 text-gray-700 hover:text-white"><X className="w-5 h-5" /></button>
                                 </div>
                                 <form onSubmit={handleCreateAdmin} className="space-y-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-300 mb-2">Username *</label>
+                                        <label className="block text-sm font-bold text-gray-300 mb-2">Username *</label>
                                         <input type="text" value={formData.username} onChange={(e) => setFormData({ ...formData, username: e.target.value })} required
                                             className="w-full px-4 py-2 bg-slate-900/50 border border-white/10 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 outline-none" />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-300 mb-2">Email *</label>
+                                        <label className="block text-sm font-bold text-gray-300 mb-2">Email *</label>
                                         <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required
                                             className="w-full px-4 py-2 bg-slate-900/50 border border-white/10 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 outline-none" />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-300 mb-2">Password *</label>
+                                        <label className="block text-sm font-bold text-gray-300 mb-2">Password *</label>
                                         <input type="password" value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} required
                                             className="w-full px-4 py-2 bg-slate-900/50 border border-white/10 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 outline-none" />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-300 mb-2">Role</label>
+                                        <label className="block text-sm font-bold text-gray-300 mb-2">Role</label>
                                         <select value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                                             className="w-full px-4 py-2 bg-slate-900/50 border border-white/10 rounded-lg text-white focus:ring-2 focus:ring-indigo-500 outline-none">
                                             {roles.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}

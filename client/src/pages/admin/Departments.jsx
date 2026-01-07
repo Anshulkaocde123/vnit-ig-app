@@ -77,12 +77,12 @@ const Departments = () => {
                         <Building className="w-8 h-8 text-indigo-600" />
                         Departments
                     </h1>
-                    <p className="text-gray-600 mt-1">Manage department logos and information</p>
+                    <p className="text-gray-900 mt-1">Manage department logos and information</p>
                 </div>
                 <button
                     onClick={fetchDepartments}
                     disabled={loading}
-                    className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium shadow-lg hover:shadow-xl border-2 border-transparent disabled:opacity-50"
+                    className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold shadow-lg hover:shadow-xl border-2 border-transparent disabled:opacity-50"
                 >
                     <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
                     Refresh
@@ -92,7 +92,7 @@ const Departments = () => {
             {loading ? (
                 <div className="text-center py-20">
                     <div className="w-12 h-12 mx-auto rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin"></div>
-                    <p className="text-gray-600 mt-4">Loading departments...</p>
+                    <p className="text-gray-900 mt-4">Loading departments...</p>
                 </div>
             ) : error ? (
                 <div className="p-6 bg-red-50 border-2 border-red-300 rounded-2xl text-red-700 shadow-md">{error}</div>
@@ -101,7 +101,7 @@ const Departments = () => {
                     {departments.map((dept) => (
                         <div
                             key={dept._id}
-                            className="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-indigo-300 hover:shadow-xl shadow-lg"
+                            className="bg-white border-2 border-gray-600 rounded-2xl overflow-hidden hover:border-indigo-300 hover:shadow-xl shadow-lg"
                         >
                             {/* Header with gradient */}
                             <div className={`h-24 bg-gradient-to-br ${getDeptColor(dept.shortCode)} flex items-center justify-center relative shadow-md`}>
@@ -122,7 +122,7 @@ const Departments = () => {
                                 <div className="flex justify-between items-start mb-3">
                                     <div>
                                         <h3 className="text-xl font-black text-gray-900">{dept.name}</h3>
-                                        <span className="text-sm text-gray-600 font-medium">{dept.shortCode}</span>
+                                        <span className="text-sm text-gray-900 font-medium">{dept.shortCode}</span>
                                     </div>
                                 </div>
 
@@ -134,19 +134,19 @@ const Departments = () => {
                                                 type="file" 
                                                 accept="image/*" 
                                                 onChange={handleFileChange} 
-                                                className="text-xs text-gray-600 w-full border-2 border-gray-200 rounded-lg p-2" 
+                                                className="text-sm font-semibold text-gray-900 w-full border-2 border-gray-600 rounded-lg p-2" 
                                             />
                                             <div className="flex gap-2">
                                                 <button 
                                                     onClick={() => handleSaveLogo(dept._id)} 
                                                     disabled={!selectedFile}
-                                                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-medium text-sm shadow-md hover:shadow-lg disabled:opacity-50"
+                                                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg disabled:opacity-50"
                                                 >
                                                     <Upload className="w-4 h-4" /> Upload
                                                 </button>
                                                 <button 
                                                     onClick={() => { setEditingId(null); setSelectedFile(null); }}
-                                                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-100 text-gray-700 rounded-xl font-medium text-sm border-2 border-gray-200 hover:bg-gray-200"
+                                                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-100 text-gray-700 rounded-xl font-bold text-sm border-2 border-gray-600 hover:bg-gray-200"
                                                 >
                                                     <X className="w-4 h-4" /> Cancel
                                                 </button>

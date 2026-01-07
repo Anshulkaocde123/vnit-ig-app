@@ -94,7 +94,7 @@ const AdvancedMatchFilter = ({ onFilter }) => {
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-xl p-4 border border-slate-700">
             {/* Debug Info */}
             {process.env.NODE_ENV === 'development' && (
-                <div className="text-xs text-gray-400 mb-2">
+                <div className="text-sm font-semibold text-gray-700 mb-2">
                     Departments: {departments.length} | Seasons: {seasons.length} | API: {api.defaults.baseURL}
                 </div>
             )}
@@ -145,7 +145,7 @@ const AdvancedMatchFilter = ({ onFilter }) => {
                 <div className="bg-slate-700 rounded-lg p-4 space-y-4 border border-slate-600">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-1">Season</label>
+                            <label className="block text-sm font-bold text-gray-300 mb-1">Season</label>
                             <select
                                 value={filters.season}
                                 onChange={(e) => handleFilterChange('season', e.target.value)}
@@ -158,7 +158,7 @@ const AdvancedMatchFilter = ({ onFilter }) => {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-1">Department</label>
+                            <label className="block text-sm font-bold text-gray-300 mb-1">Department</label>
                             <select
                                 value={filters.department}
                                 onChange={(e) => handleFilterChange('department', e.target.value)}
@@ -171,7 +171,7 @@ const AdvancedMatchFilter = ({ onFilter }) => {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-1">Match Type</label>
+                            <label className="block text-sm font-bold text-gray-300 mb-1">Match Type</label>
                             <select
                                 value={filters.matchType}
                                 onChange={(e) => handleFilterChange('matchType', e.target.value)}
@@ -184,7 +184,7 @@ const AdvancedMatchFilter = ({ onFilter }) => {
                             </select>
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-1">From Date</label>
+                            <label className="block text-sm font-bold text-gray-300 mb-1">From Date</label>
                             <input
                                 type="date"
                                 value={filters.dateFrom}
@@ -193,7 +193,7 @@ const AdvancedMatchFilter = ({ onFilter }) => {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-1">To Date</label>
+                            <label className="block text-sm font-bold text-gray-300 mb-1">To Date</label>
                             <input
                                 type="date"
                                 value={filters.dateTo}
@@ -205,13 +205,13 @@ const AdvancedMatchFilter = ({ onFilter }) => {
                     <div className="flex gap-2 pt-2">
                         <button
                             onClick={handleApplyFilters}
-                            className="flex-1 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-all"
+                            className="flex-1 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold transition-all"
                         >
                             Apply Filters
                         </button>
                         <button
                             onClick={handleClearFilters}
-                            className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-all flex items-center gap-2"
+                            className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-bold transition-all flex items-center gap-2"
                         >
                             <X className="w-4 h-4" /> Clear
                         </button>

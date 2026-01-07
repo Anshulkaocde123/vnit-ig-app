@@ -73,7 +73,7 @@ const SeasonManagement = () => {
                             <Trophy className="w-8 h-8 text-yellow-500" />
                             Season Management
                         </h1>
-                        <p className="text-gray-400 mt-1">Create and manage competition seasons</p>
+                        <p className="text-gray-700 mt-1">Create and manage competition seasons</p>
                     </div>
                     <button onClick={() => setShowForm(!showForm)}
                         className={`px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all ${showForm ? 'bg-red-600 hover:bg-red-700' : 'bg-gradient-to-r from-indigo-600 to-purple-600'} text-white shadow-lg`}>
@@ -131,9 +131,9 @@ const SeasonManagement = () => {
                 {/* Seasons Grid */}
                 {seasons.length === 0 ? (
                     <div className="text-center py-16 backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl">
-                        <Trophy className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                        <p className="text-gray-400 text-lg">No seasons yet</p>
-                        <p className="text-gray-500 text-sm mt-2">Create your first season to get started</p>
+                        <Trophy className="w-16 h-16 text-gray-900 mx-auto mb-4" />
+                        <p className="text-gray-700 text-lg">No seasons yet</p>
+                        <p className="text-gray-800 text-sm mt-2">Create your first season to get started</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -142,20 +142,20 @@ const SeasonManagement = () => {
                                 <div className="flex justify-between items-start mb-4">
                                     <div>
                                         <h3 className="text-xl font-bold text-white">{season.name}</h3>
-                                        <p className="text-gray-500 text-sm">{season.year}</p>
+                                        <p className="text-gray-800 text-sm">{season.year}</p>
                                     </div>
                                     {season.isActive ? (
-                                        <span className="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-xs font-bold flex items-center gap-1">
+                                        <span className="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-sm font-semibold font-bold flex items-center gap-1">
                                             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> ACTIVE
                                         </span>
                                     ) : season.isArchived ? (
-                                        <span className="px-3 py-1 bg-gray-500/20 text-gray-400 border border-gray-500/30 rounded-full text-xs font-bold">ARCHIVED</span>
+                                        <span className="px-3 py-1 bg-gray-500/20 text-gray-700 border border-gray-500/30 rounded-full text-sm font-semibold font-bold">ARCHIVED</span>
                                     ) : (
-                                        <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 rounded-full text-xs font-bold">UPCOMING</span>
+                                        <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 rounded-full text-sm font-semibold font-bold">UPCOMING</span>
                                     )}
                                 </div>
-                                {season.description && <p className="text-sm text-gray-400 mb-4">{season.description}</p>}
-                                <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+                                {season.description && <p className="text-sm text-gray-700 mb-4">{season.description}</p>}
+                                <div className="flex items-center gap-4 text-sm font-semibold text-gray-800 mb-4">
                                     <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {new Date(season.startDate).toLocaleDateString()}</div>
                                     <span>→</span>
                                     <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {new Date(season.endDate).toLocaleDateString()}</div>

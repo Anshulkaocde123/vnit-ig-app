@@ -121,7 +121,7 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
                     <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center text-xs shadow-lg"
+                        className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center text-sm font-semibold shadow-lg"
                     >
                         👑
                     </motion.div>

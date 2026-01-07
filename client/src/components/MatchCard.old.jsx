@@ -72,8 +72,8 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
         if (match.status === 'SCHEDULED') {
             return (
                 <div className="text-center py-3">
-                    <div className="text-3xl md:text-4xl font-black text-gray-500 mb-2">VS</div>
-                    <div className="text-xs md:text-sm text-gray-400 font-medium">
+                    <div className="text-3xl md:text-4xl font-black text-gray-800 mb-2">VS</div>
+                    <div className="text-sm font-semibold md:text-sm text-gray-700 font-medium">
                         {formatTime(match.scheduledAt)}
                     </div>
                 </div>
@@ -89,16 +89,16 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
                                 <div className="text-2xl md:text-4xl font-black text-white leading-tight">
                                     {match.scoreA?.runs || 0}<span className="text-lg md:text-2xl text-gray-400">/{match.scoreA?.wickets || 0}</span>
                                 </div>
-                                <div className="text-[11px] md:text-xs text-gray-500 font-semibold mt-0.5">
+                                <div className="text-[11px] md:text-sm font-semibold text-gray-800 font-semibold mt-0.5">
                                     {match.scoreA?.overs || 0} ov
                                 </div>
                             </div>
-                            <div className="text-gray-600 text-2xl font-bold">-</div>
+                            <div className="text-gray-900 text-2xl font-bold">-</div>
                             <div className="text-left">
                                 <div className="text-2xl md:text-4xl font-black text-white leading-tight">
                                     {match.scoreB?.runs || 0}<span className="text-lg md:text-2xl text-gray-400">/{match.scoreB?.wickets || 0}</span>
                                 </div>
-                                <div className="text-[11px] md:text-xs text-gray-500 font-semibold mt-0.5">
+                                <div className="text-[11px] md:text-sm font-semibold text-gray-800 font-semibold mt-0.5">
                                     {match.scoreB?.overs || 0} ov
                                 </div>
                             </div>
@@ -114,11 +114,11 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
                         <div className="text-4xl md:text-5xl font-black text-white mb-1">
                             {match.scoreA || 0} <span className="text-gray-600">-</span> {match.scoreB || 0}
                         </div>
-                        <div className="text-[11px] md:text-xs text-gray-500 font-bold uppercase tracking-wider">
+                        <div className="text-[11px] md:text-sm font-semibold text-gray-800 font-bold uppercase tracking-wider">
                             Sets Won
                         </div>
                         {match.currentSet && match.status === 'LIVE' && (
-                            <div className="text-xs md:text-sm text-indigo-300 mt-2 font-bold bg-indigo-500/20 px-3 py-1 rounded-full inline-block border border-indigo-500/40">
+                            <div className="text-sm font-semibold md:text-sm text-indigo-300 mt-2 font-bold bg-indigo-500/20 px-3 py-1 rounded-full inline-block border border-indigo-500/40">
                                 Current: {match.currentSet.pointsA || 0} - {match.currentSet.pointsB || 0}
                             </div>
                         )}
@@ -135,7 +135,7 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
                             {match.scoreA || 0} <span className="text-gray-600">-</span> {match.scoreB || 0}
                         </div>
                         {match.period && (
-                            <div className="text-xs md:text-sm text-gray-400 font-semibold mt-2">
+                            <div className="text-sm font-semibold md:text-sm text-gray-700 font-semibold mt-2">
                                 {match.sport === 'FOOTBALL' && `Half ${match.period} of ${match.maxPeriods || 2}`}
                                 {match.sport === 'BASKETBALL' && `Q${match.period} of ${match.maxPeriods || 4}`}
                                 {match.sport === 'KHOKHO' && `Inning ${match.period}`}
@@ -190,11 +190,11 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
             {/* Header Section */}
             <div className={`bg-gradient-to-r from-gray-900/80 to-gray-800/80 px-4 py-3 flex justify-between items-center border-b border-gray-700/50 backdrop-blur-sm`}>
                 <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 bg-gradient-to-r from-gray-700 to-gray-800 rounded-lg text-xs font-bold text-gray-200 uppercase tracking-widest border border-gray-600/50">
+                    <span className="px-3 py-1 bg-gradient-to-r from-gray-700 to-gray-800 rounded-lg text-sm font-semibold font-bold text-gray-200 uppercase tracking-widest border border-gray-600/50">
                         {match.sport.replace('_', ' ')}
                     </span>
                     {match.venue && (
-                        <span className="text-xs text-gray-400 font-medium hidden sm:inline">📍 {match.venue}</span>
+                        <span className="text-sm font-semibold text-gray-700 font-bold hidden sm:inline">📍 {match.venue}</span>
                     )}
                 </div>
                 <span className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold ${status.badgeBg} ${status.textColor} border border-white/20`}>
@@ -226,7 +226,7 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
                             <div className="text-sm md:text-base font-bold text-white truncate max-w-20">
                                 {match.teamA?.shortCode || 'Team A'}
                             </div>
-                            <div className="text-[11px] md:text-xs text-gray-500 font-medium">
+                            <div className="text-[11px] md:text-sm font-semibold text-gray-800 font-medium">
                                 {match.teamA?.name?.split(' ').slice(0, 2).join(' ')}
                             </div>
                         </div>
@@ -256,7 +256,7 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
                             <div className="text-sm md:text-base font-bold text-white truncate max-w-20">
                                 {match.teamB?.shortCode || 'Team B'}
                             </div>
-                            <div className="text-[11px] md:text-xs text-gray-500 font-medium">
+                            <div className="text-[11px] md:text-sm font-semibold text-gray-800 font-medium">
                                 {match.teamB?.name?.split(' ').slice(0, 2).join(' ')}
                             </div>
                         </div>
@@ -266,7 +266,7 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
                 {/* Winner Badge */}
                 {match.status === 'COMPLETED' && match.winner && (
                     <div className="mt-4 pt-4 border-t border-gray-700/50">
-                        <div className="text-xs text-gray-500 text-center font-semibold mb-2">MATCH RESULT</div>
+                        <div className="text-sm font-semibold text-gray-800 text-center font-semibold mb-2">MATCH RESULT</div>
                         <div className="text-center text-sm font-bold text-yellow-400">
                             🏆 {match.winner?.shortCode} Won
                         </div>
@@ -276,8 +276,8 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
                 {/* Time Info */}
                 {match.status === 'SCHEDULED' && (
                     <div className="mt-4 pt-4 border-t border-gray-700/50">
-                        <div className="text-xs text-center text-gray-500 font-semibold">SCHEDULED</div>
-                        <div className="text-xs text-center text-gray-400 mt-1 font-medium">
+                        <div className="text-sm font-semibold text-center text-gray-800 font-semibold">SCHEDULED</div>
+                        <div className="text-sm font-semibold text-center text-gray-700 mt-1 font-medium">
                             {formatTime(match.scheduledAt)}
                         </div>
                     </div>
@@ -285,7 +285,7 @@ const MatchCard = ({ match, formatIST, isDarkMode }) => {
             </div>
 
             {/* Click Hint */}
-            <div className="px-5 pb-4 text-center text-xs text-gray-600 group-hover:text-gray-400 transition-colors font-medium">
+            <div className="px-5 pb-4 text-center text-sm font-semibold text-gray-900 group-hover:text-gray-700 transition-colors font-medium">
                 Click to view details →
             </div>
         </div>

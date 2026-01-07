@@ -53,7 +53,7 @@ const AwardPoints = () => {
                     <Award className="w-8 h-8 text-yellow-500" />
                     Judge's Console
                 </h1>
-                <p className="text-gray-400 mt-1">Award points to departments for events and achievements</p>
+                <p className="text-gray-700 mt-1">Award points to departments for events and achievements</p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -108,7 +108,7 @@ const AwardPoints = () => {
                                     <label className="block text-sm font-bold text-gray-300 mb-3 uppercase tracking-wider">Points <span className="text-red-400">*</span></label>
                                     <input type="number" name="points" value={formData.points} onChange={handleChange} placeholder="e.g. 10, 25, -5" required
                                         className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none" />
-                                    <p className="text-xs text-gray-500 mt-2">Use negative for deductions</p>
+                                    <p className="text-sm font-semibold text-gray-800 mt-2">Use negative for deductions</p>
                                 </div>
                             </div>
 
@@ -133,7 +133,7 @@ const AwardPoints = () => {
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-lg font-bold text-white flex items-center gap-2"><Clock className="w-5 h-5 text-indigo-400" /> Recent Awards</h3>
                             {recentLogs.length > 0 && (
-                                <button onClick={() => setShowClearConfirm(true)} className="p-2 text-gray-500 hover:text-red-400 transition-colors">
+                                <button onClick={() => setShowClearConfirm(true)} className="p-2 text-gray-800 hover:text-red-400 transition-colors">
                                     <Trash2 className="w-4 h-4" />
                                 </button>
                             )}
@@ -151,11 +151,11 @@ const AwardPoints = () => {
                                                 <div>
                                                     <div className="font-bold text-white">{log.departmentName || log.department?.name}</div>
                                                     <div className="text-sm text-gray-400">{log.eventName}</div>
-                                                    {log.position && <div className="text-xs text-indigo-400 mt-1">📍 {log.position}</div>}
+                                                    {log.position && <div className="text-sm font-semibold text-indigo-400 mt-1">📍 {log.position}</div>}
                                                 </div>
                                                 <div className="text-right">
                                                     <div className={`text-xl font-black ${log.points > 0 ? 'text-green-400' : 'text-red-400'}`}>{log.points > 0 ? '+' : ''}{log.points}</div>
-                                                    <div className="text-xs text-gray-500">{formatTime(log.awardedAt)}</div>
+                                                    <div className="text-sm font-semibold text-gray-500">{formatTime(log.awardedAt)}</div>
                                                 </div>
                                             </div>
                                         </div>

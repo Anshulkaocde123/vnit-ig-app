@@ -29,7 +29,7 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
                     {match.status === 'LIVE' && (
                         <div className="flex items-center gap-1.5 sm:gap-2 bg-red-500/20 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full border border-red-400/30">
                             <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                            <span className="text-white text-xs sm:text-sm font-bold">LIVE</span>
+                            <span className="text-white text-sm font-semibold sm:text-sm font-bold">LIVE</span>
                         </div>
                     )}
                 </div>
@@ -108,12 +108,12 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
                                     Current Game - Set {(scoreA + scoreB + 1)}
                                 </span>
                                 {isMatchPoint && (
-                                    <span className="text-xs font-black text-yellow-500 animate-pulse">
+                                    <span className="text-sm font-semibold font-black text-yellow-500 animate-pulse">
                                         MATCH POINT! 🔥
                                     </span>
                                 )}
                                 {isDeuce && !isMatchPoint && (
-                                    <span className="text-xs font-black text-blue-500">
+                                    <span className="text-sm font-semibold font-black text-blue-500">
                                         DEUCE!
                                     </span>
                                 )}

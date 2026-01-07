@@ -157,7 +157,7 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
                                 <div className="text-4xl font-black mb-2">{match.teamA?.shortCode}</div>
                                 <div className="text-sm text-gray-400">{match.teamA?.name}</div>
                             </div>
-                            <div className="px-6 text-gray-500 text-2xl font-bold">VS</div>
+                            <div className="px-6 text-gray-800 text-2xl font-bold">VS</div>
                             <div className="text-center flex-1">
                                 <div className="text-4xl font-black mb-2">{match.teamB?.shortCode}</div>
                                 <div className="text-sm text-gray-400">{match.teamB?.name}</div>
@@ -217,7 +217,7 @@ const CricketScoreboard = ({ match }) => {
                         </div>
                         <div className="text-blue-200 text-sm font-semibold border-t border-blue-400/50 pt-3">
                             <div>{scoreA?.overs || 0} overs</div>
-                            <div className="text-xs text-blue-300/80 mt-1">Run Rate: {runRate}</div>
+                            <div className="text-sm font-semibold text-blue-300/80 mt-1">Run Rate: {runRate}</div>
                         </div>
                     </div>
 
@@ -232,7 +232,7 @@ const CricketScoreboard = ({ match }) => {
                         </div>
                         <div className="text-red-200 text-sm font-semibold border-t border-red-400/50 pt-3">
                             <div>{scoreB?.overs || 0} overs</div>
-                            <div className="text-xs text-red-300/80 mt-1">Run Rate: {(scoreB?.overs ? (scoreB.runs / parseFloat(scoreB.overs)).toFixed(2) : 0)}</div>
+                            <div className="text-sm font-semibold text-red-300/80 mt-1">Run Rate: {(scoreB?.overs ? (scoreB.runs / parseFloat(scoreB.overs)).toFixed(2) : 0)}</div>
                         </div>
                     </div>
                 </div>
@@ -243,7 +243,7 @@ const CricketScoreboard = ({ match }) => {
                     <div className="w-full bg-vnit-dark rounded-full h-3 border border-vnit-accent overflow-hidden">
                         <div className="bg-gradient-to-r from-vnit-primary to-vnit-secondary h-full transition-all" style={{width: `${(scoreA?.overs / (totalOvers || 20)) * 100}%`}}></div>
                     </div>
-                    <div className="text-center text-white/80 text-xs mt-2">{scoreA?.overs || 0} / {totalOvers || 20} Overs</div>
+                    <div className="text-center text-white/80 text-sm font-semibold mt-2">{scoreA?.overs || 0} / {totalOvers || 20} Overs</div>
                 </div>
 
                 {/* Match Status */}
@@ -315,12 +315,12 @@ const SetScoreboard = ({ match }) => {
                         <div className="flex items-center justify-center gap-8">
                             <div className="bg-blue-600/40 p-6 rounded-xl border border-blue-400/60 flex-1">
                                 <div className="text-5xl font-black text-blue-300">{currentSet.pointsA || 0}</div>
-                                <div className="text-xs text-blue-200 mt-2 uppercase font-bold">{match.teamA?.shortCode}</div>
+                                <div className="text-sm font-semibold text-blue-200 mt-2 uppercase font-bold">{match.teamA?.shortCode}</div>
                             </div>
                             <div className="text-white/60 text-3xl font-black">-</div>
                             <div className="bg-red-600/40 p-6 rounded-xl border border-red-400/60 flex-1">
                                 <div className="text-5xl font-black text-red-300">{currentSet.pointsB || 0}</div>
-                                <div className="text-xs text-red-200 mt-2 uppercase font-bold">{match.teamB?.shortCode}</div>
+                                <div className="text-sm font-semibold text-red-200 mt-2 uppercase font-bold">{match.teamB?.shortCode}</div>
                             </div>
                         </div>
                     </div>
@@ -329,12 +329,12 @@ const SetScoreboard = ({ match }) => {
                 {/* Set History */}
                 {setDetails && setDetails.length > 0 && (
                     <div className="mt-6 p-4 bg-vnit-dark/50 rounded-xl border border-vnit-accent/30">
-                        <div className="text-vnit-accent text-xs font-black uppercase tracking-widest mb-3">Set History</div>
+                        <div className="text-vnit-accent text-sm font-semibold font-black uppercase tracking-widest mb-3">Set History</div>
                         <div className="flex gap-3 flex-wrap">
                             {setDetails.map((set, i) => (
                                 <div key={i} className="px-4 py-2 bg-gradient-to-r from-vnit-primary/50 to-vnit-secondary/50 border border-vnit-accent/50 rounded-lg">
                                     <div className="text-white font-bold text-sm">Set {i + 1}</div>
-                                    <div className="text-vnit-accent text-xs font-semibold">{set}</div>
+                                    <div className="text-vnit-accent text-sm font-semibold font-semibold">{set}</div>
                                 </div>
                             ))}
                         </div>
@@ -390,10 +390,10 @@ const FootballScoreboard = ({ match }) => {
                     <div className="flex flex-col items-center gap-4">
                         <div className="text-white/40 text-5xl font-black">-</div>
                         {match.status === 'COMPLETED' && (scoreA > scoreB ? 
-                            <div className="text-green-400 font-black text-xs px-3 py-1 bg-green-600/40 border border-green-400 rounded-full">WINNER</div>
+                            <div className="text-green-400 font-black text-sm font-semibold px-3 py-1 bg-green-600/40 border border-green-400 rounded-full">WINNER</div>
                             : scoreB > scoreA ?
-                            <div className="text-red-400 font-black text-xs px-3 py-1 bg-red-600/40 border border-red-400 rounded-full">LOSER</div>
-                            : <div className="text-yellow-400 font-black text-xs px-3 py-1 bg-yellow-600/40 border border-yellow-400 rounded-full">DRAW</div>
+                            <div className="text-red-400 font-black text-sm font-semibold px-3 py-1 bg-red-600/40 border border-red-400 rounded-full">LOSER</div>
+                            : <div className="text-yellow-400 font-black text-sm font-semibold px-3 py-1 bg-yellow-600/40 border border-yellow-400 rounded-full">DRAW</div>
                         )}
                     </div>
 

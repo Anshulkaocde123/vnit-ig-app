@@ -235,7 +235,7 @@ const TimerControls = ({
                         +{timer.addedTime} added time
                     </div>
                 )}
-                <div className="text-gray-400 text-sm mt-1">
+                <div className="text-gray-700 text-sm mt-1">
                     {isRunning ? 'Running' : timer.isPaused ? 'Paused' : 'Stopped'}
                 </div>
             </div>
@@ -246,7 +246,7 @@ const TimerControls = ({
                     onClick={() => setShowPresetsModal(true)}
                     disabled={disabled || isRunning}
                     className="bg-purple-600 hover:bg-purple-500 disabled:bg-gray-600 text-white 
-                               px-3 py-2 rounded-lg text-xs font-bold transition-colors"
+                               px-3 py-2 rounded-lg text-sm font-semibold font-bold transition-colors"
                 >
                     ⚡ Presets
                 </button>
@@ -254,7 +254,7 @@ const TimerControls = ({
                     onClick={handleAutoStoppage}
                     disabled={disabled || !isRunning}
                     className="bg-orange-600 hover:bg-orange-500 disabled:bg-gray-600 text-white 
-                               px-3 py-2 rounded-lg text-xs font-bold transition-colors"
+                               px-3 py-2 rounded-lg text-sm font-semibold font-bold transition-colors"
                 >
                     🔢 Auto +Time ({calculateStoppageTime()}')
                 </button>
@@ -324,8 +324,8 @@ const TimerControls = ({
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setShowAddTimeModal(true)}
                     disabled={disabled || !timer.isRunning}
-                    className="bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:text-gray-500
-                               text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center gap-2"
+                    className="bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:text-gray-800
+                               text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2"
                 >
                     <span>➕</span>
                     Add Time
@@ -336,7 +336,7 @@ const TimerControls = ({
                     onClick={handleNextPeriod}
                     disabled={disabled}
                     className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-600 
-                               text-white font-medium py-2 px-4 rounded-lg flex items-center justify-center gap-2"
+                               text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2"
                 >
                     <span>⏭️</span>
                     Next Period
@@ -345,7 +345,7 @@ const TimerControls = ({
 
             {/* Quick Time Presets (for quick adjustments) */}
             <div className="mt-4 pt-4 border-t border-gray-700">
-                <div className="text-gray-400 text-sm mb-2">Quick Set Time:</div>
+                <div className="text-gray-700 text-sm mb-2">Quick Set Time:</div>
                 <div className="flex gap-2 flex-wrap">
                     {[45, 90, 20, 12, 10, 15].map(mins => (
                         <button
@@ -383,7 +383,7 @@ const TimerControls = ({
                         >
                             <h3 className="text-lg font-semibold text-white mb-4">Add Extra Time</h3>
                             <div className="mb-4">
-                                <label className="text-gray-400 text-sm block mb-2">Minutes to add:</label>
+                                <label className="text-gray-700 text-sm block mb-2">Minutes to add:</label>
                                 <input
                                     type="number"
                                     min="1"
@@ -459,7 +459,7 @@ const TimerControls = ({
                                                        font-bold transition-colors text-left flex justify-between items-center"
                                         >
                                             <span>{preset.label}</span>
-                                            <span className="text-gray-400 text-sm">{formatTime(preset.seconds)}</span>
+                                            <span className="text-gray-700 text-sm">{formatTime(preset.seconds)}</span>
                                         </button>
                                     ))}
                             </div>

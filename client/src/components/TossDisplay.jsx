@@ -89,7 +89,7 @@ const TossDisplay = ({
                     Toss Information
                 </h3>
                 {toss?.winner && (
-                    <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">
+                    <span className="px-2 py-1 bg-green-500/20 text-green-400 text-sm font-semibold rounded-full">
                         Completed
                     </span>
                 )}
@@ -128,7 +128,7 @@ const TossDisplay = ({
                                                 <div className="text-2xl font-bold text-white">
                                                     {winnerTeam?.shortCode || 'Team'}
                                                 </div>
-                                                <div className="text-gray-400 text-sm">
+                                                <div className="text-gray-700 text-sm">
                                                     {winnerTeam?.name}
                                                 </div>
                                             </div>
@@ -140,7 +140,7 @@ const TossDisplay = ({
 
                         {/* Decision Display */}
                         <div className="bg-gray-900/50 rounded-lg p-3">
-                            <div className="text-gray-400 text-sm mb-1">Decision</div>
+                            <div className="text-gray-700 text-sm mb-1">Decision</div>
                             <div className="text-xl font-semibold text-white flex items-center justify-center gap-2">
                                 <span>
                                     {decisionOptions.find(d => d.value === toss.decision)?.icon || '🎯'}
@@ -155,7 +155,7 @@ const TossDisplay = ({
                         {isAdmin && onSetToss && (
                             <button
                                 onClick={() => onSetToss(null)}
-                                className="mt-4 text-sm text-gray-400 hover:text-white transition-colors"
+                                className="mt-4 text-sm text-gray-700 hover:text-white transition-colors"
                             >
                                 Reset Toss
                             </button>
@@ -169,7 +169,7 @@ const TossDisplay = ({
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                     >
-                        <div className="text-center text-gray-400 mb-4">
+                        <div className="text-center text-gray-700 mb-4">
                             Select toss winner and their decision
                         </div>
 
@@ -193,7 +193,7 @@ const TossDisplay = ({
                                             />
                                         )}
                                         <div className="text-white font-semibold">{team?.shortCode}</div>
-                                        <div className="text-gray-400 text-xs">{team?.name}</div>
+                                        <div className="text-gray-700 text-xs">{team?.name}</div>
                                     </div>
                                     
                                     {/* Decision buttons */}
@@ -205,7 +205,7 @@ const TossDisplay = ({
                                                 whileTap={{ scale: 0.98 }}
                                                 onClick={() => handleSetToss(id, option.value)}
                                                 className="w-full bg-blue-600 hover:bg-blue-500 text-white 
-                                                           py-2 px-3 rounded-lg text-sm font-medium
+                                                           py-2 px-3 rounded-lg text-sm font-bold
                                                            flex items-center justify-center gap-2"
                                             >
                                                 <span>{option.icon}</span>
