@@ -173,23 +173,23 @@ const LiveConsole = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 md:p-8">
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-3 sm:p-6 md:p-8">
             {/* Header */}
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="flex justify-between items-center mb-8">
+            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0 mb-6 sm:mb-8">
                 <div>
-                    <h1 className="text-3xl md:text-4xl font-black text-white flex items-center gap-3">
-                        <Radio className="w-8 h-8 text-red-500" />
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white flex items-center gap-2 sm:gap-3">
+                        <Radio className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" />
                         Live Console
                     </h1>
-                    <p className="text-gray-400 mt-1">Manage and score live matches in real-time</p>
+                    <p className="text-gray-400 mt-1 text-sm sm:text-base">Manage and score live matches in real-time</p>
                 </div>
                 <motion.button
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                     onClick={fetchMatches}
                     disabled={loading}
-                    className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium shadow-lg shadow-indigo-500/25 disabled:opacity-50"
+                    className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium shadow-lg shadow-indigo-500/25 disabled:opacity-50 text-sm sm:text-base touch-manipulation"
                 >
-                    <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
+                    <RefreshCw className={`w-4 h-4 sm:w-5 sm:h-5 ${loading ? 'animate-spin' : ''}`} />
                     Refresh
                 </motion.button>
             </motion.div>
@@ -213,7 +213,7 @@ const LiveConsole = () => {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: idx * 0.05 }}
-                            className={`backdrop-blur-xl rounded-2xl border p-5 transition-all ${
+                            className={`backdrop-blur-xl rounded-xl sm:rounded-2xl border p-3 sm:p-4 md:p-5 transition-all ${
                                 match.status === 'LIVE' 
                                     ? 'bg-red-500/10 border-red-500/30 ring-2 ring-red-500/20' 
                                     : match.status === 'COMPLETED'
@@ -223,12 +223,12 @@ const LiveConsole = () => {
                         >
                             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                                 {/* Match Info */}
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <span className="px-3 py-1 text-xs font-bold bg-white/10 text-gray-300 rounded-lg uppercase tracking-wider">
+                                <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 flex-wrap">
+                                        <span className="px-2 sm:px-3 py-1 text-xs font-bold bg-white/10 text-gray-300 rounded-lg uppercase tracking-wider">
                                             {match.sport.replace('_', ' ')}
                                         </span>
-                                        <span className={`px-3 py-1 text-xs font-bold rounded-lg flex items-center gap-1.5 ${
+                                        <span className={`px-2 sm:px-3 py-1 text-xs font-bold rounded-lg flex items-center gap-1.5 ${
                                             match.status === 'LIVE' ? 'bg-red-500 text-white' :
                                             match.status === 'COMPLETED' ? 'bg-green-500 text-white' :
                                             'bg-blue-500/20 text-blue-400 border border-blue-500/30'
@@ -238,33 +238,33 @@ const LiveConsole = () => {
                                         </span>
                                     </div>
 
-                                    <div className="flex items-center gap-4">
-                                        <span className="text-xl font-black text-white">{match.teamA?.shortCode || match.teamA?.name}</span>
-                                        <span className="text-gray-500 font-medium">vs</span>
-                                        <span className="text-xl font-black text-white">{match.teamB?.shortCode || match.teamB?.name}</span>
+                                    <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+                                        <span className="text-base sm:text-lg md:text-xl font-black text-white">{match.teamA?.shortCode || match.teamA?.name}</span>
+                                        <span className="text-gray-500 font-medium text-sm sm:text-base">vs</span>
+                                        <span className="text-base sm:text-lg md:text-xl font-black text-white">{match.teamB?.shortCode || match.teamB?.name}</span>
                                     </div>
 
                                     {match.status !== 'SCHEDULED' && (
-                                        <div className="mt-2 text-2xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                                        <div className="mt-2 text-xl sm:text-2xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                                             {formatScore(match)}
                                         </div>
                                     )}
 
-                                    <div className="text-sm text-gray-500 mt-2">
+                                    <div className="text-xs sm:text-sm text-gray-500 mt-2">
                                         {new Date(match.scheduledAt).toLocaleString()}
                                     </div>
                                 </div>
 
                                 {/* Action Buttons */}
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-2 w-full lg:w-auto">
                                     {/* Manage Squad Button - Cricket Only */}
                                     {match.sport === 'CRICKET' && (
                                         <motion.button
                                             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                                             onClick={() => setSquadManagerMatch(match)}
-                                            className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-amber-600 to-orange-500 text-white rounded-xl font-medium shadow-lg shadow-amber-500/25"
+                                            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-amber-600 to-orange-500 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-amber-500/25 text-xs sm:text-sm touch-manipulation"
                                         >
-                                            <Users className="w-4 h-4" />
+                                            <Users className="w-3 h-3 sm:w-4 sm:h-4" />
                                             {match.squadA?.length > 0 || match.squadB?.length > 0 ? 'Edit Squads' : 'Add Players'}
                                         </motion.button>
                                     )}
@@ -274,12 +274,12 @@ const LiveConsole = () => {
                                             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                                             onClick={() => handleGoLive(match)}
                                             disabled={actionLoading === match._id + '-live'}
-                                            className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-xl font-medium shadow-lg shadow-red-500/25 disabled:opacity-50"
+                                            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-red-500/25 disabled:opacity-50 text-xs sm:text-sm touch-manipulation"
                                         >
                                             {actionLoading === match._id + '-live' ? (
-                                                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                                <span className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                                             ) : (
-                                                <Play className="w-4 h-4" />
+                                                <Play className="w-3 h-3 sm:w-4 sm:h-4" />
                                             )}
                                             Go Live
                                         </motion.button>
@@ -290,7 +290,7 @@ const LiveConsole = () => {
                                             <motion.button
                                                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                                                 onClick={() => setSelectedMatch(match)}
-                                                className="px-4 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium shadow-lg shadow-indigo-500/25"
+                                                className="px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-indigo-500/25 text-xs sm:text-sm touch-manipulation"
                                             >
                                                 Update Score
                                             </motion.button>
@@ -298,16 +298,16 @@ const LiveConsole = () => {
                                                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                                                 onClick={() => handleEndMatch(match)}
                                                 disabled={actionLoading === match._id + '-end'}
-                                                className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-xl font-medium shadow-lg shadow-green-500/25 disabled:opacity-50"
+                                                className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-lg sm:rounded-xl font-medium shadow-lg shadow-green-500/25 disabled:opacity-50 text-xs sm:text-sm touch-manipulation"
                                             >
-                                                <Square className="w-4 h-4" />
+                                                <Square className="w-3 h-3 sm:w-4 sm:h-4" />
                                                 {actionLoading === match._id + '-end' ? 'Ending...' : 'End Match'}
                                             </motion.button>
                                         </>
                                     )}
 
                                     {match.status === 'COMPLETED' && (
-                                        <span className="px-4 py-2.5 bg-green-500/20 text-green-400 rounded-xl font-medium border border-green-500/30">
+                                        <span className="px-3 sm:px-4 py-2 sm:py-2.5 bg-green-500/20 text-green-400 rounded-lg sm:rounded-xl font-medium border border-green-500/30 text-xs sm:text-sm">
                                             ✓ Completed
                                         </span>
                                     )}
@@ -316,10 +316,10 @@ const LiveConsole = () => {
                                         whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                                         onClick={() => setConfirmModal({ isOpen: true, matchId: match._id, action: 'delete' })}
                                         disabled={actionLoading === match._id}
-                                        className="flex items-center gap-2 px-4 py-2.5 bg-white/5 text-gray-400 hover:bg-red-500/20 hover:text-red-400 rounded-xl font-medium border border-white/10 hover:border-red-500/30 transition-all disabled:opacity-50"
+                                        className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-white/5 text-gray-400 hover:bg-red-500/20 hover:text-red-400 rounded-lg sm:rounded-xl font-medium border border-white/10 hover:border-red-500/30 transition-all disabled:opacity-50 text-xs sm:text-sm touch-manipulation"
                                     >
-                                        <Trash2 className="w-4 h-4" />
-                                        Delete
+                                        <Trash2 className="w-3 h-3 sm:w-4 sm:h-4" />
+                                        <span className="hidden sm:inline">Delete</span>
                                     </motion.button>
                                 </div>
                             </div>
@@ -344,34 +344,36 @@ const LiveConsole = () => {
                 {selectedMatch && (
                     <motion.div 
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4 overflow-y-auto"
+                        onClick={() => setSelectedMatch(null)}
                     >
                         <motion.div 
                             initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
-                            className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-white/10"
+                            onClick={(e) => e.stopPropagation()}
+                            className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl sm:rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-white/10 my-auto"
                         >
-                            <div className="sticky top-0 bg-slate-900/95 backdrop-blur-xl p-6 border-b border-white/10 flex justify-between items-center z-10">
-                                <div>
-                                    <h3 className="text-xl font-black text-white">Score Management</h3>
-                                    <p className="text-sm text-gray-400 mt-1">
+                            <div className="sticky top-0 bg-slate-900/95 backdrop-blur-xl p-4 sm:p-6 border-b border-white/10 flex justify-between items-start sm:items-center gap-3 z-10">
+                                <div className="flex-1 min-w-0">
+                                    <h3 className="text-lg sm:text-xl font-black text-white">Score Management</h3>
+                                    <p className="text-xs sm:text-sm text-gray-400 mt-1 truncate">
                                         {selectedMatch.sport.replace('_', ' ')} • {selectedMatch.teamA?.shortCode} vs {selectedMatch.teamB?.shortCode}
                                     </p>
                                 </div>
                                 <motion.button
                                     whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
                                     onClick={() => setSelectedMatch(null)}
-                                    className="p-2 bg-white/10 hover:bg-white/20 rounded-xl transition-colors"
+                                    className="p-2 bg-white/10 hover:bg-white/20 rounded-lg sm:rounded-xl transition-colors flex-shrink-0 touch-manipulation"
                                 >
-                                    <X className="w-5 h-5 text-gray-400" />
+                                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
                                 </motion.button>
                             </div>
 
-                            <div className="p-6 space-y-6">
+                            <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
                                 {/* Live Scoreboard Preview */}
-                                <div className="mb-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                                <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-white/5 rounded-xl sm:rounded-2xl border border-white/10">
                                     <div className="text-center">
-                                        <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">Current Score</div>
-                                        <div className="text-4xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                                        <div className="text-xs text-gray-500 uppercase tracking-wider mb-1 sm:mb-2">Current Score</div>
+                                        <div className="text-2xl sm:text-3xl md:text-4xl font-black bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                                             {formatScore(selectedMatch)}
                                         </div>
                                     </div>
@@ -416,12 +418,12 @@ const LiveConsole = () => {
                                     />
                                 )}
 
-                                <div className="flex justify-between items-center pt-4 border-t border-white/10">
+                                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 pt-3 sm:pt-4 border-t border-white/10">
                                     <span className="text-xs text-gray-500">Changes saved instantly via Socket.io</span>
                                     <motion.button
                                         whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                                         onClick={() => handleEndMatch(selectedMatch)}
-                                        className="px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-xl font-medium text-sm shadow-lg shadow-green-500/25"
+                                        className="px-3 sm:px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-500 text-white rounded-lg sm:rounded-xl font-medium text-sm shadow-lg shadow-green-500/25 w-full sm:w-auto touch-manipulation"
                                     >
                                         Complete Match
                                     </motion.button>

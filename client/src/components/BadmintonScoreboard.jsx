@@ -18,40 +18,41 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
             {/* Main Scoreboard */}
             <div className={`backdrop-blur-xl rounded-3xl border overflow-hidden shadow-2xl ${isDarkMode ? 'bg-gradient-to-br from-purple-900/30 to-pink-900/30 border-white/10' : 'bg-white border-gray-200'}`}>
                 {/* Header */}
-                <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 px-6 py-4 flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                        <span className="text-4xl">🏸</span>
+                <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 px-3 sm:px-6 py-3 sm:py-4 flex justify-between items-center flex-wrap gap-2">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                        <span className="text-2xl sm:text-4xl">🏸</span>
                         <div>
-                            <h3 className="font-black text-white text-xl">BADMINTON</h3>
+                            <h3 className="font-black text-white text-base sm:text-xl">BADMINTON</h3>
                             <p className="text-white/70 text-xs">Best of {maxSets}</p>
                         </div>
                     </div>
                     {match.status === 'LIVE' && (
-                        <div className="flex items-center gap-2 bg-red-500/20 px-4 py-2 rounded-full border border-red-400/30">
+                        <div className="flex items-center gap-1.5 sm:gap-2 bg-red-500/20 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full border border-red-400/30">
                             <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                            <span className="text-white text-sm font-bold">LIVE</span>
+                            <span className="text-white text-xs sm:text-sm font-bold">LIVE</span>
                         </div>
                     )}
                 </div>
 
                 {/* Sets Score */}
-                <div className="p-8">
-                    <div className="flex items-center justify-center gap-12 mb-8">
+                <div className="p-4 sm:p-6 md:p-8">
+                    <div className="flex items-center justify-center gap-4 sm:gap-8 md:gap-12 mb-4 sm:mb-6 md:mb-8">
                         {/* Team A */}
                         <motion.div 
-                            className="text-center"
+                            className="text-center flex-1 max-w-[140px] sm:max-w-none"
                             whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
                         >
-                            <div className={`text-sm font-bold mb-2 uppercase tracking-wider ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`}>
+                            <div className={`text-xs sm:text-sm font-bold mb-1 sm:mb-2 uppercase tracking-wider ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`}>
                                 {match.teamA?.shortCode || 'Team A'}
                             </div>
                             <div className="relative">
-                                <div className="text-8xl font-black bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                                <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
                                     {scoreA || 0}
                                 </div>
                                 {currentServer === 'A' && match.status === 'LIVE' && (
-                                    <div className="absolute -right-4 top-0">
-                                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
+                                    <div className="absolute -right-2 sm:-right-4 top-0">
+                                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
                                     </div>
                                 )}
                             </div>
@@ -60,23 +61,24 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
                             </div>
                         </motion.div>
 
-                        <div className={`text-5xl font-black ${isDarkMode ? 'text-gray-700' : 'text-gray-300'}`}>-</div>
+                        <div className={`text-3xl sm:text-4xl md:text-5xl font-black ${isDarkMode ? 'text-gray-700' : 'text-gray-300'}`}>-</div>
 
                         {/* Team B */}
                         <motion.div 
-                            className="text-center"
+                            className="text-center flex-1 max-w-[140px] sm:max-w-none"
                             whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
                         >
-                            <div className={`text-sm font-bold mb-2 uppercase tracking-wider ${isDarkMode ? 'text-pink-400' : 'text-pink-600'}`}>
+                            <div className={`text-xs sm:text-sm font-bold mb-1 sm:mb-2 uppercase tracking-wider ${isDarkMode ? 'text-pink-400' : 'text-pink-600'}`}>
                                 {match.teamB?.shortCode || 'Team B'}
                             </div>
                             <div className="relative">
-                                <div className="text-8xl font-black bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">
+                                <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">
                                     {scoreB || 0}
                                 </div>
                                 {currentServer === 'B' && match.status === 'LIVE' && (
-                                    <div className="absolute -right-4 top-0">
-                                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
+                                    <div className="absolute -right-2 sm:-right-4 top-0">
+                                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
                                     </div>
                                 )}
                             </div>
@@ -91,7 +93,7 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className={`p-6 rounded-2xl border ${
+                            className={`p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl border ${
                                 isMatchPoint 
                                     ? 'bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border-yellow-500/40' 
                                     : isDeuce
@@ -101,7 +103,7 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
                                     : 'bg-gray-50 border-gray-200'
                             }`}
                         >
-                            <div className="flex justify-between items-center mb-3">
+                            <div className="flex justify-between items-center mb-2 sm:mb-3 flex-wrap gap-2">
                                 <span className={`text-xs font-bold uppercase ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                                     Current Game - Set {(scoreA + scoreB + 1)}
                                 </span>
@@ -116,15 +118,15 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
                                     </span>
                                 )}
                             </div>
-                            <div className="flex justify-center gap-12 items-center">
+                            <div className="flex justify-center gap-6 sm:gap-8 md:gap-12 items-center">
                                 <div className="text-center">
-                                    <div className="text-5xl font-black text-purple-400">
+                                    <div className="text-3xl sm:text-4xl md:text-5xl font-black text-purple-400">
                                         {currentSet.pointsA || 0}
                                     </div>
                                 </div>
-                                <div className={`text-3xl ${isDarkMode ? 'text-gray-700' : 'text-gray-300'}`}>-</div>
+                                <div className={`text-2xl sm:text-3xl ${isDarkMode ? 'text-gray-700' : 'text-gray-300'}`}>-</div>
                                 <div className="text-center">
-                                    <div className="text-5xl font-black text-pink-400">
+                                    <div className="text-3xl sm:text-4xl md:text-5xl font-black text-pink-400">
                                         {currentSet.pointsB || 0}
                                     </div>
                                 </div>
@@ -136,7 +138,7 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
                     {setDetails.length > 0 && (
                         <button
                             onClick={() => setShowSetHistory(!showSetHistory)}
-                            className={`mt-4 w-full py-3 rounded-xl font-bold transition-all ${
+                            className={`mt-3 sm:mt-4 w-full py-2.5 sm:py-3 rounded-xl font-bold text-sm sm:text-base transition-all ${
                                 isDarkMode 
                                     ? 'bg-white/5 hover:bg-white/10 text-white border border-white/10' 
                                     : 'bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200'
