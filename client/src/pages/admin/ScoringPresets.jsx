@@ -90,14 +90,14 @@ const ScoringPresets = () => {
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-                    <div } }>
+                    <div>
                         <h1 className="text-3xl md:text-4xl font-black text-white flex items-center gap-3">
                             <Settings className="w-8 h-8 text-indigo-400" />
                             Scoring Presets
                         </h1>
                         <p className="text-gray-400 mt-1">Configure points for each sport</p>
                     </div>
-                    <button } } onClick={() => setShowForm(!showForm)}
+                    <button onClick={() => setShowForm(!showForm)}
                         className={`px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all ${showForm ? 'bg-red-600 hover:bg-red-700' : 'bg-gradient-to-r from-indigo-600 to-purple-600'} text-white shadow-lg`}>
                         {showForm ? <><X className="w-5 h-5" /> Cancel</> : <><Plus className="w-5 h-5" /> New Preset</>}
                     </button>
@@ -106,8 +106,7 @@ const ScoringPresets = () => {
                 {/* Form */}
                 
                     {showForm && (
-                        <div } } }
-                            className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-8 overflow-hidden">
+                        <div } className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-8 overflow-hidden">
                             <h2 className="text-2xl font-bold text-white mb-6">{editingId ? 'Edit' : 'Create'} Preset</h2>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -115,8 +114,7 @@ const ScoringPresets = () => {
                                         <label className="block text-sm font-bold text-gray-300 mb-3 uppercase tracking-wider">Sport</label>
                                         <div className="grid grid-cols-3 gap-2">
                                             {SPORTS.map(sport => (
-                                                <button key={sport.value} type="button" } }
-                                                    onClick={() => setFormData({ ...formData, sport: sport.value })}
+                                                <button key={sport.value} type="button" onClick={() => setFormData({ ...formData, sport: sport.value })}
                                                     className={`p-3 rounded-xl border transition-all ${formData.sport === sport.value 
                                                         ? `bg-gradient-to-r ${sport.color} border-white/30 shadow-lg` 
                                                         : 'bg-white/5 border-white/10 hover:border-white/20'}`}>
@@ -168,11 +166,11 @@ const ScoringPresets = () => {
                                     </label>
                                 </div>
                                 <div className="flex gap-4">
-                                    <button } } type="submit"
+                                    <button type="submit"
                                         className="flex-1 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg">
                                         <Save className="w-5 h-5" /> {editingId ? 'Update' : 'Create'} Preset
                                     </button>
-                                    <button } } type="button" onClick={resetForm}
+                                    <button type="button" onClick={resetForm}
                                         className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-xl font-bold">Cancel</button>
                                 </div>
                             </form>
@@ -192,8 +190,7 @@ const ScoringPresets = () => {
                         {presets.map((preset, idx) => {
                             const sportData = getSportData(preset.sport);
                             return (
-                                <div key={preset._id} } } }
-                                    className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group">
+                                <div key={preset._id} } className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group">
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="flex items-center gap-3">
                                             <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${sportData.color} flex items-center justify-center text-2xl shadow-lg`}>
@@ -218,11 +215,11 @@ const ScoringPresets = () => {
                                         <div className="text-center p-2 bg-purple-500/10 rounded-lg"><div className="text-lg font-black text-purple-400">{preset.bonusPoints}</div><div className="text-[10px] text-gray-500">Bonus</div></div>
                                     </div>
                                     <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button } } onClick={() => handleEdit(preset)}
+                                        <button onClick={() => handleEdit(preset)}
                                             className="p-2 bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-400 rounded-lg"><Edit className="w-4 h-4" /></button>
-                                        <button } } onClick={() => handleDuplicate(preset)}
+                                        <button onClick={() => handleDuplicate(preset)}
                                             className="p-2 bg-blue-500/20 hover:bg-blue-500/40 text-blue-400 rounded-lg"><Copy className="w-4 h-4" /></button>
-                                        <button } } onClick={() => handleDelete(preset._id)}
+                                        <button onClick={() => handleDelete(preset._id)}
                                             className="p-2 bg-red-500/20 hover:bg-red-500/40 text-red-400 rounded-lg"><Trash2 className="w-4 h-4" /></button>
                                     </div>
                                 </div>

@@ -68,14 +68,14 @@ const SeasonManagement = () => {
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-                    <div } }>
+                    <div>
                         <h1 className="text-3xl md:text-4xl font-black text-white flex items-center gap-3">
                             <Trophy className="w-8 h-8 text-yellow-500" />
                             Season Management
                         </h1>
                         <p className="text-gray-400 mt-1">Create and manage competition seasons</p>
                     </div>
-                    <button } } onClick={() => setShowForm(!showForm)}
+                    <button onClick={() => setShowForm(!showForm)}
                         className={`px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all ${showForm ? 'bg-red-600 hover:bg-red-700' : 'bg-gradient-to-r from-indigo-600 to-purple-600'} text-white shadow-lg`}>
                         {showForm ? <><X className="w-5 h-5" /> Cancel</> : <><Plus className="w-5 h-5" /> New Season</>}
                     </button>
@@ -84,8 +84,7 @@ const SeasonManagement = () => {
                 {/* Form */}
                 
                     {showForm && (
-                        <div } } }
-                            className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-8 overflow-hidden">
+                        <div } className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-8 overflow-hidden">
                             <h2 className="text-2xl font-bold text-white mb-6">{editingId ? 'Edit' : 'Create'} Season</h2>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -118,11 +117,11 @@ const SeasonManagement = () => {
                                         className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none resize-none" />
                                 </div>
                                 <div className="flex gap-4">
-                                    <button } } type="submit"
+                                    <button type="submit"
                                         className="flex-1 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg">
                                         <Save className="w-5 h-5" /> {editingId ? 'Update' : 'Create'} Season
                                     </button>
-                                    <button } } type="button" onClick={resetForm}
+                                    <button type="button" onClick={resetForm}
                                         className="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-xl font-bold">Cancel</button>
                                 </div>
                             </form>
@@ -140,8 +139,7 @@ const SeasonManagement = () => {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {seasons.map((season, idx) => (
-                            <div key={season._id} } } }
-                                className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group">
+                            <div key={season._id} } className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group">
                                 <div className="flex justify-between items-start mb-4">
                                     <div>
                                         <h3 className="text-xl font-bold text-white">{season.name}</h3>
@@ -164,10 +162,10 @@ const SeasonManagement = () => {
                                     <div className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {new Date(season.endDate).toLocaleDateString()}</div>
                                 </div>
                                 <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button } } onClick={() => handleEdit(season)}
+                                    <button onClick={() => handleEdit(season)}
                                         className="p-2 bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-400 rounded-lg"><Edit className="w-4 h-4" /></button>
                                     {!season.isArchived && (
-                                        <button } } onClick={() => handleArchive(season._id)}
+                                        <button onClick={() => handleArchive(season._id)}
                                             className="p-2 bg-amber-500/20 hover:bg-amber-500/40 text-amber-400 rounded-lg"><Archive className="w-4 h-4" /></button>
                                     )}
                                 </div>

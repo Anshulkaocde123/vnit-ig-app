@@ -48,7 +48,7 @@ const AwardPoints = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-6 md:p-8">
             {/* Header */}
-            <div } } className="mb-8">
+            <div className="mb-8">
                 <h1 className="text-3xl md:text-4xl font-black text-white flex items-center gap-3">
                     <Award className="w-8 h-8 text-yellow-500" />
                     Judge's Console
@@ -58,7 +58,7 @@ const AwardPoints = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Form */}
-                <div } } className="lg:col-span-2">
+                <div className="lg:col-span-2">
                     <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Department */}
@@ -118,7 +118,7 @@ const AwardPoints = () => {
                                     className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none resize-none" />
                             </div>
 
-                            <button } } type="submit" disabled={loading}
+                            <button type="submit" disabled={loading}
                                 className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-xl font-bold text-lg shadow-lg shadow-yellow-500/25 disabled:opacity-50">
                                 {loading ? <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Send className="w-5 h-5" />}
                                 {loading ? 'Awarding...' : 'Award Points'}
@@ -128,12 +128,12 @@ const AwardPoints = () => {
                 </div>
 
                 {/* Recent Logs */}
-                <div } }>
+                <div>
                     <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6">
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-lg font-bold text-white flex items-center gap-2"><Clock className="w-5 h-5 text-indigo-400" /> Recent Awards</h3>
                             {recentLogs.length > 0 && (
-                                <button } } onClick={() => setShowClearConfirm(true)} className="p-2 text-gray-500 hover:text-red-400 transition-colors">
+                                <button onClick={() => setShowClearConfirm(true)} className="p-2 text-gray-500 hover:text-red-400 transition-colors">
                                     <Trash2 className="w-4 h-4" />
                                 </button>
                             )}
@@ -147,8 +147,7 @@ const AwardPoints = () => {
                             <div className="space-y-3 max-h-[500px] overflow-y-auto">
                                 
                                     {recentLogs.map((log, idx) => (
-                                        <div key={log.id || idx} } } }
-                                            className="p-4 bg-white/5 border border-white/10 rounded-xl">
+                                        <div key={log.id || idx} } className="p-4 bg-white/5 border border-white/10 rounded-xl">
                                             <div className="flex justify-between items-start">
                                                 <div>
                                                     <div className="font-bold text-white">{log.departmentName || log.department?.name}</div>
