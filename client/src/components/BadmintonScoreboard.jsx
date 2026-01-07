@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
-    const { scoreA, scoreB, currentSet, setDetails = [], maxSets = 3, server } = match;
+    const { scoreA, scoreB, currentSet, setDetails = [], maxSets = 3, currentServer } = match;
     const [showSetHistory, setShowSetHistory] = useState(false);
     
     const setsToWin = Math.ceil(maxSets / 2);
@@ -49,7 +49,7 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
                                 <div className="text-8xl font-black bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
                                     {scoreA || 0}
                                 </div>
-                                {server === 'A' && match.status === 'LIVE' && (
+                                {currentServer === 'A' && match.status === 'LIVE' && (
                                     <div className="absolute -right-4 top-0">
                                         <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
                                     </div>
@@ -74,7 +74,7 @@ const BadmintonScoreboard = ({ match, isDarkMode = false }) => {
                                 <div className="text-8xl font-black bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">
                                     {scoreB || 0}
                                 </div>
-                                {server === 'B' && match.status === 'LIVE' && (
+                                {currentServer === 'B' && match.status === 'LIVE' && (
                                     <div className="absolute -right-4 top-0">
                                         <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
                                     </div>

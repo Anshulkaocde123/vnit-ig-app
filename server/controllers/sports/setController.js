@@ -64,9 +64,9 @@ const createMatch = asyncHandler(async (req, res) => {
  * @access  Public (for now)
  */
 const updateScore = asyncHandler(async (req, res) => {
-    const { matchId, setsA, setsB, currentSetScore, setResult, status } = req.body;
+    const { matchId, setsA, setsB, currentSetScore, setResult, status, action, team, points, setNumber, winner, finalPointsA, finalPointsB, server } = req.body;
 
-    console.log('🏸 Set-based score update:', { matchId, setsA, setsB, currentSetScore, setResult, status });
+    console.log('🏸 Set-based score update:', { matchId, action, team, points, setNumber, status });
 
     if (!matchId) {
         res.status(400);
@@ -84,6 +84,7 @@ const updateScore = asyncHandler(async (req, res) => {
         scoreA: match.scoreA,
         scoreB: match.scoreB,
         currentSet: match.currentSet,
+        server: match.currentServer,
         status: match.status
     });
 
@@ -92,8 +93,104 @@ const updateScore = asyncHandler(async (req, res) => {
         throw new Error('Cannot update a completed match');
     }
 
+    // ========== ACTION-BASED UPDATES ==========
+    if (action) {
+        switch (action) {
+            case 'startSet':
+                // Start a new set
+                match.currentSet = {
+                    setNumber: setNumber || (match.scoreA + match.scoreB + 1),
+                    pointsA: 0,
+                    pointsB: 0
+                };
+                if (match.status === 'SCHEDULED') {
+                    match.status = 'LIVE';
+                }
+                // Initialize server if not set
+                if (!match.currentServer) {
+                    match.currentServer = 'A';
+                }
+                console.log(`✅ Set ${match.currentSet.setNumber} started`);
+                break;
+
+            case 'updateSetPoints':
+                // Update current set points
+                if (!match.currentSet) {
+                    match.currentSet = { setNumber: 1, pointsA: 0, pointsB: 0 };
+                    if (match.status === 'SCHEDULED') {
+                        match.status = 'LIVE';
+                    }
+                    if (!match.currentServer) {
+                        match.currentServer = 'A';
+                    }
+                }
+                
+                if (team === 'A') {
+                    const newPoints = (match.currentSet.pointsA || 0) + points;
+                    match.currentSet.pointsA = Math.max(0, newPoints); // Prevent negative
+                } else if (team === 'B') {
+                    const newPoints = (match.currentSet.pointsB || 0) + points;
+                    match.currentSet.pointsB = Math.max(0, newPoints); // Prevent negative
+                }
+                console.log(`✅ Point ${points > 0 ? 'added to' : 'removed from'} Team ${team}: ${match.currentSet.pointsA}-${match.currentSet.pointsB}`);
+                break;
+
+            case 'endSet':
+                // Complete current set and update sets won
+                if (!match.currentSet) {
+                    res.status(400);
+                    throw new Error('No active set to end');
+                }
+
+                const setWinner = winner || (match.currentSet.pointsA > match.currentSet.pointsB ? 'A' : 'B');
+                
+                match.setDetails.push({
+                    setNumber: match.currentSet.setNumber || (match.setDetails.length + 1),
+                    pointsA: finalPointsA !== undefined ? finalPointsA : match.currentSet.pointsA,
+                    pointsB: finalPointsB !== undefined ? finalPointsB : match.currentSet.pointsB,
+                    winner: setWinner
+                });
+
+                // Update sets won
+                if (setWinner === 'A') {
+                    match.scoreA = (match.scoreA || 0) + 1;
+                } else {
+                    match.scoreB = (match.scoreB || 0) + 1;
+                }
+
+                console.log(`✅ Set ${match.currentSet.setNumber} completed. Winner: Team ${setWinner}. Sets: ${match.scoreA}-${match.scoreB}`);
+
+                // Check if match is won
+                const setsToWin = Math.ceil(match.maxSets / 2);
+                if (match.scoreA >= setsToWin || match.scoreB >= setsToWin) {
+                    match.status = 'COMPLETED';
+                    match.winner = match.scoreA > match.scoreB ? match.teamA : match.teamB;
+                    match.currentSet = null;
+                    console.log(`🏆 Match completed! Winner: Team ${match.scoreA > match.scoreB ? 'A' : 'B'}`);
+                } else {
+                    // Clear current set for next one
+                    match.currentSet = null;
+                }
+                break;
+
+            case 'toggleServer':
+                // Toggle server between A and B
+                match.currentServer = match.currentServer === 'A' ? 'B' : 'A';
+                console.log(`✅ Server toggled to Team ${match.currentServer}`);
+                break;
+
+            default:
+                res.status(400);
+                throw new Error(`Unknown action: ${action}`);
+        }
+        
+        match.markModified('currentSet');
+        match.markModified('setDetails');
+    }
+
+    // ========== LEGACY DIRECT FIELD UPDATES ==========
     // Initialize currentSet if not exists
-    if (!match.currentSet) {
+    if (!match.currentSet && !action) {
         console.log('⚠️ currentSet was undefined, initializing...');
         match.currentSet = { setNumber: 1, pointsA: 0, pointsB: 0 };
     }

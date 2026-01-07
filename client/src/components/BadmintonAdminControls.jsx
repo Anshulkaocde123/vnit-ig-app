@@ -4,7 +4,7 @@ import { Plus, Minus, RotateCcw, ServerCog } from 'lucide-react';
 
 const BadmintonAdminControls = ({ match, onUpdate }) => {
     const [loading, setLoading] = useState(false);
-    const { currentSet, scoreA, scoreB, server, maxSets = 3 } = match;
+    const { currentSet, scoreA, scoreB, currentServer, maxSets = 3 } = match;
 
     const handlePointUpdate = async (team, increment) => {
         if (!currentSet) {
@@ -52,8 +52,8 @@ const BadmintonAdminControls = ({ match, onUpdate }) => {
         await handleUpdate({
             action: 'endSet',
             winner: team,
-            finalPointsA: team === 'A' ? (currentSet.pointsA || 0) + 1 : currentSet.pointsA || 0,
-            finalPointsB: team === 'B' ? (currentSet.pointsB || 0) + 1 : currentSet.pointsB || 0
+            finalPointsA: currentSet.pointsA || 0,
+            finalPointsB: currentSet.pointsB || 0
         });
     };
 
@@ -83,7 +83,7 @@ const BadmintonAdminControls = ({ match, onUpdate }) => {
                         >
                             <ServerCog className="w-4 h-4" />
                             <span className="text-xs font-bold">
-                                Server: {server || 'A'}
+                                Server: {currentServer || 'A'}
                             </span>
                         </button>
                     </div>
@@ -229,7 +229,7 @@ const BadmintonAdminControls = ({ match, onUpdate }) => {
                     <div>
                         <div className="text-gray-500 text-xs">Server</div>
                         <div className="text-white font-bold flex items-center justify-center gap-1">
-                            {server === 'A' ? (
+                            {currentServer === 'A' ? (
                                 <span className="text-purple-400">{match.teamA?.shortCode}</span>
                             ) : (
                                 <span className="text-pink-400">{match.teamB?.shortCode}</span>
