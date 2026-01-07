@@ -48,7 +48,7 @@ const server = http.createServer(app);
 // Initialize Socket.io with CORS and connection settings
 const io = new Server(server, {
     cors: {
-        origin: '*',
+        origin: process.env.CORS_ORIGIN || '*',
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         credentials: true
     },
@@ -92,7 +92,10 @@ app.get('/api/socket-status', (req, res) => {
 // app.use(helmet());
 
 // CORS middleware
-app.use(cors());
+app.use(cors({
+    origin: process.env.CORS_ORIGIN || '*',
+    credentials: true
+}));
 
 // Body parser middleware
 app.use(express.json());
