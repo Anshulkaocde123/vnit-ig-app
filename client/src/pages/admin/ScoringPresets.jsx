@@ -104,10 +104,9 @@ const ScoringPresets = () => {
                 </div>
 
                 {/* Form */}
-                
-                    {showForm && (
-                        <div } className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-8 overflow-hidden">
-                            <h2 className="text-2xl font-bold text-white mb-6">{editingId ? 'Edit' : 'Create'} Preset</h2>
+                {showForm && (
+                    <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-8 overflow-hidden">
+                        <h2 className="text-2xl font-bold text-white mb-6">{editingId ? 'Edit' : 'Create'} Preset</h2>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>

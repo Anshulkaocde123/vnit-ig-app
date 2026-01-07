@@ -168,7 +168,7 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
                 <PublicNavbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
                 <div className="max-w-4xl mx-auto p-4 md:p-6 pt-8">
                     <Link to="/">
-                        <button } className={`flex items-center gap-2 mb-6 font-medium ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
+                        <button className={`flex items-center gap-2 mb-6 font-medium ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                             <ArrowLeft className="w-5 h-5" /> Back to Matches
                         </button>
                     </Link>

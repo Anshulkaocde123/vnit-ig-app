@@ -84,10 +84,9 @@ const StudentCouncilManagement = () => {
                 </div>
 
                 {/* Form */}
-                
-                    {showForm && (
-                        <div } className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-8 overflow-hidden">
-                            <h2 className="text-2xl font-bold text-white mb-6">{editingId ? 'Edit' : 'Add New'} Member</h2>
+                {showForm && (
+                    <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 mb-8 overflow-hidden">
+                        <h2 className="text-2xl font-bold text-white mb-6">{editingId ? 'Edit' : 'Add New'} Member</h2>
                             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label className="block text-sm font-bold text-gray-300 mb-2 uppercase tracking-wider">Full Name *</label>
