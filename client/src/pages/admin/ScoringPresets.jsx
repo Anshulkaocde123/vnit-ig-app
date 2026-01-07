@@ -187,10 +187,10 @@ const ScoringPresets = () => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {presets.map((preset, idx) => {
+                        {presets.map((preset) => {
                             const sportData = getSportData(preset.sport);
                             return (
-                                <div key={preset._id} } className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group">
+                                <div key={preset._id} className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group">
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="flex items-center gap-3">
                                             <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${sportData.color} flex items-center justify-center text-2xl shadow-lg`}>

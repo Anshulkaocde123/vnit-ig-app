@@ -146,7 +146,7 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
         <div className={`min-h-screen ${isDarkMode ? 'bg-[#0a0a0f] text-white' : 'bg-gray-50 text-gray-900'}`}>
             <PublicNavbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <div className="flex flex-col items-center justify-center h-96">
-                <div } } className="w-16 h-16 rounded-full border-4 border-indigo-500/30 border-t-indigo-500" />
+                <div className="w-16 h-16 rounded-full border-4 border-indigo-500/30 border-t-indigo-500 animate-spin" />
             </div>
         </div>
     );
@@ -174,11 +174,11 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
                     </Link>
 
                     {/* Match Header */}
-                    <div } } className={`backdrop-blur-xl rounded-3xl border overflow-hidden mb-6 ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white/80 border-gray-200'}`}>
+                    <div className={`backdrop-blur-xl rounded-3xl border overflow-hidden mb-6 ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white/80 border-gray-200'}`}>
                         {/* Status Bar */}
                         <div className={`px-6 py-3 flex justify-between items-center text-white font-bold ${match.status === 'LIVE' ? 'bg-gradient-to-r from-red-600 to-red-500' : match.status === 'COMPLETED' ? 'bg-gradient-to-r from-green-600 to-emerald-500' : 'bg-gradient-to-r from-blue-600 to-indigo-500'}`}>
                             <span className="flex items-center gap-2 uppercase tracking-wider text-sm">
-                                {match.status === 'LIVE' && <span } } className="w-2 h-2 bg-white rounded-full" />}
+                                {match.status === 'LIVE' && <span className="w-2 h-2 bg-white rounded-full animate-pulse" />}
                                 {match.status}
                             </span>
                             <span className="text-sm opacity-80">{match.sport.replace('_', ' ')}</span>
@@ -187,12 +187,12 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
                         {/* Teams */}
                         <div className="p-8">
                             <div className="flex items-center justify-between">
-                                <div } className="text-center flex-1">
+                                <div className="text-center flex-1">
                                     <div className="text-5xl md:text-6xl font-black bg-gradient-to-br from-indigo-400 to-purple-500 bg-clip-text text-transparent mb-2">{match.teamA?.shortCode}</div>
                                     <div className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>{match.teamA?.name}</div>
                                 </div>
                                 <div className={`px-8 text-3xl font-black ${isDarkMode ? 'text-gray-600' : 'text-gray-300'}`}>VS</div>
-                                <div } className="text-center flex-1">
+                                <div className="text-center flex-1">
                                     <div className="text-5xl md:text-6xl font-black bg-gradient-to-br from-pink-400 to-red-500 bg-clip-text text-transparent mb-2">{match.teamB?.shortCode}</div>
                                     <div className={`text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>{match.teamB?.name}</div>
                                 </div>
@@ -207,13 +207,13 @@ const MatchDetail = ({ isDarkMode, setIsDarkMode }) => {
                     </div>
 
                     {/* Scoreboard */}
-                    <div } } }>
+                    <div>
                         {renderScoreboard()}
                     </div>
 
                     {/* Winner */}
                     {match.status === 'COMPLETED' && match.winner && (
-                        <div } } } className={`mt-6 p-6 rounded-3xl text-center border ${isDarkMode ? 'bg-gradient-to-r from-yellow-500/10 to-amber-500/10 border-yellow-500/30' : 'bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-300'}`}>
+                        <div className={`mt-6 p-6 rounded-3xl text-center border ${isDarkMode ? 'bg-gradient-to-r from-yellow-500/10 to-amber-500/10 border-yellow-500/30' : 'bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-300'}`}>
                             <Trophy className="w-10 h-10 mx-auto mb-2 text-yellow-500" />
                             <div className={`text-sm font-bold uppercase tracking-wider mb-1 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`}>Winner</div>
                             <div className="text-3xl font-black bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">{match.winner.name || match.winner.shortCode}</div>

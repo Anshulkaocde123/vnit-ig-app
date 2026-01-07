@@ -160,8 +160,8 @@ const StudentCouncilManagement = () => {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {members.map((member, idx) => (
-                            <div key={member._id} } className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group">
+                        {members.map((member) => (
+                            <div key={member._id} className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group">
                                 <div className="flex items-start gap-4">
                                     <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${getPositionColor(member.position)} flex items-center justify-center text-white shadow-lg`}>
                                         {member.photo ? <img src={member.photo} alt={member.name} className="w-full h-full rounded-full object-cover" /> : <User className="w-7 h-7" />}

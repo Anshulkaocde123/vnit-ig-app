@@ -145,9 +145,8 @@ const AwardPoints = () => {
                             </div>
                         ) : (
                             <div className="space-y-3 max-h-[500px] overflow-y-auto">
-                                
-                                    {recentLogs.map((log, idx) => (
-                                        <div key={log.id || idx} } className="p-4 bg-white/5 border border-white/10 rounded-xl">
+                                {recentLogs.map((log) => (
+                                    <div key={log.id || log._id} className="p-4 bg-white/5 border border-white/10 rounded-xl">
                                             <div className="flex justify-between items-start">
                                                 <div>
                                                     <div className="font-bold text-white">{log.departmentName || log.department?.name}</div>

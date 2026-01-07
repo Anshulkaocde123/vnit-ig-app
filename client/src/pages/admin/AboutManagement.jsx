@@ -114,7 +114,7 @@ const AboutManagement = () => {
                                 </div>
                                 
                                     {formData.highlights?.map((h, idx) => (
-                                        <div key={idx} } className="flex items-center justify-between p-3 bg-white/5 border border-white/10 rounded-lg mb-2">
+                                        <div key={idx} className="flex items-center justify-between p-3 bg-white/5 border border-white/10 rounded-lg mb-2">
                                             <div><span className="font-bold text-white">{h.title}</span><span className="text-gray-400 ml-2">- {h.description}</span></div>
                                             <button type="button" onClick={() => handleRemoveHighlight(idx)} className="p-1 text-red-400 hover:text-red-300"><Trash2 className="w-4 h-4" /></button>
                                         </div>
