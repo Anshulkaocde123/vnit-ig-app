@@ -82,15 +82,15 @@ const TossDisplay = ({
     }
 
     return (
-        <div className="bg-gray-800 rounded-xl p-4 border border-gray-700">
+        <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border-2 border-yellow-400 shadow-lg mb-6">
             <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                    <span>🪙</span>
+                <h3 className="text-xl font-black text-gray-900 flex items-center gap-2">
+                    <span className="text-2xl">🪙</span>
                     Toss Information
                 </h3>
                 {toss?.winner && (
-                    <span className="px-2 py-1 bg-green-500/20 text-green-400 text-sm font-semibold rounded-full">
-                        Completed
+                    <span className="px-3 py-1 bg-green-600 text-white text-sm font-bold rounded-full shadow-md">
+                        ✓ Completed
                     </span>
                 )}
             </div>
@@ -106,8 +106,8 @@ const TossDisplay = ({
                         className="text-center"
                     >
                         {/* Winner Display */}
-                        <div className="bg-gradient-to-r from-yellow-500/20 to-amber-500/20 rounded-xl p-4 mb-4">
-                            <div className="text-yellow-400 text-sm mb-2">Toss Winner</div>
+                        <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl p-4 mb-4 border-2 border-green-500">
+                            <div className="text-green-700 text-sm font-bold mb-2">🏆 TOSS WINNER</div>
                             <div className="flex items-center justify-center gap-3">
                                 {(() => {
                                     const tossWinnerId = toss.winner?._id?.toString() || toss.winner?.toString();
@@ -125,10 +125,10 @@ const TossDisplay = ({
                                                 />
                                             )}
                                             <div>
-                                                <div className="text-2xl font-bold text-white">
+                                                <div className="text-3xl font-black text-gray-900">
                                                     {winnerTeam?.shortCode || 'Team'}
                                                 </div>
-                                                <div className="text-gray-700 text-sm">
+                                                <div className="text-gray-700 text-sm font-semibold">
                                                     {winnerTeam?.name}
                                                 </div>
                                             </div>
@@ -139,9 +139,9 @@ const TossDisplay = ({
                         </div>
 
                         {/* Decision Display */}
-                        <div className="bg-gray-900/50 rounded-lg p-3">
-                            <div className="text-gray-700 text-sm mb-1">Decision</div>
-                            <div className="text-xl font-semibold text-white flex items-center justify-center gap-2">
+                        <div className="bg-blue-100 rounded-lg p-4 border-2 border-blue-500">
+                            <div className="text-blue-700 text-sm font-bold mb-2">DECISION</div>
+                            <div className="text-2xl font-black text-gray-900 flex items-center justify-center gap-2">
                                 <span>
                                     {decisionOptions.find(d => d.value === toss.decision)?.icon || '🎯'}
                                 </span>
@@ -155,9 +155,9 @@ const TossDisplay = ({
                         {isAdmin && onSetToss && (
                             <button
                                 onClick={() => onSetToss(null)}
-                                className="mt-4 text-sm text-gray-700 hover:text-white transition-colors"
+                                className="mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-bold transition-colors shadow-md"
                             >
-                                Reset Toss
+                                🔄 Reset Toss
                             </button>
                         )}
                     </motion.div>
@@ -169,8 +169,8 @@ const TossDisplay = ({
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                     >
-                        <div className="text-center text-gray-700 mb-4">
-                            Select toss winner and their decision
+                        <div className="text-center text-gray-900 font-bold text-lg mb-4">
+                            👇 Select toss winner and their decision
                         </div>
 
                         {/* Team Selection */}
@@ -181,19 +181,18 @@ const TossDisplay = ({
                             ].map(({ team, id, key }) => (
                                 <div key={key} className="space-y-2">
                                     <div 
-                                        className="bg-gray-900/50 rounded-xl p-4 text-center cursor-pointer
-                                                   hover:bg-gray-700/50 transition-colors border-2 border-transparent
-                                                   hover:border-blue-500"
+                                        className="bg-white rounded-xl p-4 text-center border-2 border-gray-300
+                                                   shadow-md"
                                     >
                                         {team?.logo && (
                                             <img 
                                                 src={team.logo}
                                                 alt={team.shortCode}
-                                                className="w-16 h-16 object-contain mx-auto mb-2 rounded-lg bg-white/10 p-2"
+                                                className="w-16 h-16 object-contain mx-auto mb-2 rounded-lg bg-gray-100 p-2"
                                             />
                                         )}
-                                        <div className="text-white font-semibold">{team?.shortCode}</div>
-                                        <div className="text-gray-700 text-xs">{team?.name}</div>
+                                        <div className="text-gray-900 font-black text-lg">{team?.shortCode}</div>
+                                        <div className="text-gray-700 text-sm font-semibold">{team?.name}</div>
                                     </div>
                                     
                                     {/* Decision buttons */}
@@ -204,9 +203,9 @@ const TossDisplay = ({
                                                 whileHover={{ scale: 1.02 }}
                                                 whileTap={{ scale: 0.98 }}
                                                 onClick={() => handleSetToss(id, option.value)}
-                                                className="w-full bg-blue-600 hover:bg-blue-500 text-white 
-                                                           py-2 px-3 rounded-lg text-sm font-bold
-                                                           flex items-center justify-center gap-2"
+                                                className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white 
+                                                           py-3 px-3 rounded-lg text-sm font-bold shadow-lg
+                                                           flex items-center justify-center gap-2 transition-all"
                                             >
                                                 <span>{option.icon}</span>
                                                 <span>{option.label}</span>
@@ -223,11 +222,11 @@ const TossDisplay = ({
                         key="pending"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="text-center py-4"
+                        className="text-center py-6"
                     >
-                        <div className="text-gray-400">
-                            <span className="text-4xl mb-2 block">🪙</span>
-                            Toss not yet conducted
+                        <div className="text-gray-700">
+                            <span className="text-5xl mb-3 block">🪙</span>
+                            <p className="text-lg font-bold">Toss not yet conducted</p>
                         </div>
                     </motion.div>
                 )}
