@@ -372,19 +372,16 @@ const LiveConsole = () => {
                                     </div>
                                 </div>
 
-                                {/* Cricket Advanced Scorecard */}
+                                {/* Cricket Scoring Controls */}
                                 {selectedMatch.sport === 'CRICKET' && (
-                                    <>
-                                        <ProfessionalCricketScorecard match={selectedMatch} />
-                                        <ScoringControls
-                                            match={selectedMatch}
-                                            onUpdate={handleScoreUpdate}
-                                            onTimerAction={handleTimerAction}
-                                            onAddFoul={handleAddFoul}
-                                            onRemoveFoul={handleRemoveFoul}
-                                            onSetToss={handleSetToss}
-                                        />
-                                    </>
+                                    <ScoringControls
+                                        match={selectedMatch}
+                                        onUpdate={handleScoreUpdate}
+                                        onTimerAction={handleTimerAction}
+                                        onAddFoul={handleAddFoul}
+                                        onRemoveFoul={handleRemoveFoul}
+                                        onSetToss={handleSetToss}
+                                    />
                                 )}
 
                                 {/* Badminton Enhanced Controls */}
