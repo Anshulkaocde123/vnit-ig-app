@@ -382,6 +382,7 @@ const LiveConsole = () => {
                                             onTimerAction={handleTimerAction}
                                             onAddFoul={handleAddFoul}
                                             onRemoveFoul={handleRemoveFoul}
+                                            onSetToss={handleSetToss}
                                         />
                                     </>
                                 )}
